@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_entidad", "Capa_entidad.csproj", "{2ACD6696-917F-479B-8800-2D331C1D6559}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_BLL", "..\BLL\Capa_BLL.csproj", "{96DCCE9B-F51A-468D-83FD-16C817077078}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_DAL", "..\Capa_DAL\Capa_DAL.csproj", "{32A90349-F5FA-446A-8BE3-E8F019B054C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2ACD6696-917F-479B-8800-2D331C1D6559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ACD6696-917F-479B-8800-2D331C1D6559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ACD6696-917F-479B-8800-2D331C1D6559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ACD6696-917F-479B-8800-2D331C1D6559}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96DCCE9B-F51A-468D-83FD-16C817077078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96DCCE9B-F51A-468D-83FD-16C817077078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96DCCE9B-F51A-468D-83FD-16C817077078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96DCCE9B-F51A-468D-83FD-16C817077078}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32A90349-F5FA-446A-8BE3-E8F019B054C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32A90349-F5FA-446A-8BE3-E8F019B054C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32A90349-F5FA-446A-8BE3-E8F019B054C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32A90349-F5FA-446A-8BE3-E8F019B054C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08DE670B-29E0-4C9A-9902-123F66E26471}
+	EndGlobalSection
+EndGlobal
