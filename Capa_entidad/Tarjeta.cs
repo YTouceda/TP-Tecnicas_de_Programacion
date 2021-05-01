@@ -18,7 +18,7 @@ public class Tarjeta : MetodoDePago {
 	private string _CVC;
 	private string _fechaVencimiento;
 	private string _nombreTarjeta;
-	private string _numeroTarjeta;
+	private long _numeroTarjeta;
 
 	public Tarjeta(){
 
@@ -43,9 +43,18 @@ public class Tarjeta : MetodoDePago {
 		set;
 	}
 
-	public string NumeroTarjeta{
+	public long NumeroTarjeta{
 		get;
 		set;
 	}
+
+	public bool ValidarTarjeta()
+    {
+        if ((this._numeroTarjeta % 2)== 0)
+        {
+			return true;
+        }
+		return false;
+    }
 
 }//end Tarjeta
