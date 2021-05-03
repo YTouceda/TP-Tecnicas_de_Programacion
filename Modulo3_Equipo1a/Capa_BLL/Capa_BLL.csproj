@@ -41,7 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MetodoDePagoDLL.cs" />
+    <Compile Include="MetodoDePagoBLL.cs" />
+    <Compile Include="OrdenBLL.cs" />
     <Compile Include="OrdenDeVentaBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TarjetaBLL.cs" />

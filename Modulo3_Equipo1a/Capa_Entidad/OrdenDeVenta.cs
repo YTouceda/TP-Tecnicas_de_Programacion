@@ -30,10 +30,5 @@ public class OrdenDeVenta : Orden {
 		get;
 		set;
 	}
-	
-	public void AgregarMetodoDePago(MetodoDePago Metodo)
-    {
-		this._metodoDePago = Metodo;
-    }
 
 }//end OrdenDeVenta

@@ -56,17 +56,4 @@ public class Tarjeta : MetodoDePago {
 		get;
 		set;
 	}
-	public virtual bool ValidarTarjeta()
-	{
-		if ((this.NumeroTarjeta % 2) == 0)
-		{
-			return false;
-		}
-		return true;
-	}
-	public override bool Validar()
-	{
-		base.Validar();
-		return this.ValidarTarjeta();
-	}
 }//end Tarjeta
