@@ -1,0 +1,9 @@
+C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_DAL\obj\Debug\Capa_DAL.csproj.CoreCompileInputs.cache
+C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_DAL\bin\Debug\Capa_DAL.dll
+C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_DAL\bin\Debug\Capa_DAL.pdb
+C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_DAL\bin\Debug\Capa_Entidad.dll
+C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_DAL\bin\Debug\Capa_Entidad.pdb
+C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_DAL\obj\Debug\Capa_DAL.csprojAssemblyReference.cache
+C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_DAL\obj\Debug\Capa_DAL.csproj.CopyComplete
+C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_DAL\obj\Debug\Capa_DAL.dll
+C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_DAL\obj\Debug\Capa_DAL.pdb

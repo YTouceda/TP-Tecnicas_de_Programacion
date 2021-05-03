@@ -20,11 +20,6 @@ public abstract class MetodoDePago {
 
     }
 
-    public virtual bool Validar()
-    {
-        return false;
-    }
-
 
 
 }//end MetodoDePago
