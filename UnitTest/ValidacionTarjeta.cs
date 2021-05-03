@@ -21,17 +21,14 @@ namespace UnitTest
             List<DetalleOrden> detalles = new List<DetalleOrden>();
             Direccion unaDireccion = new Direccion("1300", "Alem", "1842", "Ezeiza", "Buenos Aires");
             Cliente unCliente = new Cliente();
-            unCliente = new Cliente(/*"Lopez", unaDireccion, 39999999, "Denis"*/);
+            unCliente = new Cliente();
             unCliente.Direccion = unaDireccion;
             unCliente.Apellido = "Lopez";
             unCliente.DNI = 39999999;
             unCliente.Nombre = "Denis";
-            TarjetaBLL unaTarjeta = new TarjetaBLL();
-            unaTarjeta.CVC="123";
-            unaTarjeta.FechaVencimiento="3/27";
-            unaTarjeta.NombreTarjeta="Visa";
-            unaTarjeta.NumeroTarjeta = 5000566598897845;
+            TarjetaBLL unaTarjeta = new TarjetaBLL("123","3/27","Visa", 5000566598897845);
             unaTarjeta.Validar();
+           
 
             Assert.AreEqual(validacionesperada,unaTarjeta.Validar());
 
@@ -46,27 +43,18 @@ namespace UnitTest
             
             string nombreesperado = "Denis";
             Usuario user = new Usuario();
-            OrdenDeVenta unaOrden = new OrdenDeVenta();
+            OrdenDeVentaBLL unaOrden = new OrdenDeVentaBLL();
 
             List<DetalleOrden> detalles = new List<DetalleOrden>();
             Direccion unaDireccion = new Direccion("1300", "Alem", "1842", "Ezeiza", "Buenos Aires");
             Cliente unCliente = new Cliente();
-            //unCliente = new Cliente(/*"Lopez", unaDireccion, 39999999, "Denis"*/);
-            //unCliente.Direccion = unaDireccion;
-            //unCliente.Apellido = "Lopez";
-            //unCliente.DNI = 39999999;
-            //unCliente.Nombre = "Denis";
-            TarjetaBLL unaTarjeta = new TarjetaBLL();
-            unaTarjeta.CVC = "123";
-            unaTarjeta.FechaVencimiento = "3/27";
-            unaTarjeta.NombreTarjeta = "Visa";
-            unaTarjeta.NumeroTarjeta = 5000566598897845;
+            TarjetaBLL unaTarjeta = new TarjetaBLL("123", "3/27", "Visa", 5000566598897845);
             if (unaTarjeta.Validar())
             {
-                unaOrden.MetodoDePago = unaTarjeta;
+                unaOrden.ordenDeVentaBLL.MetodoDePago = unaTarjeta.tarjetaBLL;
             }
 
-            Assert.AreEqual(nombreesperado,unCliente.Nombre);
+            Assert.AreNotEqual(nombreesperado,unCliente.Nombre);
 
 
 
@@ -75,12 +63,12 @@ namespace UnitTest
         /// Prueba la validacion de tarjeta sin haberle asignado un numero de tarjeta.
         /// </summary>
         [TestMethod]
-        public void ValidarTarjetaSinNumeroAsignado()
+        public void ValidarTarjetaSincvcAsignado()
         {
            
-            long numesperado= 5000566598897845;
+            string cvcesperado= "123";
             Usuario user = new Usuario();
-            OrdenDeVenta unaOrden = new OrdenDeVenta();
+            OrdenDeVentaBLL unaOrden = new OrdenDeVentaBLL();
 
             List<DetalleOrden> detalles = new List<DetalleOrden>();
             Direccion unaDireccion = new Direccion("1300", "Alem", "1842", "Ezeiza", "Buenos Aires");
@@ -91,16 +79,14 @@ namespace UnitTest
             unCliente.DNI = 39999999;
             unCliente.Nombre = "Denis";
             TarjetaBLL unaTarjeta = new TarjetaBLL();
-            unaTarjeta.CVC = "123";
-            unaTarjeta.FechaVencimiento = "3/27";
-            unaTarjeta.NombreTarjeta = "Visa";
-            
+
             if (unaTarjeta.Validar())
             {
-                unaOrden.MetodoDePago = unaTarjeta;
+                unaOrden.ordenDeVentaBLL.MetodoDePago = unaTarjeta.tarjetaBLL;
             }
 
-            Assert.AreEqual(numesperado,unaTarjeta.NumeroTarjeta);
+            Assert.AreNotEqual(cvcesperado,unaTarjeta.tarjetaBLL.CVC);
+            
 
 
 
@@ -112,9 +98,8 @@ namespace UnitTest
         public void ValidarTarjetaSinTarjeta()
         {
             bool validacionesperada = true;
-            long numesperado = 5000566598897845;
             Usuario user = new Usuario();
-            OrdenDeVenta unaOrden = new OrdenDeVenta();
+            OrdenDeVentaBLL unaOrden = new OrdenDeVentaBLL();
 
             List<DetalleOrden> detalles = new List<DetalleOrden>();
             Direccion unaDireccion = new Direccion("1300", "Alem", "1842", "Ezeiza", "Buenos Aires");
@@ -125,18 +110,14 @@ namespace UnitTest
             unCliente.DNI = 39999999;
             unCliente.Nombre = "Denis";
             TarjetaBLL unaTarjeta = new TarjetaBLL();
-            /*
-            unaTarjeta.CVC = "123";
-            unaTarjeta.FechaVencimiento = "3/27";
-            unaTarjeta.NombreTarjeta = "Visa";
-            */
+           
 
             if (unaTarjeta.Validar())
             {
-                unaOrden.MetodoDePago = unaTarjeta;
+                unaOrden.ordenDeVentaBLL.MetodoDePago = unaTarjeta.tarjetaBLL;
             }
 
-            Assert.AreEqual(validacionesperada, unaTarjeta.Validar());
+            Assert.AreNotEqual(validacionesperada, unaTarjeta.Validar());
 
 
 

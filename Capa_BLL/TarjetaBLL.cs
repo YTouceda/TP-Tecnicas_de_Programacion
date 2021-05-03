@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace Capa_BLL
 {
@@ -23,11 +24,19 @@ namespace Capa_BLL
 
 		public virtual bool ValidarTarjeta()
 		{
-			if ((this._tarjeta.NumeroTarjeta % 2) == 0)
+			if (this._tarjeta.CVC != null)
+			{
+				if ((this._tarjeta.NumeroTarjeta % 2) == 0)
+				{
+					return false;
+				}
+				return true;
+			}
+			else
 			{
 				return false;
 			}
-			return true;
+			
 		}
 		public override bool Validar()
 		{
@@ -35,5 +44,14 @@ namespace Capa_BLL
 			return this.ValidarTarjeta();
 		}
 
+		public bool ValidarVencimiento()
+		{
+			DateTime dt = DateTime.Now;
+			String[] format = {"M/yy"};
+			String date;
+			date = dt.ToString(format[i], DateTimeFormatInfo.InvariantInfo);
+			if(this.dt.ToString(format[i], DateTimeFormatInfo.InvariantInfo))
+
+		}
 	}
 }

@@ -17,7 +17,7 @@ namespace Capa_BLL
 
         }
 
-        public MetodoDePagoBLL DevolverMetodoDePago(Object metodo)
+        public MetodoDePagoBLL DevolverMetodoDePago(MetodoDePagoBLL metodo)
         {
             TarjetaBLL unaTarjeta = new TarjetaBLL();
             Efectivo efectivo = new Efectivo();
@@ -29,7 +29,7 @@ namespace Capa_BLL
             }
             else
             {
-                return unMetodo;
+                return metodo;
             }
         }
         public virtual bool Validar()

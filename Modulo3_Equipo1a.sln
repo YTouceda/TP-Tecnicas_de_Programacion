@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_BLL", "C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_BLL\Capa_BLL.csproj", "{0E1A2843-E971-4AE6-91AC-31D7A932CE53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_BLL", "Capa_BLL\Capa_BLL.csproj", "{0E1A2843-E971-4AE6-91AC-31D7A932CE53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Entidad", "C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_Entidad\Capa_Entidad.csproj", "{3FB51DD3-7083-4E14-83F6-AE17E299C8FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Entidad", "Capa_Entidad\Capa_Entidad.csproj", "{3FB51DD3-7083-4E14-83F6-AE17E299C8FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_DAL", "C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_DAL\Capa_DAL.csproj", "{BFCAEF67-FAE4-481B-86BF-8FD12424962D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_DAL", "Capa_DAL\Capa_DAL.csproj", "{BFCAEF67-FAE4-481B-86BF-8FD12424962D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Consola", "C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_Consola\Capa_Consola.csproj", "{0C1E3E1C-5687-4C9C-91BF-EE3C7729FFEF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Consola", "Capa_Consola\Capa_Consola.csproj", "{0C1E3E1C-5687-4C9C-91BF-EE3C7729FFEF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{1B256BD0-A469-4ABF-A9AA-7F2ADDD26B26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{0C1E3E1C-5687-4C9C-91BF-EE3C7729FFEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C1E3E1C-5687-4C9C-91BF-EE3C7729FFEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C1E3E1C-5687-4C9C-91BF-EE3C7729FFEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B256BD0-A469-4ABF-A9AA-7F2ADDD26B26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B256BD0-A469-4ABF-A9AA-7F2ADDD26B26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B256BD0-A469-4ABF-A9AA-7F2ADDD26B26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B256BD0-A469-4ABF-A9AA-7F2ADDD26B26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

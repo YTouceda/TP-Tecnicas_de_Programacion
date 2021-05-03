@@ -7,3 +7,12 @@ C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_DAL\obj\Debug\Capa
 C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_DAL\obj\Debug\Capa_DAL.csproj.CopyComplete
 C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_DAL\obj\Debug\Capa_DAL.dll
 C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_DAL\obj\Debug\Capa_DAL.pdb
+C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_DAL\bin\Debug\Capa_DAL.dll
+C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_DAL\bin\Debug\Capa_DAL.pdb
+C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_DAL\bin\Debug\Capa_Entidad.dll
+C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_DAL\bin\Debug\Capa_Entidad.pdb
+C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_DAL\obj\Debug\Capa_DAL.csprojAssemblyReference.cache
+C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_DAL\obj\Debug\Capa_DAL.csproj.CoreCompileInputs.cache
+C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_DAL\obj\Debug\Capa_DAL.csproj.CopyComplete
+C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_DAL\obj\Debug\Capa_DAL.dll
+C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_DAL\obj\Debug\Capa_DAL.pdb
