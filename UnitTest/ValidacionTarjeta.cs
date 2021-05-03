@@ -122,5 +122,27 @@ namespace UnitTest
 
 
         }
+
+        [TestMethod]
+        public void ValidacionVencimiento()
+        {
+            string validacionesperada = "5/21";
+            Usuario user = new Usuario();
+            OrdenDeVenta unaOrden;
+            List<DetalleOrden> detalles = new List<DetalleOrden>();
+            Direccion unaDireccion = new Direccion("1300", "Alem", "1842", "Ezeiza", "Buenos Aires");
+            Cliente unCliente = new Cliente();
+            unCliente = new Cliente();
+            unCliente.Direccion = unaDireccion;
+            unCliente.Apellido = "Lopez";
+            unCliente.DNI = 39999999;
+            unCliente.Nombre = "Denis";
+            TarjetaBLL unaTarjeta = new TarjetaBLL("123", "3/27", "Visa", 5000566598897845);
+            unaTarjeta.ValidarVencimiento();
+
+
+            Assert.AreEqual(validacionesperada, unaTarjeta.ValidarVencimiento());
+
+        }
     }
 }

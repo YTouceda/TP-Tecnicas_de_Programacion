@@ -44,13 +44,16 @@ namespace Capa_BLL
 			return this.ValidarTarjeta();
 		}
 
-		public bool ValidarVencimiento()
+		public string ValidarVencimiento()
 		{
 			DateTime dt = DateTime.Now;
-			String[] format = {"M/yy"};
+			String format = "M/yy";
 			String date;
-			date = dt.ToString(format[i], DateTimeFormatInfo.InvariantInfo);
-			if(this.dt.ToString(format[i], DateTimeFormatInfo.InvariantInfo))
+			date = dt.ToString(format, DateTimeFormatInfo.InvariantInfo);
+            dt.ToString(format, DateTimeFormatInfo.InvariantInfo);
+
+			return date;
+
 
 		}
 	}

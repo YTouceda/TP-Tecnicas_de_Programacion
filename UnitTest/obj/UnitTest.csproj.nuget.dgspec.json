@@ -1,22 +1,22 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\UnitTest\\UnitTest.csproj": {}
+    "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\UnitTest\\UnitTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_BLL\\Capa_BLL.csproj": {
+    "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_BLL\\Capa_BLL.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_BLL\\Capa_BLL.csproj",
+        "projectUniqueName": "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_BLL\\Capa_BLL.csproj",
         "projectName": "Capa_BLL",
-        "projectPath": "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_BLL\\Capa_BLL.csproj",
+        "projectPath": "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_BLL\\Capa_BLL.csproj",
         "frameworks": {
           "net472": {
             "projectReferences": {
-              "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_DAL\\Capa_DAL.csproj": {
-                "projectPath": "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_DAL\\Capa_DAL.csproj"
+              "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_DAL\\Capa_DAL.csproj": {
+                "projectPath": "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_DAL\\Capa_DAL.csproj"
               },
-              "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_Entidad\\Capa_Entidad.csproj": {
-                "projectPath": "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_Entidad\\Capa_Entidad.csproj"
+              "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_Entidad\\Capa_Entidad.csproj": {
+                "projectPath": "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_Entidad\\Capa_Entidad.csproj"
               }
             }
           }
@@ -26,16 +26,16 @@
         "net472": {}
       }
     },
-    "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_DAL\\Capa_DAL.csproj": {
+    "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_DAL\\Capa_DAL.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_DAL\\Capa_DAL.csproj",
+        "projectUniqueName": "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_DAL\\Capa_DAL.csproj",
         "projectName": "Capa_DAL",
-        "projectPath": "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_DAL\\Capa_DAL.csproj",
+        "projectPath": "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_DAL\\Capa_DAL.csproj",
         "frameworks": {
           "net472": {
             "projectReferences": {
-              "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_Entidad\\Capa_Entidad.csproj": {
-                "projectPath": "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_Entidad\\Capa_Entidad.csproj"
+              "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_Entidad\\Capa_Entidad.csproj": {
+                "projectPath": "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_Entidad\\Capa_Entidad.csproj"
               }
             }
           }
@@ -45,24 +45,24 @@
         "net472": {}
       }
     },
-    "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_Entidad\\Capa_Entidad.csproj": {
+    "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_Entidad\\Capa_Entidad.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_Entidad\\Capa_Entidad.csproj",
+        "projectUniqueName": "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_Entidad\\Capa_Entidad.csproj",
         "projectName": "Capa_Entidad",
-        "projectPath": "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_Entidad\\Capa_Entidad.csproj"
+        "projectPath": "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_Entidad\\Capa_Entidad.csproj"
       },
       "frameworks": {
         "net472": {}
       }
     },
-    "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\UnitTest\\UnitTest.csproj": {
+    "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\UnitTest\\UnitTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\UnitTest\\UnitTest.csproj",
+        "projectUniqueName": "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\UnitTest\\UnitTest.csproj",
         "projectName": "UnitTest",
-        "projectPath": "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\UnitTest\\UnitTest.csproj",
+        "projectPath": "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\UnitTest\\UnitTest.csproj",
         "packagesPath": "C:\\Users\\Yannick\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\UnitTest\\obj\\",
+        "outputPath": "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\UnitTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -85,11 +85,11 @@
           "netcoreapp2.1": {
             "targetAlias": "netcoreapp2.1",
             "projectReferences": {
-              "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_BLL\\Capa_BLL.csproj": {
-                "projectPath": "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_BLL\\Capa_BLL.csproj"
+              "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_BLL\\Capa_BLL.csproj": {
+                "projectPath": "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_BLL\\Capa_BLL.csproj"
               },
-              "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_Entidad\\Capa_Entidad.csproj": {
-                "projectPath": "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\Capa_Entidad\\Capa_Entidad.csproj"
+              "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_Entidad\\Capa_Entidad.csproj": {
+                "projectPath": "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\Capa_Entidad\\Capa_Entidad.csproj"
               }
             }
           }

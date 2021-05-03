@@ -10,3 +10,9 @@ C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual stud
 C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_Entidad\obj\Debug\Capa_Entidad.csproj.CoreCompileInputs.cache
 C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_Entidad\obj\Debug\Capa_Entidad.dll
 C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_Entidad\obj\Debug\Capa_Entidad.pdb
+C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\Capa_Entidad\bin\Debug\Capa_Entidad.dll
+C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\Capa_Entidad\bin\Debug\Capa_Entidad.pdb
+C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\Capa_Entidad\obj\Debug\Capa_Entidad.csprojAssemblyReference.cache
+C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\Capa_Entidad\obj\Debug\Capa_Entidad.csproj.CoreCompileInputs.cache
+C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\Capa_Entidad\obj\Debug\Capa_Entidad.dll
+C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\Capa_Entidad\obj\Debug\Capa_Entidad.pdb

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yZa68vuqumJxDoPwz0GNErSQGoxgC1wpuflaRICsCKVWDdTlelXT20E3izwje1045qQXPkZR5pMgYESl27FHrg==",
+  "dgSpecHash": "mAPgconoV9adkRTwxnDQrhGHr34fW9govPow60XVRN4Zy8eB/y4O8qGOMhPawN1csjLHv91e68FdbWCJEfb01A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Yannick\\Desktop\\Universidad\\3RO\\Tecnicas de programacion\\TP\\Visual studio\\Modulo3_Equipo1a\\UnitTest\\UnitTest.csproj",
+  "projectFilePath": "C:\\Users\\Yannick\\Documents\\GitHub\\TP-Tecnicas_de_Programacion\\UnitTest\\UnitTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Yannick\\.nuget\\packages\\coverlet.collector\\1.3.0\\coverlet.collector.1.3.0.nupkg.sha512",
     "C:\\Users\\Yannick\\.nuget\\packages\\microsoft.codecoverage\\16.7.1\\microsoft.codecoverage.16.7.1.nupkg.sha512",
