@@ -10,8 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-
-
+using General;
 
 public class OrdenDeVenta : Orden {
 
@@ -19,10 +18,6 @@ public class OrdenDeVenta : Orden {
 	private MetodoDePago _metodoDePago;
 
 	public OrdenDeVenta(){
-
-	}
-
-	~OrdenDeVenta(){
 
 	}
 
@@ -35,5 +30,10 @@ public class OrdenDeVenta : Orden {
 		get;
 		set;
 	}
+	
+	public void AgregarMetodoDePago(MetodoDePago Metodo)
+    {
+		this._metodoDePago = Metodo;
+    }
 
 }//end OrdenDeVenta

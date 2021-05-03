@@ -10,18 +10,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-
-
-
 using General;
+
+
 public class Cliente : Persona {
 
 	public Cliente(){
 
 	}
-
-	~Cliente(){
-
-	}
-
 }//end Cliente

@@ -15,12 +15,16 @@ using System.IO;
 
 public abstract class MetodoDePago {
 
-	public MetodoDePago(){
+    public MetodoDePago()
+    {
 
-	}
+    }
 
-	~MetodoDePago(){
+    public virtual bool Validar()
+    {
+        return false;
+    }
 
-	}
+
 
 }//end MetodoDePago

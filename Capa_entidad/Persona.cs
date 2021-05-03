@@ -10,10 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-
-
-
 using General;
+
+
 namespace General {
 	public abstract class Persona {
 
@@ -22,11 +21,15 @@ namespace General {
 		private int _dni;
 		private string _nombre;
 
-		public Persona(){
-
+		public Persona(string apellido, Direccion direccion, int dni, string nombre){
+			this.Apellido = apellido;
+			this.Direccion = direccion;
+			this.DNI = dni;
+			this.Nombre = nombre;
 		}
 
-		~Persona(){
+		public Persona()
+		{
 
 		}
 

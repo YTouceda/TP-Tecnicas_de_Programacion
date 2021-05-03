@@ -22,11 +22,15 @@ namespace General {
 		private string _localidad;
 		private string _provincia;
 
-		public Direccion(){
-
+		public Direccion(string altura, string calle, string codigoPostal, string localidad, string provincia){
+			this.Altura = altura;
+			this.Calle = calle;
+			this.CodigoPostal = codigoPostal;
+			this.Localidad = localidad;
+			this.Provincia = provincia;
 		}
-
-		~Direccion(){
+		public Direccion()
+		{
 
 		}
 

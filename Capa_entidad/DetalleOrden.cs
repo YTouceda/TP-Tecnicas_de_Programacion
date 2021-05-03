@@ -10,10 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-
-
-
 using General;
+
+
 namespace General {
 	public abstract class DetalleOrden {
 
@@ -21,10 +20,6 @@ namespace General {
 		private Producto _producto;
 
 		public DetalleOrden(){
-
-		}
-
-		~DetalleOrden(){
 
 		}
 

@@ -22,10 +22,6 @@ namespace General {
 
 		}
 
-		~Categoria(){
-
-		}
-
 		public string Nombre{
 			get;
 			set;

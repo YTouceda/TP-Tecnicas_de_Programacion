@@ -10,10 +10,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-
-
-
+using Entidades;
 using General;
+
+
 namespace General {
 	public abstract class Orden {
 
@@ -22,12 +22,13 @@ namespace General {
 		private Usuario _usuarioCreador;
 
 		public Orden(){
-
+			this._fecha = DateTime.Now;
+		}
+		public Orden(List<DetalleOrden> Detalles, Usuario UsuarioCreador)
+		{
+			this._fecha = DateTime.Now; 
 		}
 
-		~Orden(){
-
-		}
 
 		public List<DetalleOrden> Detalles{
 			get;
@@ -36,7 +37,6 @@ namespace General {
 
 		public DateTime Fecha{
 			get;
-			set;
 		}
 
 		public Usuario UsuarioCreador{

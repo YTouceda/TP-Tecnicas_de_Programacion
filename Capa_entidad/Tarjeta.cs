@@ -24,9 +24,18 @@ public class Tarjeta : MetodoDePago {
 
 	}
 
-	~Tarjeta(){
+	public Tarjeta(string CVC, string fechaVencimiento, string nombreTarjeta, long numeroTarjeta)
+    {
+		this.CVC = CVC;
+		this.FechaVencimiento = fechaVencimiento;
+		this.NombreTarjeta = nombreTarjeta;
+		this.NumeroTarjeta = numeroTarjeta;
 
-	}
+    }
+
+	//public override void ValidarTarjeta(Tarjeta unaTarjeta)
+	//{
+	//}
 
 	public string CVC{
 		get;
@@ -38,7 +47,7 @@ public class Tarjeta : MetodoDePago {
 		set;
 	}
 
-	public string NombreTarjeta{
+    public string NombreTarjeta{
 		get;
 		set;
 	}
@@ -47,14 +56,17 @@ public class Tarjeta : MetodoDePago {
 		get;
 		set;
 	}
-
-	public bool ValidarTarjeta()
-    {
-        if ((this._numeroTarjeta % 2)== 0)
-        {
-			return true;
-        }
-		return false;
-    }
-
+	public virtual bool ValidarTarjeta()
+	{
+		if ((this.NumeroTarjeta % 2) == 0)
+		{
+			return false;
+		}
+		return true;
+	}
+	public override bool Validar()
+	{
+		base.Validar();
+		return this.ValidarTarjeta();
+	}
 }//end Tarjeta
