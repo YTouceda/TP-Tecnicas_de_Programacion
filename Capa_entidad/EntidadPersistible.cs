@@ -13,7 +13,7 @@ using System.IO;
 
 
 
-namespace Entidades.Entidades {
+namespace Entity {
 	public abstract class EntidadPersistible {
 
 		public EntidadPersistible(){

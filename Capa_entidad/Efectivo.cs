@@ -13,14 +13,14 @@ using System.IO;
 
 
 
-public class Efectivo : MetodoDePago {
+namespace Entity {
+	public class Efectivo : MetodoDePago
+	{
 
-	public Efectivo(){
+		public Efectivo()
+		{
 
-	}
+		}
 
-	~Efectivo(){
-
-	}
-
-}//end Efectivo
+	}//end Efectivo
+}

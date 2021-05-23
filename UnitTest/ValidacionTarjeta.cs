@@ -17,7 +17,6 @@ namespace UnitTest
         {
             bool validacionesperada = true;
             Usuario user = new Usuario();
-            OrdenDeVenta unaOrden;
             List<DetalleOrden> detalles = new List<DetalleOrden>();
             Direccion unaDireccion = new Direccion("1300", "Alem", "1842", "Ezeiza", "Buenos Aires");
             Cliente unCliente = new Cliente();
@@ -84,7 +83,7 @@ namespace UnitTest
             {
                 unaOrden.ordenDeVentaBLL.MetodoDePago = unaTarjeta.tarjetaBLL;
             }
-
+            Assert.Fail()
             Assert.AreNotEqual(cvcesperado,unaTarjeta.tarjetaBLL.CVC);
             
 
@@ -123,6 +122,7 @@ namespace UnitTest
 
         }
 
+        /*
         [TestMethod]
         public void ValidacionVencimiento()
         {
@@ -143,6 +143,6 @@ namespace UnitTest
 
             Assert.AreEqual(validacionesperada, unaTarjeta.ValidarVencimiento());
 
-        }
+        }*/
     }
 }

@@ -13,47 +13,51 @@ using System.IO;
 
 
 
-public class Tarjeta : MetodoDePago {
+namespace Entity{
+	public class Tarjeta : MetodoDePago
+	{
 
-	private string _CVC;
-	private string _fechaVencimiento;
-	private string _nombreTarjeta;
-	private long _numeroTarjeta;
+		private string _CVC;
+		private string _fechaVencimiento;
+		private string _nombreTarjeta;
+		private long _numeroTarjeta;
 
-	public Tarjeta(){
+		public Tarjeta()
+		{
 
-	}
+		}
 
-	public Tarjeta(string CVC, string fechaVencimiento, string nombreTarjeta, long numeroTarjeta)
-    {
-		this.CVC = CVC;
-		this.FechaVencimiento = fechaVencimiento;
-		this.NombreTarjeta = nombreTarjeta;
-		this.NumeroTarjeta = numeroTarjeta;
+		public Tarjeta(string CVC, string fechaVencimiento, string nombreTarjeta, long numeroTarjeta)
+		{
+			this.CVC = CVC;
+			this.FechaVencimiento = fechaVencimiento;
+			this.NombreTarjeta = nombreTarjeta;
+			this.NumeroTarjeta = numeroTarjeta;
 
-    }
+		}
 
-	//public override void ValidarTarjeta(Tarjeta unaTarjeta)
-	//{
-	//}
+		public string CVC
+		{
+			get;
+			set;
+		}
 
-	public string CVC{
-		get;
-		set;
-	}
+		public string FechaVencimiento
+		{
+			get;
+			set;
+		}
 
-	public string FechaVencimiento{
-		get;
-		set;
-	}
+		public string NombreTarjeta
+		{
+			get;
+			set;
+		}
 
-    public string NombreTarjeta{
-		get;
-		set;
-	}
-
-	public long NumeroTarjeta{
-		get;
-		set;
-	}
-}//end Tarjeta
+		public long NumeroTarjeta
+		{
+			get;
+			set;
+		}
+	}//end Tarjeta
+}

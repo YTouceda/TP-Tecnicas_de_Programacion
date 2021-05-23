@@ -13,13 +13,16 @@ using System.IO;
 
 
 
-public abstract class MetodoDePago {
-
-    public MetodoDePago()
+namespace Entity {
+    public abstract class MetodoDePago
     {
 
-    }
+        public MetodoDePago()
+        {
+
+        }
 
 
 
-}//end MetodoDePago
+    }//end MetodoDePago
+}

@@ -10,15 +10,3 @@ C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_Consola\obj\Debug\
 C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_Consola\obj\Debug\Capa_Consola.csproj.CopyComplete
 C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_Consola\obj\Debug\Capa_Consola.exe
 C:\Users\flia_\Desktop\CodigoTP_Modulo3\Modulo3_Equipo1a\Capa_Consola\obj\Debug\Capa_Consola.pdb
-C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_Consola\bin\Debug\Capa_Consola.exe.config
-C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_Consola\bin\Debug\Capa_Consola.exe
-C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_Consola\bin\Debug\Capa_Consola.pdb
-C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_Consola\bin\Debug\Capa_BLL.dll
-C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_Consola\bin\Debug\Capa_Entidad.dll
-C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_Consola\bin\Debug\Capa_BLL.pdb
-C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_Consola\bin\Debug\Capa_Entidad.pdb
-C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_Consola\obj\Debug\Capa_Consola.csprojAssemblyReference.cache
-C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_Consola\obj\Debug\Capa_Consola.csproj.CoreCompileInputs.cache
-C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_Consola\obj\Debug\Capa_Consola.csproj.CopyComplete
-C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_Consola\obj\Debug\Capa_Consola.exe
-C:\Users\Yannick\Desktop\Universidad\3RO\Tecnicas de programacion\TP\Visual studio\Modulo3_Equipo1a\Capa_Consola\obj\Debug\Capa_Consola.pdb

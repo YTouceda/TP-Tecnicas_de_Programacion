@@ -10,11 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using Entidades;
-using General;
-using Entidades.Entidades;
 
-namespace Entidades {
+namespace Entity {
 	public class Usuario : Persona {
 
 		private int _legajo;

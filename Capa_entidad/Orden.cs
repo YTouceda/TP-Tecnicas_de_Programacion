@@ -10,11 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using Entidades;
-using General;
 
 
-namespace General {
+namespace Entity {
 	public abstract class Orden {
 
 		private List<DetalleOrden> _detalles = new List<DetalleOrden>();

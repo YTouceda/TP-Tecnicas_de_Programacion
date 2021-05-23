@@ -10,25 +10,31 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using General;
 
-public class OrdenDeVenta : Orden {
+namespace Entity
+{ 
+	public class OrdenDeVenta : Orden
+	{
 
-	private Cliente _cliente;
-	private MetodoDePago _metodoDePago;
+		private Cliente _cliente;
+		private MetodoDePago _metodoDePago;
 
-	public OrdenDeVenta(){
+		public OrdenDeVenta()
+		{
 
-	}
+		}
 
-	public Cliente Cliente{
-		get;
-		set;
-	}
+		public Cliente Cliente
+		{
+			get;
+			set;
+		}
 
-	public MetodoDePago MetodoDePago{
-		get;
-		set;
-	}
+		public MetodoDePago MetodoDePago
+		{
+			get;
+			set;
+		}
 
-}//end OrdenDeVenta
+	}//end OrdenDeVenta
+}

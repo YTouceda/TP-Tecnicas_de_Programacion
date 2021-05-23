@@ -13,8 +13,8 @@ using System.IO;
 
 
 
-using Entidades.Entidades;
-namespace Entidades.Entidades {
+
+namespace Entity {
 	public class Rol : EntidadPersistible {
 
 		private string _descripcion;

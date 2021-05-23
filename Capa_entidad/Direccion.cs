@@ -13,7 +13,7 @@ using System.IO;
 
 
 
-namespace General {
+namespace Entity {
 	public class Direccion {
 
 		private string _altura;

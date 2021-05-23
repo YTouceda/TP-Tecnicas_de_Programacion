@@ -10,10 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using General;
 
 
-namespace General {
+namespace Entity {
 	public abstract class Persona {
 
 		private string _apellido;

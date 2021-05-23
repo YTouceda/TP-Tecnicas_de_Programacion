@@ -10,12 +10,15 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using General;
 
+namespace Entity
+{
+	public class Cliente : Persona
+	{
 
-public class Cliente : Persona {
+		public Cliente()
+		{
 
-	public Cliente(){
-
-	}
-}//end Cliente
+		}
+	}//end Cliente
+}

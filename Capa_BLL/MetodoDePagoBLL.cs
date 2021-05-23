@@ -7,35 +7,26 @@ using General;
 
 
 
-namespace Capa_BLL
+namespace BLL
 {
-    public abstract class MetodoDePagoBLL
+    public static class MetodoDePagoBLL
     {
-        
-        public MetodoDePagoBLL()
+        public static MetodoDePago DevolverMetodoDePago(int opcion)
         {
-
-        }
-
-        public MetodoDePagoBLL DevolverMetodoDePago(MetodoDePagoBLL metodo)
-        {
-            TarjetaBLL unaTarjeta = new TarjetaBLL();
-            Efectivo efectivo = new Efectivo();
-            if (metodo == unaTarjeta)
+            if (opcion == 0)
             {
-                
-                unaTarjeta.ValidarTarjeta();
+                MetodoDePago metodo = new Tarjeta();
+                return metodo;
+            }
+            if (opcion == 1)
+            {
+                MetodoDePago metodo = new Efectivo();
                 return metodo;
             }
             else
             {
-                return metodo;
+                 throw new Exception ("Error: Opcion ingresada no valida");
             }
         }
-        public virtual bool Validar()
-        {
-            return false;
-        }
-
     }
 }

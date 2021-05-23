@@ -13,8 +13,8 @@ using System.IO;
 
 
 
-using Entidades.Entidades;
-namespace Entidades.Entidades {
+
+namespace Entity {
 	public class Permiso : EntidadPersistible {
 
 		private string _descripcion;
@@ -30,4 +30,4 @@ namespace Entidades.Entidades {
 
 	}//end Permiso
 
-}//end namespace Entidades
+}//end namespace Entity

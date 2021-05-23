@@ -13,7 +13,7 @@ using System.IO;
 
 
 
-namespace General {
+namespace Entity {
 	public class Categoria {
 
 		private string _nombre;

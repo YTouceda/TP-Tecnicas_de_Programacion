@@ -13,8 +13,7 @@ using System.IO;
 
 
 
-using General;
-namespace General {
+namespace Entity {
 	public class Producto {
 
 		private Categoria _categoria;

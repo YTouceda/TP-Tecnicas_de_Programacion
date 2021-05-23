@@ -3,58 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Globalization;
 
-namespace Capa_BLL
+namespace BLL
 {
-	public class TarjetaBLL : MetodoDePagoBLL
+	public class TarjetaBLL
 	{
-		private Tarjeta _tarjeta;
-		public TarjetaBLL(string CVC, string fechaVencimiento, string nombreTarjeta, long numeroTarjeta)
-		{
-			_tarjeta = new Tarjeta(CVC, fechaVencimiento, nombreTarjeta, numeroTarjeta);
-		}
 		public TarjetaBLL()
         {
-			_tarjeta = new Tarjeta();
 
-		}
-
-		public Tarjeta tarjetaBLL { get; set; }
-
-		public virtual bool ValidarTarjeta()
+        }
+		/// <summary>
+		/// Valida si se puede utilizar la Tarjeta para realizar una venta.
+		/// Numero de tarjeta par (se rechaza)  
+		/// Numero de tarjeta impar (se autoriza)
+		/// </summary>
+		/// <param name="pTarjeta"> Del tipo Entity.Tarjeta</param>
+		/// <returns>Devuelve un bool</returns>
+		public bool ValidarTarjeta(Entity.Tarjeta pTarjeta)
 		{
-			if (this._tarjeta.CVC != null)
-			{
-				if ((this._tarjeta.NumeroTarjeta % 2) == 0)
-				{
-					return false;
-				}
-				return true;
-			}
-			else
+			if ((pTarjeta.NumeroTarjeta % 2) == 0)
 			{
 				return false;
 			}
-			
-		}
-		public override bool Validar()
-		{
-			base.Validar();
-			return this.ValidarTarjeta();
-		}
-
-		public string ValidarVencimiento()
-		{
-			DateTime dt = DateTime.Now;
-			String format = "M/yy";
-			String date;
-			date = dt.ToString(format, DateTimeFormatInfo.InvariantInfo);
-            dt.ToString(format, DateTimeFormatInfo.InvariantInfo);
-
-			return date;
-
-
+			return true;
 		}
 	}
 }
