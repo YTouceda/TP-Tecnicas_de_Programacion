@@ -15,8 +15,19 @@ namespace Entity
 {
 	public class Cliente : Persona
 	{
+        private int _id_cliente;
 
-		public Cliente()
+        public int ID_Cliente
+        {
+            get { return _id_cliente; }
+            set { _id_cliente = value; }
+        }
+
+        public Cliente(int id_cliente)
+        {
+            this.ID_Cliente = id_cliente;
+        }
+        public Cliente()
 		{
 
 		}

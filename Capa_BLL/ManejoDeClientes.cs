@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
+using Entity;
 
 namespace BLL
 {
@@ -11,10 +13,14 @@ namespace BLL
         public DAL.ClienteDAL objDAL = new ClienteDAL(); 
         public Cliente LevantarCliente()
         {
-            objDAL =
-            Cliente objEntity = new Cliente();
+            ClienteDAL objClienteDAL = new ClienteDAL();
+            Cliente objCliente = new Cliente();
 
-            return objEntity;
+            objDAL.Alta(objCliente);
+            return objCliente;
+
         }
+
+
     }
 }

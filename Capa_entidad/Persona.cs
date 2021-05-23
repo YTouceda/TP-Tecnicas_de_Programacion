@@ -19,18 +19,27 @@ namespace Entity {
 		private Direccion _direccion;
 		private int _dni;
 		private string _nombre;
+        private int _id_persona;
 
-		public Persona(string apellido, Direccion direccion, int dni, string nombre){
+
+        public Persona(int _id_persona ,string apellido, Direccion direccion, int dni, string nombre){
 			this.Apellido = apellido;
 			this.Direccion = direccion;
 			this.DNI = dni;
 			this.Nombre = nombre;
+			this.IDPersona = _id_persona;
 		}
 
 		public Persona()
 		{
 
 		}
+
+        public int IDPersona
+        {
+            get { return _id_persona; }
+            set { _id_persona = value; }
+        }
 
 		public string Apellido{
 			get;
