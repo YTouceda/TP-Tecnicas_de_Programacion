@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteBLL.cs" />
     <Compile Include="DetalleOrdenBLL.cs" />
+    <Compile Include="Excepciones\Excepcion_ClienteInexistente.cs" />
     <Compile Include="Excepciones\ExcepcionesNegocio.cs" />
     <Compile Include="Excepciones\Excepcion_ProductoNoEncontrado.cs" />
     <Compile Include="Excepciones\Excepcion_StockInsuficiente.cs" />

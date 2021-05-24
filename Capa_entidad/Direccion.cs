@@ -21,16 +21,20 @@ namespace Entity {
 		private string _codigoPostal;
 		private string _localidad;
 		private string _provincia;
+        private int _iddireccion;
 
-		public Direccion(string altura, string calle, string codigoPostal, string localidad, string provincia){
+
+        public Direccion(string altura, string calle, string codigoPostal, string localidad, string provincia,int iddireccion){
 			this.Altura = altura;
 			this.Calle = calle;
 			this.CodigoPostal = codigoPostal;
 			this.Localidad = localidad;
 			this.Provincia = provincia;
+			this.Id_Direccion = iddireccion;
 		}
 		public Direccion()
 		{
+
 
 		}
 
@@ -43,6 +47,11 @@ namespace Entity {
 			get;
 			set;
 		}
+        public int Id_Direccion
+        {
+            get { return _iddireccion; }
+            set { _iddireccion = value; }
+        }
 
 		public string CodigoPostal{
 			get;

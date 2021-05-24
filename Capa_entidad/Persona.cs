@@ -17,12 +17,12 @@ namespace Entity {
 
 		private string _apellido;
 		private Direccion _direccion;
-		private int _dni;
+		private string _dni;
 		private string _nombre;
         private int _id_persona;
 
 
-        public Persona(int _id_persona ,string apellido, Direccion direccion, int dni, string nombre){
+        public Persona(int _id_persona ,string apellido, Direccion direccion, string dni, string nombre){
 			this.Apellido = apellido;
 			this.Direccion = direccion;
 			this.DNI = dni;
@@ -51,7 +51,7 @@ namespace Entity {
 			set;
 		}
 
-		public int DNI{
+		public string DNI{
 			get;
 			set;
 		}

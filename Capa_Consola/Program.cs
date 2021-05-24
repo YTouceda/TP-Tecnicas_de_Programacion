@@ -21,10 +21,10 @@ namespace Capa_Consola
             //opcion = int.Parse(Console.ReadLine());
             if (opcion == 1)
             {
-                Entity.Direccion dire = new Entity.Direccion("123", "calle", "1234", "Localidad", "provincia");
+                Entity.Direccion dire = new Entity.Direccion("123", "calle", "1234", "Localidad", "provincia",1111);
                 unCliente.Direccion = dire;
                 unCliente.Apellido = "perez";
-                unCliente.DNI = 11111111;
+                unCliente.DNI = "11111111";
                 unCliente.Nombre = "Juan";
                 unaOrden.Cliente = unCliente;
                 unaOrden.UsuarioCreador = user;
