@@ -17,11 +17,16 @@ namespace Entity {
 	public class Producto {
 
 		private Categoria _categoria;
+        private int _id;
 		private string _nombre;
 		private float _precioCompra;
 		private float _precioVenta;
+        private int _stock;
 
-		public Producto(){
+
+
+
+        public Producto(){
 
 		}
 
@@ -33,6 +38,18 @@ namespace Entity {
 			get;
 			set;
 		}
+
+        public int ID
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+        public int Stock
+        {
+            get { return _stock; }
+            set { _stock = value; }
+        }
 
 		public string Nombre{
 			get;

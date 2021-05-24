@@ -13,7 +13,7 @@ using System.IO;
 
 
 namespace Entity{
-	public abstract class DetalleOrden {
+	public class DetalleOrden {
 
 		private int _cantidad;
 		private Producto _producto;

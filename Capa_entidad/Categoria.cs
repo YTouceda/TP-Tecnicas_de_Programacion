@@ -21,6 +21,10 @@ namespace Entity {
 		public Categoria(){
 
 		}
+		public Categoria(string nombre)
+		{
+			this.Nombre = nombre;
+		}
 
 		public string Nombre{
 			get;
