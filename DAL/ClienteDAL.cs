@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -30,13 +31,14 @@ namespace DAL
         /// </summary>
         /// <param name="pCliente">objeto cliente</param>
         /// <returns></returns>
-        public bool ComprobarCliente(Entity.Cliente pCliente)
+        public bool ComprobarCliente(int Id_Cliente)
         {
             bool salida=true;
             Conexion objConexion = new Conexion();
-            
-            string query = string.Format("SELECT Id_cliente , Id_Persona FROM Cliente");//TO DO comprobacion de si está o no el cliente en la bbdd
-            if (Convert.ToInt32(query) == pCliente.IDPersona) {
+            string query = string.Format("SELECT C.Id_Cliente, P.Id_Persona, P.Nombre, P.Apellido, P.Dni, D.Id_direccion, D.Calle, D.Altura, D.CodPostal,	D.Localidad, D.Provincia FROM Cliente C INNER JOIN Persona P ON C.Id_Persona = P.Id_Persona INNER JOIN Direccion D ON P.Id_direccion = D.Id_direccion WHERE P.Nombre = '{0}'", Id_Cliente);
+            DataTable objDataTable = objConexion.LeerPorComando(query);
+            if (Convert.ToInt32(objDataTable.Rows[0]["Id_Cliente"]) == Id_Cliente) 
+            {
                 salida = true;
             }
             else
@@ -46,6 +48,18 @@ namespace DAL
             }
 
             return salida;
+        }
+        public DataTable BuscarClientes(int Id_Cliente) 
+        {
+            if (ComprobarCliente(Id_Cliente))
+            {
+                Conexion objConexion = new Conexion(); 
+
+                string query = string.Format("SELECT Id_cliente , Id_Persona FROM Cliente");
+                return objConexion.LeerPorComando(query);
+                
+            }
+            return null;
         }
 
 

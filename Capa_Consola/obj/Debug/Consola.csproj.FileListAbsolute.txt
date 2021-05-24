@@ -1,0 +1,4 @@
+C:\Users\Denis\Documents\GitHub\TP-Tecnicas_de_Programacion\Capa_Consola\obj\Debug\Consola.csprojAssemblyReference.cache
+C:\Users\Denis\Documents\GitHub\TP-Tecnicas_de_Programacion\Capa_Consola\obj\Debug\Consola.csproj.CoreCompileInputs.cache
+C:\Users\Denis\Documents\GitHub\TP-Tecnicas_de_Programacion\Capa_Consola\obj\Debug\Capa_Consola.exe
+C:\Users\Denis\Documents\GitHub\TP-Tecnicas_de_Programacion\Capa_Consola\obj\Debug\Capa_Consola.pdb
