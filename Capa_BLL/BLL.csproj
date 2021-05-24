@@ -52,13 +52,13 @@
     <Compile Include="TarjetaBLL.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Capa_DAL\DAL.csproj">
+      <Project>{d1bf9f44-5089-4cd0-a725-aa8e8b79db51}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Capa_Entidad\Entity.csproj">
       <Project>{3fb51dd3-7083-4e14-83f6-ae17e299c8fb}</Project>
       <Name>Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{5a92e2e5-e586-4c29-8bd8-71bb8a478247}</Project>
-      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

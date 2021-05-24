@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL
+namespace Capa_BLL
 {
 	public class TarjetaBLL
 	{
@@ -19,7 +20,7 @@ namespace BLL
 		/// </summary>
 		/// <param name="pTarjeta"> Del tipo Entity.Tarjeta</param>
 		/// <returns>Devuelve un bool</returns>
-		public bool ValidarTarjeta(Entity.Tarjeta pTarjeta)
+		public static bool ValidarTarjeta(Tarjeta pTarjeta)
 		{
 			if ((pTarjeta.NumeroTarjeta % 2) == 0)
 			{

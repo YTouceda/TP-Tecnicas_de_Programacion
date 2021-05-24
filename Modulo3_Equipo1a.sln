@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Capa_Entidad\Enti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consola", "Capa_Consola\Consola.csproj", "{0C1E3E1C-5687-4C9C-91BF-EE3C7729FFEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{5A92E2E5-E586-4C29-8BD8-71BB8A478247}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "Capa_DAL\DAL.csproj", "{D1BF9F44-5089-4CD0-A725-AA8E8B79DB51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{0C1E3E1C-5687-4C9C-91BF-EE3C7729FFEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C1E3E1C-5687-4C9C-91BF-EE3C7729FFEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C1E3E1C-5687-4C9C-91BF-EE3C7729FFEF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A92E2E5-E586-4C29-8BD8-71BB8A478247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A92E2E5-E586-4C29-8BD8-71BB8A478247}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A92E2E5-E586-4C29-8BD8-71BB8A478247}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A92E2E5-E586-4C29-8BD8-71BB8A478247}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1BF9F44-5089-4CD0-A725-AA8E8B79DB51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1BF9F44-5089-4CD0-A725-AA8E8B79DB51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1BF9F44-5089-4CD0-A725-AA8E8B79DB51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1BF9F44-5089-4CD0-A725-AA8E8B79DB51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
