@@ -49,6 +49,7 @@
     <Compile Include="Excepciones\Excepcion_StockInsuficiente.cs" />
     <Compile Include="ManejoDeClientes.cs" />
     <Compile Include="MetodoDePagoBLL.cs" />
+    <Compile Include="OrdenDeVentaBLL.cs" />
     <Compile Include="ProductoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TarjetaBLL.cs" />
