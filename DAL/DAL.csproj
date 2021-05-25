@@ -46,6 +46,7 @@
     <Compile Include="OrdenDeVentaDAL.cs" />
     <Compile Include="ProductoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TarjetaDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Capa_Entidad\Entity.csproj">

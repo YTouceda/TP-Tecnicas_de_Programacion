@@ -7,3 +7,7 @@ C:\Users\Denis\Documents\GitHub\TP-Tecnicas_de_Programacion\DAL\obj\Debug\DAL.cs
 C:\Users\Denis\Documents\GitHub\TP-Tecnicas_de_Programacion\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\Denis\Documents\GitHub\TP-Tecnicas_de_Programacion\DAL\obj\Debug\DAL.dll
 C:\Users\Denis\Documents\GitHub\TP-Tecnicas_de_Programacion\DAL\obj\Debug\DAL.pdb
+C:\Users\Cirino\Documents\GitHub\TP-Tecnicas_de_Programacion\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\Cirino\Documents\GitHub\TP-Tecnicas_de_Programacion\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Cirino\Documents\GitHub\TP-Tecnicas_de_Programacion\DAL\obj\Debug\DAL.dll
+C:\Users\Cirino\Documents\GitHub\TP-Tecnicas_de_Programacion\DAL\obj\Debug\DAL.pdb
