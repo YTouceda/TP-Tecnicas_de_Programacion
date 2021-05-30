@@ -1,4 +1,0 @@
-C:\Users\Denis\Documents\GitHub\TP-Tecnicas_de_Programacion\Capa_BLL\obj\Debug\BLL.csprojAssemblyReference.cache
-C:\Users\Denis\Documents\GitHub\TP-Tecnicas_de_Programacion\Capa_BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
-C:\Users\Denis\Documents\GitHub\TP-Tecnicas_de_Programacion\Capa_BLL\obj\Debug\Capa_BLL.dll
-C:\Users\Denis\Documents\GitHub\TP-Tecnicas_de_Programacion\Capa_BLL\obj\Debug\Capa_BLL.pdb
