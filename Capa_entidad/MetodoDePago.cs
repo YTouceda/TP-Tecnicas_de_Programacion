@@ -16,6 +16,23 @@ using System.IO;
 namespace Entity {
     public abstract class MetodoDePago
     {
+        private string _tipo;
+        private int _id;
+
+        public int ID_MetodoDePago
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+
+        public string TipoMetodoDePago
+        {
+            get { return _tipo; }
+            set { _tipo = value; }
+        }
+
+
 
         public MetodoDePago()
         {

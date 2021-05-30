@@ -44,7 +44,7 @@ namespace Capa_BLL
             Cliente objCliente = new Cliente();
             Direccion objDireccion = new Direccion();
             objCliente.ID_Cliente = (int)objDataTable.Rows[indice]["C.Id_Cliente"];
-            objCliente.IDPersona= (int)objDataTable.Rows[indice]["P.Id_Persona"];
+            objCliente.IDPersona = (int)objDataTable.Rows[indice]["P.Id_Persona"];
             objCliente.Nombre = (objDataTable.Rows[indice]["P.Nombre"].ToString());
             objCliente.Apellido = objDataTable.Rows[indice]["P.Apellido"].ToString();
             objCliente.DNI = objDataTable.Rows[indice]["P.Dni"].ToString();
@@ -54,7 +54,42 @@ namespace Capa_BLL
             objDireccion.CodigoPostal = objDataTable.Rows[indice]["D.CodPostal"].ToString();
             objDireccion.Localidad = objDataTable.Rows[indice]["D.Localidad"].ToString();
             objDireccion.Provincia = objDataTable.Rows[indice]["D.Provincia"].ToString();
+            objCliente.Direccion = objDireccion;
             return objCliente;
+
+        }
+
+        /// <summary>
+        /// modifica un cliente
+        /// </summary>
+        /// <param name="objCliente">Cliente a modificar</param>
+        /// <param name="objDatosNuevos">objCliente con los datos nuevos</param>
+        /// <returns>Cliente modificado</returns>
+        public static Cliente ModificarUnCliente(Cliente objCliente,Cliente objDatosNuevos)
+        {
+            
+            
+            objCliente.Nombre = objDatosNuevos.Nombre;
+            objCliente.Apellido = objDatosNuevos.Apellido;
+            objCliente.DNI = objDatosNuevos.DNI;
+            objCliente.Direccion.Calle = objDatosNuevos.Direccion.Calle;
+            objCliente.Direccion.Altura = objDatosNuevos.Direccion.Altura;
+            objCliente.Direccion.CodigoPostal = objDatosNuevos.Direccion.CodigoPostal;
+            objCliente.Direccion.Localidad = objDatosNuevos.Direccion.Localidad;
+            objCliente.Direccion.Provincia = objDatosNuevos.Direccion.Provincia;
+            ClienteDAL.QueryModificarCliente(objCliente);
+            return objCliente;
+
+        }  
+        /// <summary>
+        /// almacena un Cliente en la base de datos
+        /// </summary>
+        /// <param name="objCliente">Cliente objCliente</param>
+        /// <returns>devuelve true si se pudo guardar en la base de datos</returns>
+        public bool GuardarCliente(Cliente objCliente)
+        {
+            return ClienteDAL.Alta(objCliente);
         }
     }
+
 }

@@ -18,8 +18,16 @@ namespace Entity {
 		private List<DetalleOrden> _detalles = new List<DetalleOrden>();
 		private DateTime _fecha;
 		private Usuario _usuarioCreador;
+        private int _id;
 
-		public Orden(){
+        public int ID_Orden
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+
+        public Orden(){
 			this._fecha = DateTime.Now;
 		}
 		public Orden(List<DetalleOrden> Detalles, Usuario UsuarioCreador)
