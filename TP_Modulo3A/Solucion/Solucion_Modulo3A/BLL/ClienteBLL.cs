@@ -17,16 +17,34 @@ namespace BLL
         /// Devuelve un datatable desde la bbdd 
         /// </summary>
         /// <param name="Id_Cliente">Id del Cliente</param>
-        public static DataTable BuscarCliente(int Id_Cliente)
+        public static DataTable BuscarClientesPorID(int Id_Cliente)
         {
             ClienteDAL objClienteDAL = new ClienteDAL();
-            if (objClienteDAL.BuscarClientes(Id_Cliente)!=null) 
+            if (objClienteDAL.BuscarClientesPorID(Id_Cliente)!=null) 
             {
 
-                DataTable objDataTable1 = objClienteDAL.BuscarClientes(Id_Cliente);
+                DataTable objDataTable1 = objClienteDAL.BuscarClientesPorID(Id_Cliente);
                 return objDataTable1;
             }
                 
+            {
+                throw new Excepcion_ClienteInexistente();
+
+            }
+
+        }
+
+
+        public static DataTable BuscarClientesPorDNI(string DNI)
+        {
+            ClienteDAL objClienteDAL = new ClienteDAL();
+            if (objClienteDAL.BuscarClientesPorDNI(DNI) != null)
+            {
+
+                DataTable objDataTable1 = objClienteDAL.BuscarClientesPorDNI(DNI);
+                return objDataTable1;
+            }
+
             {
                 throw new Excepcion_ClienteInexistente();
 
