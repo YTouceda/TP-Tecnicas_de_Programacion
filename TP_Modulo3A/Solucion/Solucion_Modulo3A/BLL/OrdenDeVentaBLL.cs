@@ -10,7 +10,7 @@ namespace BLL
 {
     public class OrdenDeVentaBLL
     {
-        public bool GuardaOrdenVenta(OrdenDeVenta unaOrdendeVenta)
+        public static bool GuardaOrdenVenta(OrdenDeVenta unaOrdendeVenta)
         {
             return OrdenDeVentaDAL.AltaDeVenta(unaOrdendeVenta);
         }

@@ -53,6 +53,7 @@
     <Compile Include="UnitTestCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestProducto.cs" />
+    <Compile Include="UnitTestVentas.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
