@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ENTITY;
 using DAL;
 
-namespace Capa_BLL
+namespace BLL
 {
     public class OrdenDeVentaBLL
     {

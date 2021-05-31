@@ -8,9 +8,9 @@ using BLL.EXCEPCIONES;
 using DAL;
 using ENTITY;
 
-namespace Capa_BLL
+namespace BLL
 {
-    class ProductoBLL
+    public class ProductoBLL
     {
         /// <summary>
         /// Devuelve un datatable desde la bbdd 
@@ -36,16 +36,16 @@ namespace Capa_BLL
         /// <param name="objDataTable">DataTable</param>
         /// <param name="indice">indice de la fila </param>
         /// <returns>objeto producto (segun la fila)</returns>
-        public static Producto ConvertirDeDataTableAObjProducto(DataTable objDataTable, int indice)
+        public static Producto ConvertirDeDataTableAObjProducto(DataTable objDataTable, int indice) 
         {
             Producto objProducto = new Producto();
 
-            objProducto.Nombre = objDataTable.Rows[indice]["Nombre_Producto"].ToString();
-            objProducto.ID = (int)objDataTable.Rows[indice]["P.Id_Producto"];
-            objProducto.Categoria = new Categoria(objDataTable.Rows[indice]["Nombre_Categoria"].ToString());
-            objProducto.PrecioCompra = (float)objDataTable.Rows[indice]["P.PrecioCompra"];
-            objProducto.PrecioVenta = (float)objDataTable.Rows[indice]["P.PrecioVenta"];
-            objProducto.Stock = (int)objDataTable.Rows[indice]["P.Stock"];
+            objProducto.Nombre = objDataTable.Rows[indice]["NOMBRE_PRODUCTO"].ToString();
+            objProducto.ID = (int)objDataTable.Rows[indice]["ID_PRODUCTO"];
+            objProducto.Categoria = new Categoria(objDataTable.Rows[indice]["CATEGORIA"].ToString());
+            objProducto.PrecioCompra = Convert.ToSingle( objDataTable.Rows[indice]["PRECIO_COMPRA"]);
+            objProducto.PrecioVenta = Convert.ToSingle(objDataTable.Rows[indice]["PRECIO_VENTA"]);
+            //objProducto.Stock = (int)objDataTable.Rows[indice]["P.Stock"]; //REVISAR ESTO 
             return objProducto;
         }
     }
