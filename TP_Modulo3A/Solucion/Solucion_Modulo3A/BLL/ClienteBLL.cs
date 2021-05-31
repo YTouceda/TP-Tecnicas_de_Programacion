@@ -9,9 +9,9 @@ using BLL;
 using BLL.EXCEPCIONES;
 using ENTITY;
 
-namespace Capa_BLL
+namespace BLL
 {
-    class ClienteBLL
+    public class ClienteBLL
     {
         /// <summary>
         /// Devuelve un datatable desde la bbdd 
@@ -43,17 +43,17 @@ namespace Capa_BLL
         {
             Cliente objCliente = new Cliente();
             Direccion objDireccion = new Direccion();
-            objCliente.ID = (int)objDataTable.Rows[indice]["C.Id_Cliente"];
-            objCliente.IDPersona = (int)objDataTable.Rows[indice]["P.Id_Persona"];
-            objCliente.Nombre = (objDataTable.Rows[indice]["P.Nombre"].ToString());
-            objCliente.Apellido = objDataTable.Rows[indice]["P.Apellido"].ToString();
-            objCliente.DNI = objDataTable.Rows[indice]["P.Dni"].ToString();
-            objDireccion.ID = (int)objDataTable.Rows[indice]["D.Id_direccion"];
-            objDireccion.Calle = objDataTable.Rows[indice]["D.Calle"].ToString();
-            objDireccion.Altura = objDataTable.Rows[indice]["D.Altura"].ToString();
-            objDireccion.CodigoPostal = objDataTable.Rows[indice]["D.CodPostal"].ToString();
-            objDireccion.Localidad = objDataTable.Rows[indice]["D.Localidad"].ToString();
-            objDireccion.Provincia = objDataTable.Rows[indice]["D.Provincia"].ToString();
+            objCliente.ID = (int)objDataTable.Rows[indice]["ID_CLIENTE"];
+            objCliente.IDPersona = (int)objDataTable.Rows[indice]["ID_PERSONA"];
+            objCliente.Nombre = (objDataTable.Rows[indice]["NOMBRE"].ToString());
+            objCliente.Apellido = objDataTable.Rows[indice]["APELLIDO"].ToString();
+            objCliente.DNI = objDataTable.Rows[indice]["DNI"].ToString();
+            objDireccion.ID = (int)objDataTable.Rows[indice]["ID_DIRECCION"];
+            objDireccion.Calle = objDataTable.Rows[indice]["CALLE"].ToString();
+            objDireccion.Altura = objDataTable.Rows[indice]["ALTURA"].ToString();
+            objDireccion.CodigoPostal = objDataTable.Rows[indice]["CODIGO_POSTAL"].ToString();
+            objDireccion.Localidad = objDataTable.Rows[indice]["LOCALIDAD"].ToString();
+            objDireccion.Provincia = objDataTable.Rows[indice]["PROVINCIA"].ToString();
             objCliente.Direccion = objDireccion;
             return objCliente;
 

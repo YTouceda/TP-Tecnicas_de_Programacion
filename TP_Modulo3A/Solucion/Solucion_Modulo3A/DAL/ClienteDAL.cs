@@ -50,13 +50,13 @@ namespace DAL
         /// </summary>
         /// <param name="pCliente">objeto cliente</param>
         /// <returns></returns>
-        public bool ComprobarCliente(int Id_Cliente)
+        public bool ComprobarCliente(int Id_Cliente) //ESTO SOLO DEBERIA COMPROBAR QUE EL CLIENTE NO ESTÉ EN LA BD , (PODRIA BUSCAR POR DNI).
         {
             bool salida=true;
             Conexion objConexion = new Conexion();
-            string query = string.Format("SELECT C.ID_CLIENTE, P.ID_PERSONA, P.NOMBRE, P.APELLIDO, P.DNI, D.ID_DIRECCION, D.CALLE, D.ALTURA, D.CODIGO_POSTAL, D.LOCALIDAD, D.PROVINCIA FROM CLIENTE C INNER JOIN PERSONA P ON C.ID_PERSONA = P.ID_PERSONA INNER JOIN DIRECCION D ON P.ID_DIRECCION = D.ID_DIRECCION WHERE P.NOMBRE = '{0}'", Id_Cliente);
+            string query = string.Format("SELECT C.ID_CLIENTE, P.ID_PERSONA, P.NOMBRE, P.APELLIDO, P.DNI, D.ID_DIRECCION, D.CALLE, D.ALTURA, D.CODIGO_POSTAL, D.LOCALIDAD, D.PROVINCIA FROM CLIENTE C INNER JOIN PERSONA P ON C.ID_PERSONA = P.ID_PERSONA INNER JOIN DIRECCION D ON P.ID_DIRECCION = D.ID_DIRECCION WHERE C.ID_CLIENTE = '{0}'", Id_Cliente);
             DataTable objDataTable = objConexion.LeerPorComando(query);
-            if (Convert.ToInt32(objDataTable.Rows[0]["Id_Cliente"]) == Id_Cliente) 
+            if (Convert.ToInt32(objDataTable.Rows[0]["ID_CLIENTE"]) == Id_Cliente) 
             {
                 salida = true;
             }
@@ -68,13 +68,14 @@ namespace DAL
 
             return salida;
         }
-        public DataTable BuscarClientes(int Id_Cliente) 
+        
+        public DataTable BuscarClientes(int Id_Cliente) //le agregamos al select los datos faltantes
         {
             if (ComprobarCliente(Id_Cliente))
             {
                 Conexion objConexion = new Conexion(); 
 
-                string query = string.Format("SELECT ID_CLIENTE , ID_PERSONA FROM CLIENTE");
+                string query = string.Format("SELECT C.ID_CLIENTE, P.ID_PERSONA, P.NOMBRE, P.APELLIDO, P.DNI, D.ID_DIRECCION, D.CALLE, D.ALTURA, D.CODIGO_POSTAL, D.LOCALIDAD, D.PROVINCIA FROM CLIENTE C INNER JOIN PERSONA P ON C.ID_PERSONA = P.ID_PERSONA INNER JOIN DIRECCION D ON P.ID_DIRECCION = D.ID_DIRECCION WHERE C.ID_CLIENTE = '{0}'", Id_Cliente);
                 return objConexion.LeerPorComando(query);
                 
             }
