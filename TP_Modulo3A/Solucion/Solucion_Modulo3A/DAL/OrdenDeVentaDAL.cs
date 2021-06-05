@@ -34,7 +34,7 @@ namespace DAL
             
 
             }
-            if (unaOrdendeVenta.MetodoDePago.TipoMetodoDePago=="Efectivo")
+            if (unaOrdendeVenta.MetodoDePago.GetType() is ENTITY.Efectivo)
             {
                 query = string.Format("INSERT INTO METODO_PAGO(TIPO) VALUES({0})", unaOrdendeVenta.MetodoDePago.TipoMetodoDePago);
                 if (objConexion.EscribirPorComando(query) != 1)

@@ -44,7 +44,7 @@ namespace BLL
                 DataTable objDataTable1 = objClienteDAL.BuscarClientesPorDNI(DNI);
                 return objDataTable1;
             }
-
+            else
             {
                 throw new Excepcion_ClienteInexistente();
 
