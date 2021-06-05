@@ -18,7 +18,7 @@ namespace UNIT_TEST
             string nombre_esperado = "Cosme";
             string calle_esperada = "Calle Falsa";
            
-            DataTable DTCliente = ClienteBLL.BuscarCliente(2);
+            DataTable DTCliente = ClienteBLL.BuscarClientesPorDNI("36933120");
 
             Cliente ObjCliente = ClienteBLL.ConvertirDeDataTableAObjCliente(DTCliente, 0);
 
@@ -33,9 +33,9 @@ namespace UNIT_TEST
         [TestMethod]
         public void TestModificarCliente()
         {
-           
 
-            DataTable DTCliente = ClienteBLL.BuscarCliente(2);
+           
+            DataTable DTCliente = ClienteBLL.BuscarClientesPorID(1);
 
             Cliente ObjCliente = ClienteBLL.ConvertirDeDataTableAObjCliente(DTCliente, 0);
 

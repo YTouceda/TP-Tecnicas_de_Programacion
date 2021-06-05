@@ -45,7 +45,7 @@ namespace BLL
             objProducto.Categoria = new Categoria(objDataTable.Rows[indice]["CATEGORIA"].ToString());
             objProducto.PrecioCompra = Convert.ToSingle( objDataTable.Rows[indice]["PRECIO_COMPRA"]);
             objProducto.PrecioVenta = Convert.ToSingle(objDataTable.Rows[indice]["PRECIO_VENTA"]);
-            //objProducto.Stock = (int)objDataTable.Rows[indice]["P.Stock"]; //REVISAR ESTO 
+            objProducto.Stock = (int)objDataTable.Rows[indice]["STOCK"];  
             return objProducto;
         }
     }
