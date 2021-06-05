@@ -8,7 +8,7 @@ using BLL.EXCEPCIONES;
 using DAL;
 using ENTITY;
 
-namespace Capa_BLL
+namespace BLL
 {
     public class DetalleOrdenBLL
     {

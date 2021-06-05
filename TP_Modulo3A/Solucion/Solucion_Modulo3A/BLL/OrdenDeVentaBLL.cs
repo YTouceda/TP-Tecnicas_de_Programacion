@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using ENTITY;
 using DAL;
 
-namespace Capa_BLL
+namespace BLL
 {
     public class OrdenDeVentaBLL
     {
-        public bool GuardaOrdenVenta(OrdenDeVenta unaOrdendeVenta)
+        public static bool GuardaOrdenVenta(OrdenDeVenta unaOrdendeVenta)
         {
             return OrdenDeVentaDAL.AltaDeVenta(unaOrdendeVenta);
         }
