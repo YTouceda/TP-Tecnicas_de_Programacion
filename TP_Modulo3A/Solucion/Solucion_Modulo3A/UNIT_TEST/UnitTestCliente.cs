@@ -18,7 +18,7 @@ namespace UNIT_TEST
             string nombre_esperado = "Cosme";
             string calle_esperada = "Calle Falsa";
            
-            DataTable DTCliente = ClienteBLL.BuscarCliente(8);
+            DataTable DTCliente = ClienteBLL.BuscarCliente(2);
 
             Cliente ObjCliente = ClienteBLL.ConvertirDeDataTableAObjCliente(DTCliente, 0);
 
@@ -35,7 +35,7 @@ namespace UNIT_TEST
         {
            
 
-            DataTable DTCliente = ClienteBLL.BuscarCliente(8);
+            DataTable DTCliente = ClienteBLL.BuscarCliente(2);
 
             Cliente ObjCliente = ClienteBLL.ConvertirDeDataTableAObjCliente(DTCliente, 0);
 
