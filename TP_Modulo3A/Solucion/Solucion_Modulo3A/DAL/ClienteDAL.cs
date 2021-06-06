@@ -24,7 +24,7 @@ namespace DAL
             objConexion.EscribirPorComando(query);
             DataTable objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT ('Direccion') AS Id_Direccion;");
             
-            query = string.Format("INSERT INTO Persona(Apellido,Dni,Nombre,Id_direccion)VALUES('{0}','{1}','{2}'", pCliente.Apellido, pCliente.DNI, pCliente.Nombre) + "," + (int)(objDataTable.Rows[0]["Id_Direccion"]) + ")";
+            query = string.Format("INSERT INTO Persona(Apellido,Dni,Nombre,Id_direccion)VALUES('{0}','{1}','{2}',{3})", pCliente.Apellido, pCliente.DNI, pCliente.Nombre,((int)(objDataTable.Rows[0]["Id_Direccion"])));
             objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT('Persona') AS Id_Persona");
 
             query =string.Format("INSERT INTO Cliente(Id_Persona) VALUES({0})", (int)(objDataTable.Rows[0]["Id_Persona"]));
