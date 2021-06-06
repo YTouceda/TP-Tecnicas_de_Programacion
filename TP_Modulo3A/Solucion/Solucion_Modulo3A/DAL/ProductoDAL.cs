@@ -10,6 +10,11 @@ namespace DAL
 {
     public class ProductoDAL //CORREGIR STOCK (no esta en la BD) 
     {
+        /// <summary>
+        /// trae un DataTable desde la BBDD con los registros de la tabla producto
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public static DataTable BuscarProducto(string nombre)
         {
             Conexion objConexion = new Conexion();
