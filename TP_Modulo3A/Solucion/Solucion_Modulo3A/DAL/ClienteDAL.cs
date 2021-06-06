@@ -18,16 +18,17 @@ namespace DAL
         /// <returns></returns>
         public static bool Alta(Cliente pCliente)
         {
+            //ToDo:las funciones deben retornar true o false
             Conexion objConexion = new Conexion();
 
-            string query = string.Format("INSERT INTO Direccion(Altura,Calle,CodPostal,Localidad,Provincia)VALUES ('{0}','{1}','{2}','{3}','{4}')", pCliente.Direccion.Altura, pCliente.Direccion.Calle, pCliente.Direccion.CodigoPostal, pCliente.Direccion.Localidad, pCliente.Direccion.Provincia);
+            string query = string.Format("INSERT INTO DIRECCION(ALTURA,CALLE,CODIGO_POSTAL,LOCALIDAD,PROVINCIA)VALUES ('{0}','{1}','{2}','{3}','{4}')", pCliente.Direccion.Altura, pCliente.Direccion.Calle, pCliente.Direccion.CodigoPostal, pCliente.Direccion.Localidad, pCliente.Direccion.Provincia);
             objConexion.EscribirPorComando(query);
-            DataTable objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT ('Direccion') AS Id_Direccion;");
-            
-            query = string.Format("INSERT INTO Persona(Apellido,Dni,Nombre,Id_direccion)VALUES('{0}','{1}','{2}'", pCliente.Apellido, pCliente.DNI, pCliente.Nombre) + "," + (int)(objDataTable.Rows[0]["Id_Direccion"]) + ")";
-            objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT('Persona') AS Id_Persona");
+            DataTable objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT ('DIRECCION') AS ID_DIRECCION;");
 
-            query =string.Format("INSERT INTO Cliente(Id_Persona) VALUES({0})", (int)(objDataTable.Rows[0]["Id_Persona"]));
+            query = string.Format("INSERT INTO PERSONA(APELLIDO,DNI,NOMBRE,ID_DIRECCION)VALUES('{0}','{1}','{2}',{3})", pCliente.Apellido, pCliente.DNI, pCliente.Nombre, (objDataTable.Rows[0]["ID_DIRECCION"]));
+            objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT('PERSONA') AS ID_PERSONA");
+
+            query =string.Format("INSERT INTO CLIENTE(ID_PERSONA) VALUES({0})", (objDataTable.Rows[0]["ID_PERSONA"]));
             objConexion.EscribirPorComando( query );
 
 

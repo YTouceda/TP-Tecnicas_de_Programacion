@@ -104,7 +104,7 @@ namespace BLL
         /// </summary>
         /// <param name="objCliente">Cliente objCliente</param>
         /// <returns>devuelve true si se pudo guardar en la base de datos</returns>
-        public bool GuardarCliente(Cliente objCliente)
+        public static bool GuardarCliente(Cliente objCliente)
         {
             return ClienteDAL.Alta(objCliente);
         }
