@@ -20,21 +20,37 @@ namespace DAL
         {
             //ToDo:las funciones deben retornar true o false
             Conexion objConexion = new Conexion();
+            bool salida = true;
 
             string query = string.Format("INSERT INTO DIRECCION(ALTURA,CALLE,CODIGO_POSTAL,LOCALIDAD,PROVINCIA)VALUES ('{0}','{1}','{2}','{3}','{4}')", pCliente.Direccion.Altura, pCliente.Direccion.Calle, pCliente.Direccion.CodigoPostal, pCliente.Direccion.Localidad, pCliente.Direccion.Provincia);
-            objConexion.EscribirPorComando(query);
+
+            if ( objConexion.EscribirPorComando(query)==-1)
+            {
+                salida = false;
+            }
+            
+           
             DataTable objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT ('DIRECCION') AS ID_DIRECCION;");
 
             query = string.Format("INSERT INTO PERSONA(APELLIDO,DNI,NOMBRE,ID_DIRECCION)VALUES('{0}','{1}','{2}',{3})", pCliente.Apellido, pCliente.DNI, pCliente.Nombre, (objDataTable.Rows[0]["ID_DIRECCION"]));
-            objConexion.EscribirPorComando(query);
+            
+            
+            if (objConexion.EscribirPorComando(query) == -1)
+            {
+                salida = false;
+            }
+
             objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT('PERSONA') AS ID_PERSONA");
 
             query =string.Format("INSERT INTO CLIENTE(ID_PERSONA) VALUES({0})", (objDataTable.Rows[0]["ID_PERSONA"]));
-            objConexion.EscribirPorComando( query );
+           
+                      
+            if (objConexion.EscribirPorComando( query ) == -1)
+            {
+                salida = false;
+            }
 
-
-
-            return true;
+            return salida;
      
         }
 
