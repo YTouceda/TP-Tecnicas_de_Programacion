@@ -87,7 +87,7 @@ namespace DAL
         {
             
             Conexion objConexion = new Conexion();
-            string query = string.Format("SELECT C.ID_CLIENTE, P.ID_PERSONA, P.NOMBRE, P.APELLIDO, P.DNI, D.ID_DIRECCION, D.CALLE, D.ALTURA, D.CODIGO_POSTAL, D.LOCALIDAD, D.PROVINCIA FROM CLIENTE C INNER JOIN PERSONA P ON C.ID_PERSONA = P.ID_PERSONA INNER JOIN DIRECCION D ON P.ID_DIRECCION = D.ID_DIRECCION WHERE C.ID_CLIENTE = '{0}'", Id_Cliente);
+            string query = string.Format("SELECT C.ID_CLIENTE, P.ID_PERSONA, P.NOMBRE, P.APELLIDO, P.DNI, D.ID_DIRECCION, D.CALLE, D.ALTURA, D.CODIGO_POSTAL, D.LOCALIDAD, D.PROVINCIA FROM CLIENTE C INNER JOIN PERSONA P ON C.ID_PERSONA = P.ID_PERSONA INNER JOIN DIRECCION D ON P.ID_DIRECCION = D.ID_DIRECCION WHERE C.ID_CLIENTE = {0}", Id_Cliente);
             DataTable objDataTable = objConexion.LeerPorComando(query);
             if (Convert.ToInt32(objDataTable.Rows[0]["ID_CLIENTE"]) == Id_Cliente) 
             {

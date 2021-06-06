@@ -26,7 +26,7 @@ namespace BLL
                 DataTable objDataTable1 = objClienteDAL.BuscarClientesPorID(Id_Cliente);
                 return objDataTable1;
             }
-                
+             else   
             {
                 throw new Excepcion_ClienteInexistente();
 

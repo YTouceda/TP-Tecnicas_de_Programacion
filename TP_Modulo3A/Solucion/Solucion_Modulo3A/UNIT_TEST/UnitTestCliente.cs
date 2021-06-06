@@ -37,7 +37,7 @@ namespace UNIT_TEST
            
             DataTable DTCliente = ClienteBLL.BuscarClientesPorID(1);
 
-            Cliente ObjCliente = ClienteBLL.ConvertirDeDataTableAObjCliente(DTCliente, 0);
+            Cliente ObjCliente = ClienteBLL.ConvertirDeDataTableAObjCliente(DTCliente, 2);
 
             
             Cliente AuxCliente = ObjCliente;
