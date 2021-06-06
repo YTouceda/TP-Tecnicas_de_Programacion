@@ -57,11 +57,26 @@ namespace DAL
         public static bool QueryModificarCliente(Cliente mCliente)
         {
             Conexion objconexion = new Conexion();
+            bool salida = true;
+
+
             string query = string.Format("UPDATE DIRECCION SET ALTURA = '{0}', CALLE = '{1}', CODIGO_POSTAL = '{2}', LOCALIDAD = '{3}', PROVINCIA = '{4}' WHERE ID_DIRECCION = {0}",mCliente.Direccion.Altura,mCliente.Direccion.Calle,mCliente.Direccion.CodigoPostal,mCliente.Direccion.Localidad,mCliente.Direccion.Provincia) + mCliente.Direccion.ID;
-            objconexion.EscribirPorComando(query);
+            
+            
+            if (objconexion.EscribirPorComando(query)==-1)
+            {
+                salida = false;
+            }
+
             query = string.Format("UPDATE Persona SET Apellido = '{0}', Dni = '{1}', Nombre = '{2}' WHERE Id_Persona = ",mCliente.Apellido,mCliente.DNI,mCliente.Nombre)+ mCliente.IDPersona;
-            objconexion.EscribirPorComando(query);
-            return true;
+           
+            
+            if (objconexion.EscribirPorComando(query)==-1)
+            {
+                salida = false;
+            }
+
+            return salida;
         }
         /// <summary>
         /// Comprueba si un cliente ya se encuentra en la base de datos.
