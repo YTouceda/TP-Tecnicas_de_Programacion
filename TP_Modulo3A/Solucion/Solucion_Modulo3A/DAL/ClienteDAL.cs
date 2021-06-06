@@ -69,7 +69,7 @@ namespace DAL
             
         }
 
-        public DataTable BuscarClientesPorDNI(string DNI) //ESTO SOLO DEBERIA COMPROBAR QUE EL CLIENTE NO ESTÉ EN LA BD , (PODRIA BUSCAR POR DNI).
+        public static DataTable BuscarClientesPorDNI(string DNI) //ESTO SOLO DEBERIA COMPROBAR QUE EL CLIENTE NO ESTÉ EN LA BD , (PODRIA BUSCAR POR DNI).
         {
 
             Conexion objConexion = new Conexion();
