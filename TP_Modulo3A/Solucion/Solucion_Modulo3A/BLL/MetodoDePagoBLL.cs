@@ -12,6 +12,11 @@ namespace BLL
 {
     public static class MetodoDePagoBLL
     {
+        /// <summary>
+        /// Devulve un metodo de pago ingresando una opcion numerica
+        /// </summary>
+        /// <param name="opcion"></param>
+        /// <returns>Retorna 0 Tarjeta de Credito, 1 Efectivo, sino arroja un Excepcion controlada</returns>
         public static MetodoDePago DevolverMetodoDePago(int opcion)
         {
             if (opcion == 0)
