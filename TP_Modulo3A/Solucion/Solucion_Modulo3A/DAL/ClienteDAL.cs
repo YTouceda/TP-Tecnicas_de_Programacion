@@ -15,7 +15,7 @@ namespace DAL
         /// Da de alta un nuevo cliente
         /// </summary>
         /// <param name="pCliente">Objeto cliente</param>
-        /// <returns></returns>
+        /// <returns>Retorna True si fue exitoso, False si hubo un error</returns>
         public static bool Alta(Cliente pCliente)
         {
             //ToDo:las funciones deben retornar true o false
@@ -27,6 +27,7 @@ namespace DAL
             if (objConexion.EscribirPorComando(query) == -1)
             {
                 salida = false;
+                return salida;
             }
 
 
@@ -38,6 +39,7 @@ namespace DAL
             if (objConexion.EscribirPorComando(query) == -1)
             {
                 salida = false;
+                return salida;
             }
 
             objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT('PERSONA') AS ID_PERSONA");
@@ -48,12 +50,18 @@ namespace DAL
             if (objConexion.EscribirPorComando(query) == -1)
             {
                 salida = false;
+                return salida;
             }
 
             return salida;
 
         }
 
+        /// <summary>
+        /// Modifica un Cliente
+        /// </summary>
+        /// <param name="mCliente"></param>
+        /// <returns>Retorna True si fue exitoso, False si hubo un error</returns>
         public static bool QueryModificarCliente(Cliente mCliente)
         {
             Conexion objconexion = new Conexion();
@@ -66,14 +74,16 @@ namespace DAL
             if (objconexion.EscribirPorComando(query) == -1)
             {
                 salida = false;
+                return salida;
             }
 
-            query = string.Format("UPDATE Persona SET Apellido = '{0}', Dni = '{1}', Nombre = '{2}' WHERE Id_Persona = ", mCliente.Apellido, mCliente.DNI, mCliente.Nombre) + mCliente.IDPersona;
+            query = string.Format("UPDATE PERSONA SET APELLIDO = '{0}', DNI= '{1}', NOMBRE = '{2}' WHERE ID_PERSONA = ", mCliente.Apellido, mCliente.DNI, mCliente.Nombre) + mCliente.IDPersona;
 
 
             if (objconexion.EscribirPorComando(query) == -1)
             {
                 salida = false;
+                return salida;
             }
 
             return salida;
@@ -102,13 +112,18 @@ namespace DAL
 
         }
 
+        /// <summary>
+        /// Busca un Cliente por DNI
+        /// </summary>
+        /// <param name="DNI"></param>
+        /// <returns>Retorna un DataTable si lo encontro o un null si no existe</returns>
         public static DataTable BuscarClientesPorDNI(string DNI) //ESTO SOLO DEBERIA COMPROBAR QUE EL CLIENTE NO ESTÉ EN LA BD , (PODRIA BUSCAR POR DNI).
         {
 
             Conexion objConexion = new Conexion();
-            string query = string.Format("SELECT C.ID_CLIENTE, P.ID_PERSONA, P.NOMBRE, P.APELLIDO, P.DNI, D.ID_DIRECCION, D.CALLE, D.ALTURA, D.CODIGO_POSTAL, D.LOCALIDAD, D.PROVINCIA FROM CLIENTE C INNER JOIN PERSONA P ON C.ID_PERSONA = P.ID_PERSONA INNER JOIN DIRECCION D ON P.ID_DIRECCION = D.ID_DIRECCION WHERE P.DNI = '{0}'", DNI);
+            string query = string.Format("SELECT C.ID_CLIENTE, P.ID_PERSONA, P.NOMBRE, P.APELLIDO, P.DNI, D.ID_DIRECCION, D.CALLE, D.ALTURA, D.CODIGO_POSTAL, D.LOCALIDAD, D.PROVINCIA FROM CLIENTE C INNER JOIN PERSONA P ON C.ID_PERSONA = P.ID_PERSONA INNER JOIN DIRECCION D ON P.ID_DIRECCION = D.ID_DIRECCION WHERE P.DNI LIKE '%{0}%'", DNI);
             DataTable objDataTable = objConexion.LeerPorComando(query);
-            if ((objDataTable.Rows[0]["DNI"]).ToString() == DNI)
+            if (objDataTable != null)
             {
                 return objDataTable;
             }

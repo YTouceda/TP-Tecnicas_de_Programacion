@@ -4,50 +4,50 @@ using BLL;
 using System.Data;
 using ENTITY;
 using DAL;
-
+using System.Collections.Generic;
 
 namespace UNIT_TEST
 {
-    //[TestClass]
-    //public class UnitTestCliente
-    //{
-    //    [TestMethod]
-    //    public void TestConvertirDTAOBJCliente()
-    //    {
-    //        string apellido_esperado = "Fulanito";
-    //        string nombre_esperado = "Cosme";
-    //        string calle_esperada = "Calle Falsa";
-           
-    //        DataTable DTCliente = ClienteBLL.BuscarClientesPorDNI("36933120");
+    [TestClass]
+    public class UnitTestCliente 
+    {
+        [TestMethod]
+        public void TestConvertirDTAOBJCliente()
+        {
+            string apellido_esperado = "Fulanito";
+            string nombre_esperado = "Cosme";
+            string calle_esperada = "Calle Falsa";
 
-    //        Cliente ObjCliente = ClienteBLL.ConvertirDeDataTableAObjCliente(DTCliente, 0);
+            List<Cliente> ListaClientes = BLL.ClienteBLL.BuscarClientesPorDNI("36933120");
 
-
-    //        Assert.AreEqual(apellido_esperado,ObjCliente.Apellido);
-    //        Assert.AreEqual(nombre_esperado, ObjCliente.Nombre);
-    //        Assert.AreEqual(calle_esperada, ObjCliente.Direccion.Calle);
+            Assert.AreEqual(apellido_esperado, ListaClientes[0].Apellido);
+            Assert.AreEqual(nombre_esperado, ListaClientes[0].Nombre);
+            Assert.AreEqual(calle_esperada, ListaClientes[0].Direccion);
 
 
-    //    }
+        }
 
-    //    [TestMethod]
-    //    public void TestModificarCliente()
-    //    {
+        [TestMethod]
+        public void TestModificarCliente()
+        {
+            int clientes_esperados = 3;
+            bool bool_esperado = true;
 
-           
-    //        DataTable DTCliente = ClienteBLL.BuscarClientesPorID(1);
-
-    //        Cliente ObjCliente = ClienteBLL.ConvertirDeDataTableAObjCliente(DTCliente, 0);
+            List<Cliente> Clientes = ClienteBLL.BuscarClientesPorDNI("3");
+            
+            Cliente objClientenvo = new Cliente();
+            objClientenvo = Clientes[1];
+            objClientenvo.Nombre = "Pepe";
+            objClientenvo.Apellido = "Rodriguez";
 
             
-    //        Cliente AuxCliente = ObjCliente;
-    //        AuxCliente.Nombre = "Cosme";
+            
+            
+            Assert.AreEqual(clientes_esperados, Clientes.Count);
+            Assert.AreEqual(bool_esperado, ClienteBLL.ModificarUnCliente(Clientes[1], objClientenvo));
 
-    //        ClienteBLL.ModificarUnCliente(ObjCliente, AuxCliente);
+        }
 
 
-    //    }
-
-      
-    //}
+    }
 }
