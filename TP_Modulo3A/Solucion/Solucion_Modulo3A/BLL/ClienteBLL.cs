@@ -8,52 +8,61 @@ using DAL;
 using BLL;
 using BLL.EXCEPCIONES;
 using ENTITY;
+using System.Data;
 
-namespace Capa_BLL
+namespace BLL
 {
-    class ClienteBLL
+    public class ClienteBLL
     {
         /// <summary>
-        /// Devuelve un datatable desde la bbdd 
+        /// Devuelve una lista de clientes
         /// </summary>
-        /// <param name="Id_Cliente">Id del Cliente</param>
-        public static DataTable BuscarCliente(int Id_Cliente)
+        /// <param name="DNI" DNI del Cliente</param>
+        public static List<Cliente> BuscarClientesPorDNI(string DNI)
         {
-            ClienteDAL objClienteDAL = new ClienteDAL();
-            if (objClienteDAL.BuscarClientes(Id_Cliente)!=null) 
-            {
-
-                DataTable objDataTable1 = objClienteDAL.BuscarClientes(Id_Cliente);
-                return objDataTable1;
-            }
-                
+            List<Cliente> ListaClientes = new List<Cliente>();
+            DataTable objDataTable = ClienteDAL.BuscarClientesPorDNI(DNI);
+            if (objDataTable == null)
             {
                 throw new Excepcion_ClienteInexistente();
 
             }
 
+            else
+            {
+               
+                foreach (DataRow row in objDataTable.Rows)
+                {
+                    ListaClientes.Add(ConvertirDeDataTableAObjCliente(row));
+
+                }
+                return ListaClientes;
+
+            }
+
         }
+
         /// <summary>
         /// Convierte una fila del datatable en un objeto Cliente con todos los datos completos.
         /// </summary>
         /// <param name="objDataTable">DataTable</param>
         /// <param name="indice">indice de la fila </param>
         /// <returns>objeto Cliente(segun la fila)</returns>
-        public static Cliente ConvertirDeDataTableAObjCliente(DataTable objDataTable, int indice)
+        public static Cliente ConvertirDeDataTableAObjCliente(DataRow objDataRow)
         {
             Cliente objCliente = new Cliente();
             Direccion objDireccion = new Direccion();
-            objCliente.ID = (int)objDataTable.Rows[indice]["C.Id_Cliente"];
-            objCliente.IDPersona = (int)objDataTable.Rows[indice]["P.Id_Persona"];
-            objCliente.Nombre = (objDataTable.Rows[indice]["P.Nombre"].ToString());
-            objCliente.Apellido = objDataTable.Rows[indice]["P.Apellido"].ToString();
-            objCliente.DNI = objDataTable.Rows[indice]["P.Dni"].ToString();
-            objDireccion.ID = (int)objDataTable.Rows[indice]["D.Id_direccion"];
-            objDireccion.Calle = objDataTable.Rows[indice]["D.Calle"].ToString();
-            objDireccion.Altura = objDataTable.Rows[indice]["D.Altura"].ToString();
-            objDireccion.CodigoPostal = objDataTable.Rows[indice]["D.CodPostal"].ToString();
-            objDireccion.Localidad = objDataTable.Rows[indice]["D.Localidad"].ToString();
-            objDireccion.Provincia = objDataTable.Rows[indice]["D.Provincia"].ToString();
+            objCliente.ID = (int)objDataRow["ID_CLIENTE"];
+            objCliente.IDPersona = (int)objDataRow["ID_PERSONA"];
+            objCliente.Nombre = (objDataRow["NOMBRE"].ToString());
+            objCliente.Apellido = objDataRow["APELLIDO"].ToString();
+            objCliente.DNI = objDataRow["DNI"].ToString();
+            objDireccion.ID = (int)objDataRow["ID_DIRECCION"];
+            objDireccion.Calle = objDataRow["CALLE"].ToString();
+            objDireccion.Altura = objDataRow["ALTURA"].ToString();
+            objDireccion.CodigoPostal = objDataRow["CODIGO_POSTAL"].ToString();
+            objDireccion.Localidad = objDataRow["LOCALIDAD"].ToString();
+            objDireccion.Provincia = objDataRow["PROVINCIA"].ToString();
             objCliente.Direccion = objDireccion;
             return objCliente;
 
@@ -65,10 +74,10 @@ namespace Capa_BLL
         /// <param name="objCliente">Cliente a modificar</param>
         /// <param name="objDatosNuevos">objCliente con los datos nuevos</param>
         /// <returns>Cliente modificado</returns>
-        public static Cliente ModificarUnCliente(Cliente objCliente,Cliente objDatosNuevos)
+        public static bool ModificarUnCliente(Cliente objCliente, Cliente objDatosNuevos)
         {
-            
-            
+
+
             objCliente.Nombre = objDatosNuevos.Nombre;
             objCliente.Apellido = objDatosNuevos.Apellido;
             objCliente.DNI = objDatosNuevos.DNI;
@@ -77,10 +86,16 @@ namespace Capa_BLL
             objCliente.Direccion.CodigoPostal = objDatosNuevos.Direccion.CodigoPostal;
             objCliente.Direccion.Localidad = objDatosNuevos.Direccion.Localidad;
             objCliente.Direccion.Provincia = objDatosNuevos.Direccion.Provincia;
-            ClienteDAL.QueryModificarCliente(objCliente);
-            return objCliente;
 
-        }  
+
+            if(ClienteDAL.QueryModificarCliente(objCliente))
+            {
+                return true;
+
+            }
+            throw new Excepcion_ErrorAlModificarCliente();
+
+        }
         /// <summary>
         /// almacena un Cliente en la base de datos
         /// </summary>
