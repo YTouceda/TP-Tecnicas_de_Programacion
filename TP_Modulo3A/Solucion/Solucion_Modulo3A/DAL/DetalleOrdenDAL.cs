@@ -31,12 +31,12 @@ namespace DAL
                 parametros[0].Value = item.Cantidad;
                 parametros[1].Value = idOrden;
                 parametros[2].Value = item.Producto.ID;
-                if(objConexion.EscribirPorStoreProcedure("sp_ALMACENAR_DETALLE",parametros) != 1)
+                if (objConexion.EscribirPorStoreProcedure("sp_ALMACENAR_DETALLE", parametros) != 1)
                 {
                     throw new Exception();//Agregar excepcion
                 }
             }
             return true;
-        } 
+        }
     }
 }

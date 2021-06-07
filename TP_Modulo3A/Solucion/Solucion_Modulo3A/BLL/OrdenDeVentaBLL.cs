@@ -5,16 +5,157 @@ using System.Text;
 using System.Threading.Tasks;
 using ENTITY;
 using DAL;
+using System.Data;
+using BLL.EXCEPCIONES;
 
 namespace BLL
 {
     public class OrdenDeVentaBLL
     {
-        public static bool GuardaOrdenVenta(OrdenDeVenta unaOrdendeVenta)
+
+        /// <summary>
+        /// Persiste una venta llamando al metodo PersistirVenta de DAL
+        /// </summary>
+        /// <param name="unaOrdendeVenta">Orden de venta</param>
+        /// <returns>True si se persistio , caso contrario arroja una excepcion.</returns>
+        public static bool GuardaOrdenVenta(OrdenDeVenta unaOrdenDeVenta)
         {
-            return OrdenDeVentaDAL.PersistirVenta(unaOrdendeVenta);
+            Tarjeta unaTarjeta = new Tarjeta();
+
+            if (unaOrdenDeVenta.MetodoDePago.GetType() == unaTarjeta.GetType())
+            {
+                unaTarjeta = (Tarjeta)unaOrdenDeVenta.MetodoDePago;
+                if (TarjetaBLL.ValidarTarjeta(unaTarjeta))
+                {
+                if (OrdenDeVentaDAL.PersistirVenta(unaOrdenDeVenta))
+                    {
+                    return true;
+                    }
+
+                }
+
+            }
+            
+            throw new Excepcion_VentaNoGuardada();
         }
 
+        /// <summary>
+        /// Genera un reporte de venta pasando por parametro el legajo del usuario VENDEDOR
+        /// </summary>
+        /// <param name="legajo">Legajo del vendedor</param>
+        /// <returns>Devuelve una lista de orden venta</returns>
+        public static List<OrdenDeVenta> GenerarReporteDeVentasPorLegajo(int legajo)
+        {
+            List<OrdenDeVenta> listaVentas = new List<OrdenDeVenta>();
+            if (OrdenDeVentaDAL.BuscarVentasPorLegajo(legajo) == null)
+            {
+                throw new Excepcion_LegajoNoEncontrado();//LEGAJO NO ENCONTRADO
+
+            }
+
+            System.Data.DataTable objDataTable = DAL.OrdenDeVentaDAL.BuscarVentasPorLegajo(legajo);          //guardo el datatable que trajo de la bbdd
+            foreach (DataRow row in objDataTable.Rows) //carga lo de data table a row(que es un data row)
+            {
+
+                listaVentas.Add(ConvertirDeDataTableAOrdenDeVenta(row));//se agrega a ListaVentas una venta
+
+            }
+
+            return listaVentas; 
+
+        }
+
+
+
+        /// <summary>
+        /// Genera un reporte de venta pasando por parametro el mes en el que desea buscar.
+        /// </summary>
+        /// <param name="mes">Numero del mes a buscar.</param>
+        /// <returns>Devuelve una lista de orden venta</returns>
+        public static List<OrdenDeVenta> GenerarReporteDeVentasPorMes(int mes)
+        {
+            List<OrdenDeVenta> listaVentas = new List<OrdenDeVenta>();
+            if (OrdenDeVentaDAL.BuscarVentasPorMes(mes) == null)
+            {
+                throw new Excepcion_LegajoNoEncontrado();//LEGAJO NO ENCONTRADO
+
+            }
+
+            System.Data.DataTable objDataTable = DAL.OrdenDeVentaDAL.BuscarVentasPorMes(mes);          //guardo el datatable que trajo de la bbdd
+            foreach (DataRow row in objDataTable.Rows) //carga lo de data table a row(que es un data row)
+            {
+
+                listaVentas.Add(ConvertirDeDataTableAOrdenDeVenta(row));//se agrega a ListaVentas una venta
+
+            }
+
+            return listaVentas;
+
+        }
+
+
+        /// <summary>
+        /// Convierte un datatable obtenido desde la base de datos en un objeto OrdenDeVenta
+        /// </summary>
+        /// <param name="objDataRow">DataRow Obtenido desde la base de datos con lo solicitado.</param>
+        /// <returns>Devuelve un objeto OrdenDeVenta</returns>
+        private static OrdenDeVenta ConvertirDeDataTableAOrdenDeVenta(DataRow objDataRow)
+            {
+
+            List<DetalleOrden> listaDetalles = new List<DetalleOrden>();
+            OrdenDeVenta unaVenta = new OrdenDeVenta();
+            Usuario unUsuario = new Usuario();
+            Tarjeta objTarjeta = new Tarjeta();
+            Efectivo objEfectivo = new Efectivo();
+            
+
+            unaVenta.ID = (int)objDataRow["ID_ORDEN"];
+            unaVenta.Fecha = Convert.ToDateTime(objDataRow["FECHA"]);
+            unUsuario.Legajo = (int)objDataRow["LEGAJO_VENDEDOR"];
+
+            if (objDataRow["METODO_PAGO"].ToString() == "EFECTIVO")
+            {
+                objEfectivo.TipoMetodoDePago = "EFECTIVO";
+                unaVenta.MetodoDePago = objEfectivo;
+            }
+            else if (objDataRow["METODO_PAGO"].ToString() == "TARJETA")
+            {
+                objTarjeta.TipoMetodoDePago = "TARJETA";
+                unaVenta.MetodoDePago = objTarjeta;
+            }
+            else
+            {
+                throw new Excepcion_MetodoDePagoInvalido();
+            }
+
+            unaVenta.UsuarioCreador = unUsuario;
+            foreach (DetalleOrden unDetalle in listaDetalles)
+            {
+                listaDetalles.Add(DetalleOrdenBLL.ConvertirDeDataTableADetalleOrden(objDataRow));
+            }
+            unaVenta.Detalles = listaDetalles;
+
+            return unaVenta;
+
+            }
+
+        /// <summary>
+        /// Metodo de uso interno para calcular el numero de semana en un mes (si se llega a necesitar)
+        /// </summary>
+        /// <param name="date">Una fecha.</param>
+        /// <returns>El numero de semana del mes.</returns>
+        static int GetWeekNumberOfMonth(DateTime date)
+        {
+            date = date.Date;
+            DateTime firstMonthDay = new DateTime(date.Year, date.Month, 1);
+            DateTime firstMonthMonday = firstMonthDay.AddDays((DayOfWeek.Monday + 7 - firstMonthDay.DayOfWeek) % 7);
+            if (firstMonthMonday > date)
+            {
+                firstMonthDay = firstMonthDay.AddMonths(-1);
+                firstMonthMonday = firstMonthDay.AddDays((DayOfWeek.Monday + 7 - firstMonthDay.DayOfWeek) % 7);
+            }
+            return (date - firstMonthMonday).Days / 7 + 1;
+        }
 
 
     }

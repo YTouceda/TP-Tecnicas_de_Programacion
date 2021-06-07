@@ -45,8 +45,12 @@
     <Compile Include="DetalleOrdenBLL.cs" />
     <Compile Include="EXCEPCIONES\ExcepcionesNegocio.cs" />
     <Compile Include="EXCEPCIONES\Excepcion_ClienteInexistente.cs" />
+    <Compile Include="EXCEPCIONES\Excepcion_ErrorAlModificarCliente.cs" />
+    <Compile Include="EXCEPCIONES\Excepcion_LegajoNoEncontrado.cs" />
+    <Compile Include="EXCEPCIONES\Excepcion_MetodoDePagoInvalido.cs" />
     <Compile Include="EXCEPCIONES\Excepcion_ProductoNoEncontrado.cs" />
     <Compile Include="EXCEPCIONES\Excepcion_StockInsuficiente.cs" />
+    <Compile Include="EXCEPCIONES\Excepcion_TarjetaInvalida.cs" />
     <Compile Include="EXCEPCIONES\Excepcion_VentaNoGuardada.cs" />
     <Compile Include="ManejoDeClientes.cs" />
     <Compile Include="MetodoDePagoBLL.cs" />

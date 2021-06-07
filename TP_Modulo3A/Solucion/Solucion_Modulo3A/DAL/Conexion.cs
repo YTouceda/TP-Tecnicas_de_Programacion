@@ -24,7 +24,7 @@ namespace DAL
          */
         private void Conectar()
         {
-            strCadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Modulo3_BBDD;Data Source=DESKTOP-460UPCV\SQLEXPRESS01";
+            strCadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Modulo3_BBDD;Data Source=DESKTOP-NE9FIAR\SQLEXPRESS";
 
             //Instanció un objeto del tipo SqlConnection
             objConexion = new SqlConnection();
