@@ -12,7 +12,7 @@ namespace BLL
     {
         public static bool GuardaOrdenVenta(OrdenDeVenta unaOrdendeVenta)
         {
-            return OrdenDeVentaDAL.AltaDeVenta(unaOrdendeVenta);
+            return OrdenDeVentaDAL.PersistirVenta(unaOrdendeVenta);
         }
 
 
