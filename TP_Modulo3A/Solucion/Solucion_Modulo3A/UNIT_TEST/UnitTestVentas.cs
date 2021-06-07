@@ -14,7 +14,7 @@ namespace UNIT_TEST
     [TestClass]
     public class UnitTestVentas
     {
-        
+
 
         [TestMethod]
         public void TestGuardarVenta()
@@ -23,21 +23,66 @@ namespace UNIT_TEST
             bool datoEsperado = true;
             DetalleOrden unDetalleOrden = new DetalleOrden();
             OrdenDeVenta objOrdenDeVenta = new OrdenDeVenta();
-            DataTable objDataTable = BLL.ProductoBLL.BuscarProducto("Lavandina");
+            List<Producto> ListaProducto = BLL.ProductoBLL.BuscarProducto("Lavandina");
+            List<DetalleOrden> ListaDetalles = new List<DetalleOrden>();
+            Efectivo objEfectivo = new Efectivo();
+            Usuario unUSuario = new Usuario();
 
-            Producto objProducto = BLL.ProductoBLL.ConvertirDeDataTableAObjProducto(objDataTable, 0);
+            objEfectivo.TipoMetodoDePago = "Efectivo";
+
+            Producto objProducto = ListaProducto[0];
             unDetalleOrden.Producto = objProducto;
             unDetalleOrden.Cantidad = 2;
-            objOrdenDeVenta.Detalles.Add(unDetalleOrden);
-            
-            objOrdenDeVenta.MetodoDePago.TipoMetodoDePago = "Efectivo";
-            DataTable DTCliente = ClienteBLL.BuscarClientesPorID(1);
-            
-            Cliente ObjCliente = ClienteBLL.ConvertirDeDataTableAObjCliente(DTCliente, 0);
+            ListaDetalles.Add(unDetalleOrden);
+            objOrdenDeVenta.Detalles=ListaDetalles;
+
+            objOrdenDeVenta.MetodoDePago = objEfectivo;
+            List<Cliente> Clientes= ClienteBLL.BuscarClientesPorDNI("36933120");
+
+            Cliente ObjCliente = Clientes[0];
             objOrdenDeVenta.Cliente = ObjCliente;
 
-
+            unUSuario.Legajo = 1;
+            objOrdenDeVenta.UsuarioCreador = unUSuario;
             Assert.AreEqual(datoEsperado, OrdenDeVentaBLL.GuardaOrdenVenta(objOrdenDeVenta));
         }
+
+        [TestMethod]
+        public void TestGuardarVenta2()
+
+        {
+            bool datoEsperado = true;
+            DetalleOrden unDetalleOrden = new DetalleOrden();
+            OrdenDeVenta objOrdenDeVenta = new OrdenDeVenta();
+            List<Producto> ListaProducto = BLL.ProductoBLL.BuscarProducto("Lavandina");
+            List<DetalleOrden> ListaDetalles = new List<DetalleOrden>();
+            Tarjeta objTarjeta = new Tarjeta();
+            Usuario unUSuario = new Usuario();
+
+            objTarjeta.TipoMetodoDePago = "Tarjeta";
+            objTarjeta.CVC = "121";
+            objTarjeta.FechaVencimiento = "1/1/2022";
+            objTarjeta.NumeroTarjeta = "9898989898989898";
+            objTarjeta.NombreTarjeta = "Denis Lemes";
+            Producto objProducto = ListaProducto[0];
+            unDetalleOrden.Producto = objProducto;
+            unDetalleOrden.Cantidad = 2;
+
+            ListaDetalles.Add(unDetalleOrden);
+            objOrdenDeVenta.Detalles = ListaDetalles;
+
+            objOrdenDeVenta.MetodoDePago = objTarjeta;
+            List<Cliente> Clientes = ClienteBLL.BuscarClientesPorDNI("36933120");
+
+            Cliente ObjCliente = Clientes[0];
+            objOrdenDeVenta.Cliente = ObjCliente;
+
+            unUSuario.Legajo = 1;
+            objOrdenDeVenta.UsuarioCreador = unUSuario;
+            Assert.AreEqual(datoEsperado, OrdenDeVentaBLL.GuardaOrdenVenta(objOrdenDeVenta));
+        }
+
+
+
     }
 }
