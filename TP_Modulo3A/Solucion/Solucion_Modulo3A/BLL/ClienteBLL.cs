@@ -34,7 +34,11 @@ namespace BLL
 
         }
 
-
+        /// <summary>
+        /// Busca un Cliente por DNI
+        /// </summary>
+        /// <param name="DNI"></param>
+        /// <returns>Retorna un Datatable si lo encuentra o una excepcion si no</returns>
         public static DataTable BuscarClientesPorDNI(string DNI)
         {
             ClienteDAL objClienteDAL = new ClienteDAL();
