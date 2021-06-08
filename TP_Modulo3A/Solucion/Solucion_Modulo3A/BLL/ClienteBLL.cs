@@ -14,7 +14,7 @@ namespace BLL
     public class ClienteBLL
     {
         /// <summary>
-        /// Devuelve un datatable desde la bbdd 
+        /// Busca un Cliente por ID
         /// </summary>
         /// <param name="Id_Cliente">Id del Cliente</param>
         public static DataTable BuscarClientesPorID(int Id_Cliente)
@@ -82,11 +82,11 @@ namespace BLL
         }
 
         /// <summary>
-        /// modifica un cliente
+        /// Modifica un cliente
         /// </summary>
         /// <param name="objCliente">Cliente a modificar</param>
         /// <param name="objDatosNuevos">objCliente con los datos nuevos</param>
-        /// <returns>Cliente modificado</returns>
+        /// <returns>Retorna un Cliente modificado</returns>
         public static Cliente ModificarUnCliente(Cliente objCliente,Cliente objDatosNuevos)
         {
             
@@ -104,7 +104,7 @@ namespace BLL
 
         }  
         /// <summary>
-        /// almacena un Cliente en la base de datos
+        /// Almacena un Cliente en la base de datos
         /// </summary>
         /// <param name="objCliente">Cliente objCliente</param>
         /// <returns>devuelve true si se pudo guardar en la base de datos</returns>
