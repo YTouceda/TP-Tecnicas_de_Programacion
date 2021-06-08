@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.EXCEPCIONES
 {
-    class Excepcion_ClienteInexistente: ExcepcionesNegocio
+    public class Excepcion_ClienteInexistente: ExcepcionesNegocio
     {
         public Excepcion_ClienteInexistente() 
         {

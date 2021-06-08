@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL.EXCEPCIONES
 {
-    class Excepcion_VentaNoGuardada : ExcepcionesNegocio
+    public class Excepcion_VentaNoGuardada : ExcepcionesNegocio
     {
         public Excepcion_VentaNoGuardada()
         {
