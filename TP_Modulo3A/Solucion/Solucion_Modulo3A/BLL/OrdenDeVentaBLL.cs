@@ -72,16 +72,16 @@ namespace BLL
         /// </summary>
         /// <param name="mes">Numero del mes a buscar.</param>
         /// <returns>Devuelve una lista de orden venta</returns>
-        public static List<OrdenDeVenta> GenerarReporteDeVentasPorMes(int mes)
+        public static List<OrdenDeVenta> GenerarReporteDeVentasPorMes(int mes,int año)
         {
             List<OrdenDeVenta> listaVentas = new List<OrdenDeVenta>();
-            if (OrdenDeVentaDAL.BuscarVentasPorMes(mes) == null)
+            if (OrdenDeVentaDAL.BuscarVentasPorMes(mes,año) == null)
             {
-                throw new Excepcion_LegajoNoEncontrado();//LEGAJO NO ENCONTRADO
+                throw new Excepcion_FechaNoEncontrada();//Fecha Incorrecta
 
             }
 
-            System.Data.DataTable objDataTable = DAL.OrdenDeVentaDAL.BuscarVentasPorMes(mes);          //guardo el datatable que trajo de la bbdd
+            System.Data.DataTable objDataTable = DAL.OrdenDeVentaDAL.BuscarVentasPorMes(mes , año);          //guardo el datatable que trajo de la bbdd
             foreach (DataRow row in objDataTable.Rows) //carga lo de data table a row(que es un data row)
             {
 
@@ -100,7 +100,7 @@ namespace BLL
         /// <param name="objDataRow">DataRow Obtenido desde la base de datos con lo solicitado.</param>
         /// <returns>Devuelve un objeto OrdenDeVenta</returns>
         private static OrdenDeVenta ConvertirDeDataTableAOrdenDeVenta(DataRow objDataRow)
-            {
+        {
 
             List<DetalleOrden> listaDetalles = new List<DetalleOrden>();
             OrdenDeVenta unaVenta = new OrdenDeVenta();
@@ -113,12 +113,12 @@ namespace BLL
             unaVenta.Fecha = Convert.ToDateTime(objDataRow["FECHA"]);
             unUsuario.Legajo = (int)objDataRow["LEGAJO_VENDEDOR"];
 
-            if (objDataRow["METODO_PAGO"].ToString() == "EFECTIVO")
+            if (objDataRow["metodo_pago"].ToString() == "EFECTIVO")
             {
                 objEfectivo.TipoMetodoDePago = "EFECTIVO";
                 unaVenta.MetodoDePago = objEfectivo;
             }
-            else if (objDataRow["METODO_PAGO"].ToString() == "TARJETA")
+            else if (objDataRow["metodo_pago"].ToString() == "TARJETA")
             {
                 objTarjeta.TipoMetodoDePago = "TARJETA";
                 unaVenta.MetodoDePago = objTarjeta;
@@ -137,24 +137,34 @@ namespace BLL
 
             return unaVenta;
 
-            }
+        }
 
         /// <summary>
-        /// Metodo de uso interno para calcular el numero de semana en un mes (si se llega a necesitar)
+        /// Genera un reporte de venta pasando por parametro la fecha de un dia , a la cual se le suman 7 dias y se mostraran los datos de ventas de esa semana. 
         /// </summary>
-        /// <param name="date">Una fecha.</param>
-        /// <returns>El numero de semana del mes.</returns>
-        static int GetWeekNumberOfMonth(DateTime date)
+        /// <param name="mes">Numero del mes a buscar.</param>
+        /// <returns>Devuelve una lista de orden venta</returns>
+        public static List<OrdenDeVenta> GenerarReporteDeVentasPorSemana(DateTime fecha )
         {
-            date = date.Date;
-            DateTime firstMonthDay = new DateTime(date.Year, date.Month, 1);
-            DateTime firstMonthMonday = firstMonthDay.AddDays((DayOfWeek.Monday + 7 - firstMonthDay.DayOfWeek) % 7);
-            if (firstMonthMonday > date)
+            DateTime fecha2;
+            fecha2 = fecha.AddDays(7);
+            List<OrdenDeVenta> listaVentas = new List<OrdenDeVenta>();
+            if (OrdenDeVentaDAL.BuscarVentasPorSemana(fecha , fecha2) == null)
             {
-                firstMonthDay = firstMonthDay.AddMonths(-1);
-                firstMonthMonday = firstMonthDay.AddDays((DayOfWeek.Monday + 7 - firstMonthDay.DayOfWeek) % 7);
+                throw new Excepcion_FechaNoEncontrada();//Fecha Incorrecta
+
             }
-            return (date - firstMonthMonday).Days / 7 + 1;
+
+            System.Data.DataTable objDataTable = DAL.OrdenDeVentaDAL.BuscarVentasPorSemana(fecha,fecha2);          //guardo el datatable que trajo de la bbdd
+            foreach (DataRow row in objDataTable.Rows) //carga lo de data table a row(que es un data row)
+            {
+
+                listaVentas.Add(ConvertirDeDataTableAOrdenDeVenta(row));//se agrega a ListaVentas una venta
+
+            }
+
+            return listaVentas;
+
         }
 
 

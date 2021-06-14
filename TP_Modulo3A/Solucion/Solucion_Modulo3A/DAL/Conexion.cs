@@ -41,6 +41,7 @@ namespace DAL
         {
             objConexion.Close();
             objConexion.Dispose();
+            
         }
 
         public DataTable LeerPorStoreProcedure(string pNombreStoreProcedure, SqlParameter[] pParametrosSql = null)
