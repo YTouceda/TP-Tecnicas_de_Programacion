@@ -15,7 +15,7 @@ namespace DAL
     {
         private SqlConnection objConexion;
         private string strCadenaDeConexion = "";
-
+        private SqlTransaction trans; //declaro un property para las transaction
 
         /* -------------------- private void Conectar() ------------ 
          * Este metodo como indica su nombre... me permite conectarme con la 
@@ -27,9 +27,18 @@ namespace DAL
             strCadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Modulo3_BBDD;Data Source=DESKTOP-I41K9U6\SQLEXPRESS";
 
             //Instanció un objeto del tipo SqlConnection
+            //agregue el rollback
+
             objConexion = new SqlConnection();
+            SqlCommand cmd = new SqlCommand() ;
             objConexion.ConnectionString = strCadenaDeConexion;
+            
+
             objConexion.Open();
+            trans = objConexion.BeginTransaction("Trans");
+            cmd.Transaction = trans;
+            cmd.ExecuteNonQuery();
+            trans.Commit();
         }
 
         /* -------------------- private void Desconectar() ------------ 
@@ -159,6 +168,8 @@ namespace DAL
             catch (Exception)
             {
                 filasAfectadas = -1;
+                //si hay un error realizo el Rollback
+                if (trans != null) trans.Rollback();
                 throw;
             }
             finally
@@ -288,4 +299,30 @@ namespace DAL
 
 
     }
+
+//Ejemplo para utilizar RollBack
+//    using (SqlConnection connection = new SqlConnection(ConnectionString))
+//{
+//    using (SqlCommand cmd = new SqlCommand(queryString, connection  ))
+//    { 
+//        SqlTransaction trans;
+//        try
+//        {
+//            connection.Open();  
+//            trans = connection.BeginTransaction("Trans");
+//            cmd.Transaction = trans;
+//            cmd.ExecuteNonQuery();
+//            trans.Commit();
+//            return "sukses";
+//        }
+//        catch (Exception ex)
+//{
+//    if trans != null) trans.Rollback();
+//    return ex.Message;
+//}
+//    }
+//}
+
+
+
 }
