@@ -7,11 +7,9 @@ using DAL;
 using System.Collections.Generic;
 
 namespace UNIT_TEST
-{/// <summary>
-/// Se busca a un cliente por DNI y comprueba que los datos sean correctos.
-/// /// </summary>
+{
     [TestClass]
-    public class UnitTestCliente
+    public class UnitTestCliente 
     {
         [TestMethod]
         public void TestConvertirDTAOBJCliente()
@@ -24,7 +22,7 @@ namespace UNIT_TEST
 
             Assert.AreEqual(apellido_esperado, ListaClientes[0].Apellido);
             Assert.AreEqual(nombre_esperado, ListaClientes[0].Nombre);
-            Assert.AreEqual(calle_esperada, ListaClientes[0].Direccion.Calle);
+            Assert.AreEqual(calle_esperada, ListaClientes[0].Direccion);
 
 
         }
@@ -32,17 +30,22 @@ namespace UNIT_TEST
         [TestMethod]
         public void TestModificarCliente()
         {
-            List<Cliente> ListaClientes = BLL.ClienteBLL.BuscarClientesPorDNI("36933120");
-            var indice = ListaClientes.IndexOf(ClienteBLL.ConvertirDeDataTableAObjCliente);
-            ListaClientes.Insert(indice, "alberto");
+            int clientes_esperados = 3;
+            bool bool_esperado = true;
 
+            List<Cliente> Clientes = ClienteBLL.BuscarClientesPorDNI("3");
+            
+            Cliente objClientenvo = new Cliente();
+            objClientenvo = Clientes[1];
+            objClientenvo.Nombre = "Pepe";
+            objClientenvo.Apellido = "Rodriguez";
 
-            DataTable DTCliente = ClienteBLL.BuscarClientesPorDNI(0);
-            Cliente AuxCliente = ObjCliente;
+            
+            
+            
+            Assert.AreEqual(clientes_esperados, Clientes.Count);
+            Assert.AreEqual(bool_esperado, ClienteBLL.ModificarUnCliente(Clientes[1], objClientenvo));
 
-            AuxCliente.Nombre = "Cosme";
-
-            ClienteBLL.ModificarUnCliente(DTCliente, AuxCliente);
         }
 
 

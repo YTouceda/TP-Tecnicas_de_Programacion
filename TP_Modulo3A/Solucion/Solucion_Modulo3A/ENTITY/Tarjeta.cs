@@ -21,14 +21,14 @@ namespace ENTITY
 		private string _CVC;
 		private string _fechaVencimiento;
 		private string _nombreTarjeta;
-		private long _numeroTarjeta;
+		private string _numeroTarjeta;
 
 		public Tarjeta()
 		{
 
 		}
 
-		public Tarjeta(string CVC, string fechaVencimiento, string nombreTarjeta, long numeroTarjeta)
+		public Tarjeta(string CVC, string fechaVencimiento, string nombreTarjeta, string numeroTarjeta)
 		{
 			this.CVC = CVC;
 			this.FechaVencimiento = fechaVencimiento;
@@ -55,7 +55,7 @@ namespace ENTITY
 			set;
 		}
 
-		public long NumeroTarjeta
+		public string NumeroTarjeta
 		{
 			get;
 			set;

@@ -12,22 +12,18 @@ namespace BLL
 {
     public class DetalleOrdenBLL
     {
-    /// <summary>
-    /// Valida que haya stock de un producto.
-    /// </summary>
-    /// <param name="objProducto">Producto a agregar</param>
-    /// <param name="cant">Cantidad</param>
-    /// <returns>Retorna un objeto tipo "DetalleOrden"</returns>
-        public DetalleOrden AgregarProducto(Producto objProducto, int cant)
+    
+
+
+        public static DetalleOrden ConvertirDeDataTableADetalleOrden(DataRow objDataRow)
         {
-            if (objProducto.Stock >= cant)
-            {
-                DetalleOrden objDetalleOrden = new DetalleOrden();
-                objDetalleOrden.Producto = objProducto;
-                objDetalleOrden.Cantidad = cant;
-                return objDetalleOrden;
-            }
-            throw new Excepcion_StockInsuficiente();
+            DetalleOrden unDetalle = new DetalleOrden();
+
+            unDetalle.Producto.PrecioVenta = (float)objDataRow["P.PRECIO_VENTA"];
+            unDetalle.Cantidad = Convert.ToInt32(objDataRow["O.USUARIO_CREADOR"]);
+            unDetalle.Producto.Nombre = objDataRow["PRODUCTO"].ToString();
+
+            return unDetalle;
         }
     }
 }

@@ -23,11 +23,14 @@ namespace ENTITY
 
 
         public Orden(){
-			this._fecha = DateTime.Now;
+			this.Fecha = DateTime.Now;
 		}
 		public Orden(List<DetalleOrden> Detalles, Usuario UsuarioCreador)
 		{
-			this._fecha = DateTime.Now; 
+			this.Fecha=DateTime.Now;
+			this.Detalles = Detalles;
+			this.UsuarioCreador = UsuarioCreador;
+
 		}
 
 
@@ -38,6 +41,8 @@ namespace ENTITY
 
 		public DateTime Fecha{
 			get;
+			set;
+
 		}
 
 		public Usuario UsuarioCreador{

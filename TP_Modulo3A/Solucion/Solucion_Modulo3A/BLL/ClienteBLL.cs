@@ -21,17 +21,18 @@ namespace BLL
         public static List<Cliente> BuscarClientesPorDNI(string DNI)
         {
             List<Cliente> ListaClientes = new List<Cliente>();
-            
-            if (ClienteDAL.BuscarClientesPorDNI(DNI) == null) 
+            DataTable objDataTable = ClienteDAL.BuscarClientesPorDNI(DNI);
+            if (objDataTable == null)
             {
                 throw new Excepcion_ClienteInexistente();
-                
+
             }
-                
+
+            else
             {
-                DataTable objDataTable = ClienteDAL.BuscarClientesPorDNI(DNI);
-                foreach(DataRow row in objDataTable.Rows)
-                 {
+               
+                foreach (DataRow row in objDataTable.Rows)
+                {
                     ListaClientes.Add(ConvertirDeDataTableAObjCliente(row));
 
                 }
@@ -73,10 +74,10 @@ namespace BLL
         /// <param name="objCliente">Cliente a modificar</param>
         /// <param name="objDatosNuevos">objCliente con los datos nuevos</param>
         /// <returns>Cliente modificado</returns>
-        public static Cliente ModificarUnCliente(Cliente objCliente,Cliente objDatosNuevos)
+        public static bool ModificarUnCliente(Cliente objCliente, Cliente objDatosNuevos)
         {
-            
-            
+
+
             objCliente.Nombre = objDatosNuevos.Nombre;
             objCliente.Apellido = objDatosNuevos.Apellido;
             objCliente.DNI = objDatosNuevos.DNI;
@@ -85,10 +86,16 @@ namespace BLL
             objCliente.Direccion.CodigoPostal = objDatosNuevos.Direccion.CodigoPostal;
             objCliente.Direccion.Localidad = objDatosNuevos.Direccion.Localidad;
             objCliente.Direccion.Provincia = objDatosNuevos.Direccion.Provincia;
-            ClienteDAL.QueryModificarCliente(objCliente);
-            return objCliente;
 
-        }  
+
+            if(ClienteDAL.QueryModificarCliente(objCliente))
+            {
+                return true;
+
+            }
+            throw new Excepcion_ErrorAlModificarCliente();
+
+        }
         /// <summary>
         /// almacena un Cliente en la base de datos
         /// </summary>
