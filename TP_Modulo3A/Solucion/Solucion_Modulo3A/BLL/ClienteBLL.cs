@@ -47,7 +47,7 @@ namespace BLL
         /// <param name="objDataTable">DataTable</param>
         /// <param name="indice">indice de la fila </param>
         /// <returns>objeto Cliente(segun la fila)</returns>
-        public static Cliente ConvertirDeDataTableAObjCliente(DataRow objDataRow)
+        private static Cliente ConvertirDeDataTableAObjCliente(DataRow objDataRow)
         {
             Cliente objCliente = new Cliente();
             Direccion objDireccion = new Direccion();
@@ -100,7 +100,7 @@ namespace BLL
         /// </summary>
         /// <param name="objCliente">Cliente objCliente</param>
         /// <returns>devuelve true si se pudo guardar en la base de datos</returns>
-        public bool GuardarCliente(Cliente objCliente)
+        public static bool GuardarCliente(Cliente objCliente)
         {
             return ClienteDAL.Alta(objCliente);
         }

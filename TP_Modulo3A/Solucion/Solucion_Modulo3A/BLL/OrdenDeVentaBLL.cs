@@ -144,7 +144,7 @@ namespace BLL
         /// </summary>
         /// <param name="mes">Numero del mes a buscar.</param>
         /// <returns>Devuelve una lista de orden venta</returns>
-        public static List<OrdenDeVenta> GenerarReporteDeVentasPorSemana(DateTime fecha )
+        public static List<OrdenDeVenta> GenerarReporteDeVentasPorSemana(DateTime fecha)
         {
             DateTime fecha2;
             fecha2 = fecha.AddDays(7);
