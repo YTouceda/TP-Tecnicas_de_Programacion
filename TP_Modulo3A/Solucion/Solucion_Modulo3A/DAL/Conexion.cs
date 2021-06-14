@@ -24,7 +24,7 @@ namespace DAL
          */
         private void Conectar()
         {
-            strCadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Modulo3_BBDD;Data Source=DENIS-PC";
+            strCadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Modulo3.BBDD;Data Source=DENIS-PC";
 
             //Instanció un objeto del tipo SqlConnection
             objConexion = new SqlConnection();

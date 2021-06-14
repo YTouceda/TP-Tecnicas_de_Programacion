@@ -7,7 +7,9 @@ using DAL;
 using System.Collections.Generic;
 
 namespace UNIT_TEST
-{
+{/// <summary>
+/// Se busca a un cliente por DNI y comprueba que los datos sean correctos.
+/// /// </summary>
     [TestClass]
     public class UnitTestCliente
     {
@@ -22,29 +24,27 @@ namespace UNIT_TEST
 
             Assert.AreEqual(apellido_esperado, ListaClientes[0].Apellido);
             Assert.AreEqual(nombre_esperado, ListaClientes[0].Nombre);
-            Assert.AreEqual(calle_esperada, ListaClientes[0].Direccion);
+            Assert.AreEqual(calle_esperada, ListaClientes[0].Direccion.Calle);
 
 
         }
 
-        //[TestMethod]
-        //public void TestModificarCliente()
-        //{
-
-           
-        //    DataTable DTCliente = ClienteBLL.BuscarClientesPorID(1);
-
-        //    Cliente ObjCliente = ClienteBLL.ConvertirDeDataTableAObjCliente(DTCliente, 0);
-
-            
-        //    Cliente AuxCliente = ObjCliente;
-        //    AuxCliente.Nombre = "Cosme";
-
-        //    ClienteBLL.ModificarUnCliente(ObjCliente, AuxCliente);
+        [TestMethod]
+        public void TestModificarCliente()
+        {
+            List<Cliente> ListaClientes = BLL.ClienteBLL.BuscarClientesPorDNI("36933120");
+            var indice = ListaClientes.IndexOf(ClienteBLL.ConvertirDeDataTableAObjCliente);
+            ListaClientes.Insert(indice, "alberto");
 
 
-        //}
+            DataTable DTCliente = ClienteBLL.BuscarClientesPorDNI(0);
+            Cliente AuxCliente = ObjCliente;
 
-      
+            AuxCliente.Nombre = "Cosme";
+
+            ClienteBLL.ModificarUnCliente(DTCliente, AuxCliente);
+        }
+
+
     }
 }
