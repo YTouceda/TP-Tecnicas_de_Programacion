@@ -93,7 +93,7 @@ namespace DAL
             {
                 new SqlParameter("@fecha",SqlDbType.DateTime),
                 new SqlParameter("@fecha2", SqlDbType.DateTime)
-               };
+            };
 
             parametros[0].Value = fecha;
             parametros[1].Value = fecha2;
@@ -114,6 +114,8 @@ namespace DAL
 
         }
 
+        SqlTransaction transaction;
+
         /// <summary>
         /// Guarda una orden de venta en la base de datos.
         /// </summary>
@@ -132,6 +134,7 @@ namespace DAL
                 new SqlParameter("@nombreTarjeta" ,SqlDbType.VarChar, 50),
                 new SqlParameter("@nroTarjeta",SqlDbType.VarChar,16),
             };
+          
             parametros[0].Value = unaOrdenDeVenta.MetodoDePago.TipoMetodoDePago;
             parametros[1].Value = unaOrdenDeVenta.UsuarioCreador.Legajo;
             parametros[2].Value = unaOrdenDeVenta.Fecha;
