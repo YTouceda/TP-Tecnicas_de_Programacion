@@ -20,7 +20,7 @@ namespace DAL
 
             SqlParameter[] parametros =
             {
-                new SqlParameter("@LEGAJO",SqlDbType.Int)
+                new SqlParameter("@legajo",SqlDbType.Int)
                 
                };
 
@@ -28,8 +28,8 @@ namespace DAL
             
             
 
-            DataTable objDataTable = objConexion.LeerPorStoreProcedure("REPORTEVENTASPORLEGAJO",parametros);
-            if ((int)objDataTable.Rows[0]["LEGAJO_VENDEDOR"] == legajo) 
+            DataTable objDataTable = objConexion.LeerPorStoreProcedure("reporteventasporlegajo",parametros);
+            if ((int)objDataTable.Rows[0]["legajo_vendedor"] == legajo) 
             {
                 return objDataTable;
             }
@@ -39,28 +39,35 @@ namespace DAL
 
             }
 
+        
+        
         }
+
+
         /// <summary>
         /// Busca ventas en la base de datos segun el mes que reciba por parametro usando el store procedure REPORTEVENTASPORMES
         /// </summary>
         /// <param name="mes">Numero de mes</param>
+        /// <param name="año">año xd</param>
         /// <returns>Devuelve un DataTable con el reporte de ventas.</returns>
-        public static DataTable BuscarVentasPorMes(int mes)
+        public static DataTable BuscarVentasPorMes(int mes , int año)
         {
             Conexion objConexion = new Conexion();
 
             SqlParameter[] parametros =
             {
-                new SqlParameter("@MES",SqlDbType.Int)
+                new SqlParameter("@mes",SqlDbType.Int),
+                new SqlParameter("@año",SqlDbType.Int)
 
                };
 
             parametros[0].Value = mes;
+            parametros[1].Value = año;
 
 
 
-            DataTable objDataTable = objConexion.LeerPorStoreProcedure("REPORTEVENTASPORMES", parametros);
-            if (Convert.ToDateTime( objDataTable.Rows[0]["FECHA"]).Month == mes)
+            DataTable objDataTable = objConexion.LeerPorStoreProcedure("reporteventaspormes", parametros);
+            if (Convert.ToDateTime( objDataTable.Rows[0]["fecha"]).Month == mes || Convert.ToDateTime(objDataTable.Rows[0]["año"]).Year == año)
             {
                 return objDataTable;
             }
@@ -73,26 +80,29 @@ namespace DAL
         }
 
         /// <summary>
-        /// Busca Ventas en una semana (falta confirmar parte del funcionamiento)
+        /// Busca Ventas en una semana 
         /// </summary>
         /// <param name="semana"></param>
         /// <returns></returns>
-        public static DataTable BuscarVentasPorSemana(int semana)
+        public static DataTable BuscarVentasPorSemana(DateTime fecha , DateTime fecha2 )
         {
+
             Conexion objConexion = new Conexion();
 
             SqlParameter[] parametros =
             {
-                new SqlParameter("@SEMANA",SqlDbType.Int)
+                new SqlParameter("@fecha",SqlDbType.DateTime),
+                new SqlParameter("@fecha2", SqlDbType.DateTime)
+            };
 
-               };
-
-            parametros[0].Value = semana;
-
+            parametros[0].Value = fecha;
+            parametros[1].Value = fecha2;
 
 
-            DataTable objDataTable = objConexion.LeerPorStoreProcedure("REPORTEVENTASPORSEMANA", parametros);
-            if ((Convert.ToDateTime(objDataTable.Rows[0]["FECHA"]).DayOfYear)/7 == semana)
+
+            DataTable objDataTable = objConexion.LeerPorStoreProcedure("reporteventasporsemana", parametros);
+            DateTime aux = DateTime.Now; 
+            if (Convert.ToDateTime(objDataTable.Rows[0]["fecha"]).GetType() == aux.GetType()) //Valida que devuelva un valor valido el datatable
             {
                 return objDataTable;
             }
@@ -103,6 +113,8 @@ namespace DAL
             }
 
         }
+
+        SqlTransaction transaction;
 
         /// <summary>
         /// Guarda una orden de venta en la base de datos.
@@ -122,6 +134,7 @@ namespace DAL
                 new SqlParameter("@nombreTarjeta" ,SqlDbType.VarChar, 50),
                 new SqlParameter("@nroTarjeta",SqlDbType.VarChar,16),
             };
+          
             parametros[0].Value = unaOrdenDeVenta.MetodoDePago.TipoMetodoDePago;
             parametros[1].Value = unaOrdenDeVenta.UsuarioCreador.Legajo;
             parametros[2].Value = unaOrdenDeVenta.Fecha;
@@ -148,7 +161,7 @@ namespace DAL
             if((!DetalleOrdenDAL.GuardarDetalles(unaOrdenDeVenta.Detalles,idOrden))|| cantFilas < 3 || cantFilas > 4) 
             {
 
-                //PREGUNTAR Que pasa si se guarda una orden de venta y no los detalles ( por algun error) 
+                
                 return false;
                 
                 

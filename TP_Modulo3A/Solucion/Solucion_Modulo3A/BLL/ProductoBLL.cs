@@ -38,17 +38,14 @@ namespace BLL
 
         }
 
-        private static void BuscarProducto(DataRow row)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         /// <summary>
         /// Convierte un datarow en un objeto producto
         /// </summary>
         /// <param name="objDatarow">Datarow</param>
         /// <returns>objeto producto </returns>
-        public static Producto ConvertirDeDataTableAObjProducto(DataRow objDatarow) //recibe un datarow
+        private static Producto ConvertirDeDataTableAObjProducto(DataRow objDatarow) //recibe un datarow
         {
             Producto objProducto = new Producto();
 

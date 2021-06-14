@@ -46,6 +46,7 @@
     <Compile Include="EXCEPCIONES\ExcepcionesNegocio.cs" />
     <Compile Include="EXCEPCIONES\Excepcion_ClienteInexistente.cs" />
     <Compile Include="EXCEPCIONES\Excepcion_ErrorAlModificarCliente.cs" />
+    <Compile Include="EXCEPCIONES\Excepcion_FechaNoEncontrada.cs" />
     <Compile Include="EXCEPCIONES\Excepcion_LegajoNoEncontrado.cs" />
     <Compile Include="EXCEPCIONES\Excepcion_MetodoDePagoInvalido.cs" />
     <Compile Include="EXCEPCIONES\Excepcion_ProductoNoEncontrado.cs" />
