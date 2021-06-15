@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using DAL;
 using BLL;
 using BLL.EXCEPCIONES;
 using ENTITY;
-using System.Data;
+using DAL_Modulo3;
 
 namespace BLL
 {
@@ -48,7 +47,7 @@ namespace BLL
         /// <param name="objDataTable">DataTable</param>
         /// <param name="indice">indice de la fila </param>
         /// <returns>objeto Cliente(segun la fila)</returns>
-        public static Cliente ConvertirDeDataTableAObjCliente(DataRow objDataRow)
+        private static Cliente ConvertirDeDataTableAObjCliente(DataRow objDataRow)
         {
             Cliente objCliente = new Cliente();
             Direccion objDireccion = new Direccion();
@@ -101,9 +100,9 @@ namespace BLL
         /// </summary>
         /// <param name="objCliente">Cliente objCliente</param>
         /// <returns>devuelve true si se pudo guardar en la base de datos</returns>
-        public bool GuardarCliente(Cliente objCliente)
+        public static bool GuardarCliente(Cliente objCliente)
         {
-            return ClienteDAL.Alta(objCliente);
+            return ClienteDAL.PersistirCliente(objCliente);
         }
     }
 

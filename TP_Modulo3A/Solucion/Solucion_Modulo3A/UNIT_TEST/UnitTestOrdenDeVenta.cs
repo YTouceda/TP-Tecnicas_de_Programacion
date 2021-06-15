@@ -23,7 +23,7 @@ namespace UNIT_TEST
         [TestMethod]
         public void TestGenerarReporteDeVentasPorMes()
         {
-            string metodopago_esperado = "EFECTIVO";
+            string metodopago_esperado = "Efectivo";
             List<OrdenDeVenta> unaVenta = BLL.OrdenDeVentaBLL.GenerarReporteDeVentasPorMes(6,2005);
 
             Assert.AreEqual(metodopago_esperado, unaVenta[0].MetodoDePago.TipoMetodoDePago);
@@ -33,7 +33,7 @@ namespace UNIT_TEST
         [TestMethod]
         public void TestGenerarReporteDeVentasPorSemana()
         {
-            string metodopago_esperado = "EFECTIVO";
+            string metodopago_esperado = "Efectivo";
             var fechatest = new DateTime(2005, 6, 5, 7, 0, 0);
             List<OrdenDeVenta> unaVenta = BLL.OrdenDeVentaBLL.GenerarReporteDeVentasPorSemana(fechatest);
 

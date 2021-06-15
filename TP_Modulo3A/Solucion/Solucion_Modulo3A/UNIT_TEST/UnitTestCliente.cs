@@ -35,8 +35,7 @@ namespace UNIT_TEST
 
             List<Cliente> Clientes = ClienteBLL.BuscarClientesPorDNI("3");
             
-            Cliente objClientenvo = new Cliente();
-            objClientenvo = Clientes[1];
+            Cliente objClientenvo = Clientes[1];
             objClientenvo.Nombre = "Pepe";
             objClientenvo.Apellido = "Rodriguez";
 

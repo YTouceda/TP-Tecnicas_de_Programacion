@@ -64,9 +64,9 @@
       <Project>{bd730a47-a93f-4a4c-8cd1-9e56e42a1eea}</Project>
       <Name>BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAL\DAL.csproj">
+    <ProjectReference Include="..\DAL\DAL_Modulo3.csproj">
       <Project>{BE2B286C-0D3F-495A-90FC-BCED3B686B7B}</Project>
-      <Name>DAL</Name>
+      <Name>DAL_Modulo3</Name>
     </ProjectReference>
     <ProjectReference Include="..\ENTITY\ENTITY.csproj">
       <Project>{4b9a310e-40ea-48a9-ae1f-49ef81accbbe}</Project>

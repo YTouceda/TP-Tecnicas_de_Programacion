@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ENTITY;
-using DAL;
 using System.Data;
 using BLL.EXCEPCIONES;
+using DAL_Modulo3;
 
 namespace BLL
 {
@@ -53,7 +53,7 @@ namespace BLL
 
             }
 
-            System.Data.DataTable objDataTable = DAL.OrdenDeVentaDAL.BuscarVentasPorLegajo(legajo);          //guardo el datatable que trajo de la bbdd
+            System.Data.DataTable objDataTable = DAL_Modulo3.OrdenDeVentaDAL.BuscarVentasPorLegajo(legajo);          //guardo el datatable que trajo de la bbdd
             foreach (DataRow row in objDataTable.Rows) //carga lo de data table a row(que es un data row)
             {
 
@@ -81,7 +81,7 @@ namespace BLL
 
             }
 
-            System.Data.DataTable objDataTable = DAL.OrdenDeVentaDAL.BuscarVentasPorMes(mes , año);          //guardo el datatable que trajo de la bbdd
+            System.Data.DataTable objDataTable = DAL_Modulo3.OrdenDeVentaDAL.BuscarVentasPorMes(mes , año);          //guardo el datatable que trajo de la bbdd
             foreach (DataRow row in objDataTable.Rows) //carga lo de data table a row(que es un data row)
             {
 
@@ -144,7 +144,7 @@ namespace BLL
         /// </summary>
         /// <param name="mes">Numero del mes a buscar.</param>
         /// <returns>Devuelve una lista de orden venta</returns>
-        public static List<OrdenDeVenta> GenerarReporteDeVentasPorSemana(DateTime fecha )
+        public static List<OrdenDeVenta> GenerarReporteDeVentasPorSemana(DateTime fecha)
         {
             DateTime fecha2;
             fecha2 = fecha.AddDays(7);
@@ -155,7 +155,7 @@ namespace BLL
 
             }
 
-            System.Data.DataTable objDataTable = DAL.OrdenDeVentaDAL.BuscarVentasPorSemana(fecha,fecha2);          //guardo el datatable que trajo de la bbdd
+            System.Data.DataTable objDataTable = DAL_Modulo3.OrdenDeVentaDAL.BuscarVentasPorSemana(fecha,fecha2);          //guardo el datatable que trajo de la bbdd
             foreach (DataRow row in objDataTable.Rows) //carga lo de data table a row(que es un data row)
             {
 
