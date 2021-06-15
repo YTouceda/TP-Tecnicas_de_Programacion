@@ -19,17 +19,15 @@ namespace BLL_Modulo3
         public static List<Producto> BuscarProducto(string nombre)
         {
             List<Producto> ListaProducto = new List<Producto>();//cero una lista de tipo Producto
-            if (ProductoDAL.BuscarProducto(nombre) == null)
+            DataTable objDataTable = ProductoDAL.BuscarProducto(nombre);
+            if ( objDataTable == null)
             {
                 throw new Excepcion_ProductoNoEncontrado();
 
             }
-            System.Data.DataTable objDataTable = ProductoDAL.BuscarProducto(nombre);//guardo el datatable que trajo de la bbdd
             foreach (DataRow row in objDataTable.Rows)//carga lo de data table a row(que es un data row)
             {
-
                 ListaProducto.Add(ConvertirDeDataTableAObjProducto(row));//se agrega a ListaProducto un producto
-
             }
 
 
@@ -54,7 +52,7 @@ namespace BLL_Modulo3
             objProducto.Categoria = new Categoria(objDatarow["categoria"].ToString());
             objProducto.PrecioCompra = Convert.ToSingle(objDatarow["precio_compra"]);
             objProducto.PrecioVenta = Convert.ToSingle(objDatarow["precio_venta"]);
-            objProducto.Stock = (int)objDatarow["stock"];
+            objProducto.Stock = (int)objDatarow["cantidad"];
             return objProducto;
         }
     }

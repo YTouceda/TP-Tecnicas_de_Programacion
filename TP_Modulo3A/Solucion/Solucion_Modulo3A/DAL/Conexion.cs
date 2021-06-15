@@ -23,7 +23,7 @@ namespace DAL_Modulo3{
          */
         private void Conectar()
         {
-            strCadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=dbTecProg;Data Source=DESKTOP-NE9FIAR\SQLEXPRESS";
+            strCadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=dbTecProg;Data Source=DESKTOP-460UPCV\SQLEXPRESS01";
 
             //Instanció un objeto del tipo SqlConnection
             objConexion = new SqlConnection();

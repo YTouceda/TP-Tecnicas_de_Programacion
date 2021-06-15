@@ -18,12 +18,12 @@ namespace ENTITY
 
 		private string _apellido;
 		private Direccion _direccion;
-		private string _dni;
+		private int _dni;
 		private string _nombre;
         private int _id_persona;
 
 
-        public Persona(int _id_persona ,string apellido, Direccion direccion, string dni, string nombre){
+        public Persona(int _id_persona ,string apellido, Direccion direccion, int dni, string nombre){
 			this.Apellido = apellido;
 			this.Direccion = direccion;
 			this.DNI = dni;
@@ -52,7 +52,7 @@ namespace ENTITY
 			set;
 		}
 
-		public string DNI{
+		public int DNI{
 			get;
 			set;
 		}

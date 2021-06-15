@@ -7,3 +7,12 @@ C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Soluci
 C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\DAL\obj\Debug\DAL_Modulo3.csproj.CopyComplete
 C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\DAL\obj\Debug\DAL.dll
 C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\DAL\obj\Debug\DAL.pdb
+C:\Users\flia_\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\DAL\bin\Debug\DAL_Modulo3.dll
+C:\Users\flia_\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\DAL\bin\Debug\DAL_Modulo3.pdb
+C:\Users\flia_\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\DAL\bin\Debug\ENTITY.dll
+C:\Users\flia_\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\DAL\bin\Debug\ENTITY.pdb
+C:\Users\flia_\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\DAL\obj\Debug\DAL_Modulo3.csprojAssemblyReference.cache
+C:\Users\flia_\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\DAL\obj\Debug\DAL_Modulo3.csproj.CoreCompileInputs.cache
+C:\Users\flia_\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\DAL\obj\Debug\DAL_Modulo3.csproj.CopyComplete
+C:\Users\flia_\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\DAL\obj\Debug\DAL_Modulo3.dll
+C:\Users\flia_\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\DAL\obj\Debug\DAL_Modulo3.pdb

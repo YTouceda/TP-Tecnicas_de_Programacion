@@ -35,6 +35,13 @@ namespace BLL_Modulo3
                 }
 
             }
+            else
+            {
+                if (OrdenDeVentaDAL.PersistirVenta(unaOrdenDeVenta))
+                {
+                    return true;
+                }
+            }
             
             throw new Excepcion_VentaNoGuardada();
         }

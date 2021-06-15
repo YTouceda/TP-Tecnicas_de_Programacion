@@ -132,6 +132,7 @@ namespace DAL_Modulo3
                     new SqlParameter("@tipoMetodoDePago" ,SqlDbType.VarChar, 50),
                     new SqlParameter("@legajo",SqlDbType.Int),
                     new SqlParameter("@fecha",SqlDbType.DateTime),
+                    new SqlParameter("@idCliente",SqlDbType.Int),
                     new SqlParameter("@cvc" ,SqlDbType.VarChar, 50),
                     new SqlParameter("@fechaVencimiento" ,SqlDbType.VarChar, 50),
                     new SqlParameter("@nombreTarjeta" ,SqlDbType.VarChar, 50),

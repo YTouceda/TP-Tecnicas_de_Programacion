@@ -33,7 +33,7 @@ namespace DAL_Modulo3
                 new SqlParameter("@dni", SqlDbType.Int)
             };
 
-            //Asigno los valores
+            //Se le asignan valores a los parametros
             parametros[0].Value = pCliente.Direccion.Calle;
             parametros[1].Value = pCliente.Direccion.Altura;
             parametros[2].Value = pCliente.Direccion.Localidad;
@@ -43,18 +43,15 @@ namespace DAL_Modulo3
             parametros[6].Value = pCliente.Nombre;
             parametros[7].Value = pCliente.DNI;
 
-            string query = "SELECT IDENT_CURRENT ('orden') AS id_orden";
-            DataTable objDataTable = objConexion.LeerPorComando(query);
-            int idOrden = Convert.ToInt32(objDataTable.Rows[0]["id_orden"]);
             if (objConexion.EscribirPorStoreProcedure("sp_almacenar_cliente", parametros) != 3)
             {
                 return false;
             }
             return true;
         }
-        
+
         /// <summary>
-        /// Modifica un Cliente
+        /// Recibe un objeto cliente con los datos modificados que se desean actualizar en la base de datos
         /// </summary>
         /// <param name="mCliente"></param>
         /// <returns>Retorna True si fue exitoso, False si hubo un error</returns>
@@ -94,7 +91,7 @@ namespace DAL_Modulo3
         {
 
             Conexion objConexion = new Conexion();
-            string query = string.Format("SELECT C.id_cliente, P.id_persona, P.nombre, P.apellido, P.dni, D.id_direccion, D.calle, D.altura, D.codigo_postal, D.localidad, D.provincia FROM cliente C INNER JOIN persona P ON C.id_cliente = P.id_persona INNER JOIN direccion D ON P.id_direccion = D.id_direccion WHERE P.dni LIKE '%{0}%'", DNI);
+            string query = string.Format("SELECT C.id_cliente, P.nombre, P.apellido, P.dni, D.id, D.calle, D.altura, D.codigo_postal, D.localidad, D.provincia FROM cliente C INNER JOIN persona P ON C.id_cliente = P.id INNER JOIN direccion D ON P.id_direccion = D.id WHERE P.dni = {0}", DNI);
             DataTable objDataTable = objConexion.LeerPorComando(query);
             if (objDataTable != null)
             {

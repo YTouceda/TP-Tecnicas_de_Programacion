@@ -23,7 +23,7 @@ namespace UNIT_TEST_Modulo3
             bool datoEsperado = true;
             DetalleOrden unDetalleOrden = new DetalleOrden();
             OrdenDeVenta objOrdenDeVenta = new OrdenDeVenta();
-            List<Producto> ListaProducto = ProductoBLL.BuscarProducto("Lavandina");
+            List<Producto> ListaProducto = ProductoBLL.BuscarProducto("Vino");
             List<DetalleOrden> ListaDetalles = new List<DetalleOrden>();
             Efectivo objEfectivo = new Efectivo();
             Usuario unUSuario = new Usuario();
@@ -37,7 +37,7 @@ namespace UNIT_TEST_Modulo3
             objOrdenDeVenta.Detalles = ListaDetalles;
 
             objOrdenDeVenta.MetodoDePago = objEfectivo;
-            List<Cliente> Clientes = ClienteBLL.BuscarClientesPorDNI("36933120");
+            List<Cliente> Clientes = ClienteBLL.BuscarClientesPorDNI("38567566");
 
             Cliente ObjCliente = Clientes[0];
             objOrdenDeVenta.Cliente = ObjCliente;
@@ -54,7 +54,7 @@ namespace UNIT_TEST_Modulo3
             bool datoEsperado = true;
             DetalleOrden unDetalleOrden = new DetalleOrden();
             OrdenDeVenta objOrdenDeVenta = new OrdenDeVenta();
-            List<Producto> ListaProducto = ProductoBLL.BuscarProducto("Lavandina");
+            List<Producto> ListaProducto = ProductoBLL.BuscarProducto("Vino");
             List<DetalleOrden> ListaDetalles = new List<DetalleOrden>();
             Tarjeta objTarjeta = new Tarjeta();
             Usuario unUSuario = new Usuario();
@@ -62,7 +62,7 @@ namespace UNIT_TEST_Modulo3
             objTarjeta.TipoMetodoDePago = "Tarjeta";
             objTarjeta.CVC = "121";
             objTarjeta.FechaVencimiento = "1/1/2022";
-            objTarjeta.NumeroTarjeta = "9898989898989898";
+            objTarjeta.NumeroTarjeta = "9898989898989899";
             objTarjeta.NombreTarjeta = "Denis Lemes";
             Producto objProducto = ListaProducto[0];
             unDetalleOrden.Producto = objProducto;
@@ -72,7 +72,7 @@ namespace UNIT_TEST_Modulo3
             objOrdenDeVenta.Detalles = ListaDetalles;
 
             objOrdenDeVenta.MetodoDePago = objTarjeta;
-            List<Cliente> Clientes = ClienteBLL.BuscarClientesPorDNI("36933120");
+            List<Cliente> Clientes = ClienteBLL.BuscarClientesPorDNI("38567566");
 
             Cliente ObjCliente = Clientes[0];
             objOrdenDeVenta.Cliente = ObjCliente;

@@ -52,11 +52,10 @@ namespace BLL_Modulo3
             Cliente objCliente = new Cliente();
             Direccion objDireccion = new Direccion();
             objCliente.ID = (int)objDataRow["id_cliente"];
-            objCliente.IDPersona = (int)objDataRow["id_persona"];
             objCliente.Nombre = (objDataRow["nombre"].ToString());
             objCliente.Apellido = objDataRow["apellido"].ToString();
-            objCliente.DNI = objDataRow["dni"].ToString();
-            objDireccion.ID = (int)objDataRow["id_direccion"];
+            objCliente.DNI = (int)objDataRow["dni"];
+            objDireccion.ID = (int)objDataRow["id"];
             objDireccion.Calle = objDataRow["calle"].ToString();
             objDireccion.Altura = objDataRow["altura"].ToString();
             objDireccion.CodigoPostal = objDataRow["codigo_postal"].ToString();
