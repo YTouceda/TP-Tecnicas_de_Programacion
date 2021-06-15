@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 
 
-namespace DAL
+namespace DAL_Modulo3
 {
     public class OrdenDeVentaDAL
     {
@@ -28,7 +28,7 @@ namespace DAL
             
             
 
-            DataTable objDataTable = objConexion.LeerPorStoreProcedure("reporteventasporlegajo",parametros);
+            DataTable objDataTable = objConexion.LeerPorStoreProcedure("sp_reporteventasporlegajo",parametros);
             if ((int)objDataTable.Rows[0]["legajo_vendedor"] == legajo) 
             {
                 return objDataTable;
@@ -36,7 +36,6 @@ namespace DAL
             else
             {
                 return null;
-
             }
 
         
@@ -66,7 +65,7 @@ namespace DAL
 
 
 
-            DataTable objDataTable = objConexion.LeerPorStoreProcedure("reporteventaspormes", parametros);
+            DataTable objDataTable = objConexion.LeerPorStoreProcedure("sp_reporteventaspormes", parametros);
             if (Convert.ToDateTime( objDataTable.Rows[0]["fecha"]).Month == mes || Convert.ToDateTime(objDataTable.Rows[0]["año"]).Year == año)
             {
                 return objDataTable;
@@ -100,7 +99,7 @@ namespace DAL
 
 
 
-            DataTable objDataTable = objConexion.LeerPorStoreProcedure("reporteventasporsemana", parametros);
+            DataTable objDataTable = objConexion.LeerPorStoreProcedure("sp_reporteventasporsemana", parametros);
             DateTime aux = DateTime.Now; 
             if (Convert.ToDateTime(objDataTable.Rows[0]["fecha"]).GetType() == aux.GetType()) //Valida que devuelva un valor valido el datatable
             {
@@ -176,7 +175,6 @@ namespace DAL
             {
                 return false;
             }
-
             return true;
         }
 

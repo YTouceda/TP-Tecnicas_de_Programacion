@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using DAL;
 using BLL;
 using BLL.EXCEPCIONES;
 using ENTITY;
+using DAL_Modulo3;
 
 namespace BLL
 {
@@ -102,7 +102,7 @@ namespace BLL
         /// <returns>devuelve true si se pudo guardar en la base de datos</returns>
         public static bool GuardarCliente(Cliente objCliente)
         {
-            return ClienteDAL.Alta(objCliente);
+            return ClienteDAL.PersistirCliente(objCliente);
         }
     }
 

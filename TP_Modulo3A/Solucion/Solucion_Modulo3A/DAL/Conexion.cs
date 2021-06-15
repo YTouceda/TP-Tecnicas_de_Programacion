@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace DAL
+namespace DAL_Modulo3
 {
     public class Conexion
     {

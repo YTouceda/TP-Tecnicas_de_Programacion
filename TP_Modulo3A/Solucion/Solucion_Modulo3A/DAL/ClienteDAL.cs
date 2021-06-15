@@ -1,4 +1,5 @@
-﻿using ENTITY;
+﻿using DAL_Modulo3;
+using ENTITY;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace DAL
+namespace DAL_Modulo3
 {
     public class ClienteDAL
     {
@@ -16,10 +17,11 @@ namespace DAL
         /// </summary>
         /// <param name="pCliente">Objeto cliente</param>
         /// <returns>Retorna True si fue exitoso, False si hubo un error</returns>
-        public static bool Alta(Cliente pCliente)
+        public static bool PersistirCliente(Cliente pCliente)
         {
-            //ToDo:las funciones deben retornar true o false
+            //Establesco una conexion con la base de datos
             Conexion objConexion = new Conexion();
+
             bool salida = true;
 
             string query = string.Format("INSERT INTO direccion(altura,calle,codigo_postal,localidad,provincia)VALUES ('{0}','{1}','{2}','{3}','{4}')", pCliente.Direccion.Altura, pCliente.Direccion.Calle, pCliente.Direccion.CodigoPostal, pCliente.Direccion.Localidad, pCliente.Direccion.Provincia);
