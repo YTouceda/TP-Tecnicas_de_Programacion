@@ -8,7 +8,7 @@ using ENTITY;
 
 namespace DAL
 {
-    public class ProductoDAL //CORREGIR STOCK (no esta en la BD) 
+    public class ProductoDAL 
     {
         public static DataTable BuscarProducto(string nombre)
         {

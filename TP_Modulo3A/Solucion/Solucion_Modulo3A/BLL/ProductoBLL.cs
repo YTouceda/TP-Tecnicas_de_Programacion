@@ -13,39 +13,48 @@ namespace BLL
     public class ProductoBLL
     {
         /// <summary>
-        /// Devuelve un datatable desde la bbdd 
+        /// Devuelve un lista de productos desde la bbdd 
         /// </summary>
         /// <param name="nombre">Nombre del producto</param>
-        public static DataTable BuscarProducto(string nombre)
+        public static List<Producto> BuscarProducto(string nombre)
         {
+            List<Producto> ListaProducto = new List<Producto>();//cero una lista de tipo Producto
             if (ProductoDAL.BuscarProducto(nombre) == null)
             {
                 throw new Excepcion_ProductoNoEncontrado();
 
             }
+            System.Data.DataTable objDataTable = ProductoDAL.BuscarProducto(nombre);//guardo el datatable que trajo de la bbdd
+            foreach (DataRow row in objDataTable.Rows)//carga lo de data table a row(que es un data row)
+            {
 
-            System.Data.DataTable objDataTable = ProductoDAL.BuscarProducto(nombre);
-            
+                ListaProducto.Add(ConvertirDeDataTableAObjProducto(row));//se agrega a ListaProducto un producto
 
-            return objDataTable;
+            }
+
+
+
+            return ListaProducto;//devuelve una lista
 
         }
+
+        
+
         /// <summary>
-        /// Convierte una fila del datatable en un objeto producto
+        /// Convierte un datarow en un objeto producto
         /// </summary>
-        /// <param name="objDataTable">DataTable</param>
-        /// <param name="indice">indice de la fila </param>
-        /// <returns>objeto producto (segun la fila)</returns>
-        public static Producto ConvertirDeDataTableAObjProducto(DataTable objDataTable, int indice) 
+        /// <param name="objDatarow">Datarow</param>
+        /// <returns>objeto producto </returns>
+        private static Producto ConvertirDeDataTableAObjProducto(DataRow objDatarow) //recibe un datarow
         {
             Producto objProducto = new Producto();
 
-            objProducto.Nombre = objDataTable.Rows[indice]["NOMBRE_PRODUCTO"].ToString();
-            objProducto.ID = (int)objDataTable.Rows[indice]["ID_PRODUCTO"];
-            objProducto.Categoria = new Categoria(objDataTable.Rows[indice]["CATEGORIA"].ToString());
-            objProducto.PrecioCompra = Convert.ToSingle( objDataTable.Rows[indice]["PRECIO_COMPRA"]);
-            objProducto.PrecioVenta = Convert.ToSingle(objDataTable.Rows[indice]["PRECIO_VENTA"]);
-            objProducto.Stock = (int)objDataTable.Rows[indice]["STOCK"];  
+            objProducto.Nombre = objDatarow["NOMBRE_PRODUCTO"].ToString();
+            objProducto.ID = (int)objDatarow["ID_PRODUCTO"];
+            objProducto.Categoria = new Categoria(objDatarow["CATEGORIA"].ToString());
+            objProducto.PrecioCompra = Convert.ToSingle(objDatarow["PRECIO_COMPRA"]);
+            objProducto.PrecioVenta = Convert.ToSingle(objDatarow["PRECIO_VENTA"]);
+            objProducto.Stock = (int)objDatarow["STOCK"];
             return objProducto;
         }
     }

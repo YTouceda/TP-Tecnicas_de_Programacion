@@ -22,39 +22,39 @@ namespace DAL
             Conexion objConexion = new Conexion();
             bool salida = true;
 
-            string query = string.Format("INSERT INTO DIRECCION(ALTURA,CALLE,CODIGO_POSTAL,LOCALIDAD,PROVINCIA)VALUES ('{0}','{1}','{2}','{3}','{4}')", pCliente.Direccion.Altura, pCliente.Direccion.Calle, pCliente.Direccion.CodigoPostal, pCliente.Direccion.Localidad, pCliente.Direccion.Provincia);
+            string query = string.Format("INSERT INTO direccion(altura,calle,codigo_postal,localidad,provincia)VALUES ('{0}','{1}','{2}','{3}','{4}')", pCliente.Direccion.Altura, pCliente.Direccion.Calle, pCliente.Direccion.CodigoPostal, pCliente.Direccion.Localidad, pCliente.Direccion.Provincia);
 
-            if ( objConexion.EscribirPorComando(query)==-1)
-            {
-                salida = false;
-                return salida;
-            }
-            
-           
-            DataTable objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT ('DIRECCION') AS ID_DIRECCION;");
-
-            query = string.Format("INSERT INTO PERSONA(APELLIDO,DNI,NOMBRE,ID_DIRECCION)VALUES('{0}','{1}','{2}',{3})", pCliente.Apellido, pCliente.DNI, pCliente.Nombre, (objDataTable.Rows[0]["ID_DIRECCION"]));
-            
-            
             if (objConexion.EscribirPorComando(query) == -1)
             {
                 salida = false;
                 return salida;
             }
 
-            objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT('PERSONA') AS ID_PERSONA");
 
-            query =string.Format("INSERT INTO CLIENTE(ID_PERSONA) VALUES({0})", (objDataTable.Rows[0]["ID_PERSONA"]));
-           
-                      
-            if (objConexion.EscribirPorComando( query ) == -1)
+            DataTable objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT ('direccion') AS id_direccion;");
+
+            query = string.Format("INSERT INTO persona(apellido,dni,nombre,id_direccion)VALUES('{0}','{1}','{2}',{3})", pCliente.Apellido, pCliente.DNI, pCliente.Nombre, (objDataTable.Rows[0]["ID_DIRECCION"]));
+
+
+            if (objConexion.EscribirPorComando(query) == -1)
+            {
+                salida = false;
+                return salida;
+            }
+
+            objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT('persona') AS id_persona");
+
+            query = string.Format("INSERT INTO cliente(id_persona) VALUES({0})", (objDataTable.Rows[0]["id_persona"]));
+
+
+            if (objConexion.EscribirPorComando(query) == -1)
             {
                 salida = false;
                 return salida;
             }
 
             return salida;
-     
+
         }
 
         /// <summary>
@@ -68,19 +68,19 @@ namespace DAL
             bool salida = true;
 
 
-            string query = string.Format("UPDATE DIRECCION SET ALTURA = '{0}', CALLE = '{1}', CODIGO_POSTAL = '{2}', LOCALIDAD = '{3}', PROVINCIA = '{4}' WHERE ID_DIRECCION = {0}",mCliente.Direccion.Altura,mCliente.Direccion.Calle,mCliente.Direccion.CodigoPostal,mCliente.Direccion.Localidad,mCliente.Direccion.Provincia) + mCliente.Direccion.ID;
-            
-            
-            if (objconexion.EscribirPorComando(query)==-1)
+            string query = string.Format("UPDATE direccion SET altura = '{0}', calle = '{1}', codigo_postal = '{2}', localidad = '{3}', provincia = '{4}' WHERE id_dreccion = {5}", mCliente.Direccion.Altura, mCliente.Direccion.Calle, mCliente.Direccion.CodigoPostal, mCliente.Direccion.Localidad, mCliente.Direccion.Provincia, mCliente.Direccion.ID);
+
+
+            if (objconexion.EscribirPorComando(query) == -1)
             {
                 salida = false;
                 return salida;
             }
 
-            query = string.Format("UPDATE Persona SET Apellido = '{0}', Dni = '{1}', Nombre = '{2}' WHERE Id_Persona = ",mCliente.Apellido,mCliente.DNI,mCliente.Nombre)+ mCliente.IDPersona;
-           
-            
-            if (objconexion.EscribirPorComando(query)==-1)
+            query = string.Format("UPDATE persona SET apellido = '{0}', dni= '{1}', nombre = '{2}' WHERE id_persona = ", mCliente.Apellido, mCliente.DNI, mCliente.Nombre) + mCliente.IDPersona;
+
+
+            if (objconexion.EscribirPorComando(query) == -1)
             {
                 salida = false;
                 return salida;
@@ -88,42 +88,19 @@ namespace DAL
 
             return salida;
         }
-        /// <summary>
-        /// Comprueba si un cliente ya se encuentra en la base de datos.
-        /// </summary>
-        /// <param name="pCliente">objeto cliente</param>
-        /// <returns></returns>
-        public DataTable BuscarClientesPorID(int Id_Cliente) //ESTO SOLO DEBERIA COMPROBAR QUE EL CLIENTE NO ESTÉ EN LA BD , (PODRIA BUSCAR POR DNI).
-        {
-            
-            Conexion objConexion = new Conexion();
-            string query = string.Format("SELECT C.ID_CLIENTE, P.ID_PERSONA, P.NOMBRE, P.APELLIDO, P.DNI, D.ID_DIRECCION, D.CALLE, D.ALTURA, D.CODIGO_POSTAL, D.LOCALIDAD, D.PROVINCIA FROM CLIENTE C INNER JOIN PERSONA P ON C.ID_PERSONA = P.ID_PERSONA INNER JOIN DIRECCION D ON P.ID_DIRECCION = D.ID_DIRECCION WHERE C.ID_CLIENTE = {0}", Id_Cliente);
-            DataTable objDataTable = objConexion.LeerPorComando(query);
-            if (Convert.ToInt32(objDataTable.Rows[0]["ID_CLIENTE"]) == Id_Cliente) 
-            {
-                return objDataTable;
-            }
-            else
-            {
-                return null;
-
-            }
-
-            
-        }
 
         /// <summary>
         /// Busca un Cliente por DNI
         /// </summary>
         /// <param name="DNI"></param>
         /// <returns>Retorna un DataTable si lo encontro o un null si no existe</returns>
-        public DataTable BuscarClientesPorDNI(string DNI) //ESTO SOLO DEBERIA COMPROBAR QUE EL CLIENTE NO ESTÉ EN LA BD , (PODRIA BUSCAR POR DNI).
+        public static DataTable BuscarClientesPorDNI(string DNI)
         {
 
             Conexion objConexion = new Conexion();
-            string query = string.Format("SELECT C.ID_CLIENTE, P.ID_PERSONA, P.NOMBRE, P.APELLIDO, P.DNI, D.ID_DIRECCION, D.CALLE, D.ALTURA, D.CODIGO_POSTAL, D.LOCALIDAD, D.PROVINCIA FROM CLIENTE C INNER JOIN PERSONA P ON C.ID_PERSONA = P.ID_PERSONA INNER JOIN DIRECCION D ON P.ID_DIRECCION = D.ID_DIRECCION WHERE P.DNI = '{0}'", DNI);
+            string query = string.Format("SELECT C.id_cliente, P.id_persona, P.nombre, P.apellido, P.dni, D.id_direccion, D.calle, D.altura, D.codigo_postal, D.localidad, D.provincia FROM cliente C INNER JOIN persona P ON C.id_cliente = P.id_persona INNER JOIN direccion D ON P.id_direccion = D.id_direccion WHERE P.dni LIKE '%{0}%'", DNI);
             DataTable objDataTable = objConexion.LeerPorComando(query);
-            if ((objDataTable.Rows[0]["DNI"]).ToString() == DNI)
+            if (objDataTable != null)
             {
                 return objDataTable;
             }

@@ -15,7 +15,7 @@ namespace DAL
     {
         private SqlConnection objConexion;
         private string strCadenaDeConexion = "";
-        private SqlTransaction trans; //declaro un property para las transaction
+        
 
         /* -------------------- private void Conectar() ------------ 
          * Este metodo como indica su nombre... me permite conectarme con la 
@@ -24,21 +24,12 @@ namespace DAL
          */
         private void Conectar()
         {
-            strCadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Modulo3_BBDD;Data Source=DESKTOP-I41K9U6\SQLEXPRESS";
+            strCadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=dbTecProg;Data Source=DESKTOP-NE9FIAR\SQLEXPRESS";
 
             //Instanció un objeto del tipo SqlConnection
-            //agregue el rollback
-
             objConexion = new SqlConnection();
-            SqlCommand cmd = new SqlCommand() ;
             objConexion.ConnectionString = strCadenaDeConexion;
-            
-
             objConexion.Open();
-            trans = objConexion.BeginTransaction("Trans");
-            cmd.Transaction = trans;
-            cmd.ExecuteNonQuery();
-            trans.Commit();
         }
 
         /* -------------------- private void Desconectar() ------------ 
@@ -50,6 +41,7 @@ namespace DAL
         {
             objConexion.Close();
             objConexion.Dispose();
+            
         }
 
         public DataTable LeerPorStoreProcedure(string pNombreStoreProcedure, SqlParameter[] pParametrosSql = null)
@@ -168,8 +160,6 @@ namespace DAL
             catch (Exception)
             {
                 filasAfectadas = -1;
-                //si hay un error realizo el Rollback
-                if (trans != null) trans.Rollback();
                 throw;
             }
             finally
@@ -231,7 +221,7 @@ namespace DAL
         }
 
         #region Parametros
-        public SqlParameter crearParametro(string pNombre, string pValor)
+        public SqlParameter CrearParametro(string pNombre, string pValor)
         {
 
             SqlParameter objParametro = new SqlParameter();
@@ -245,7 +235,7 @@ namespace DAL
 
 
 
-        public SqlParameter crearParametro(string pNombre, double pValor)
+        public SqlParameter CrearParametro(string pNombre, double pValor)
         {
 
             SqlParameter objParametro = new SqlParameter();
@@ -258,7 +248,7 @@ namespace DAL
         }
 
 
-        public SqlParameter crearParametro(string pNombre, DateTime pValor)
+        public SqlParameter CrearParametro(string pNombre, DateTime pValor)
         {
 
             SqlParameter objParametro = new SqlParameter();
@@ -271,7 +261,7 @@ namespace DAL
         }
 
 
-        public SqlParameter crearParametro(string pNombre, int pValor)
+        public SqlParameter CrearParametro(string pNombre, int pValor)
         {
 
             SqlParameter objParametro = new SqlParameter();
@@ -284,7 +274,7 @@ namespace DAL
         }
 
 
-        public SqlParameter crearParametro(string pNombre, Boolean pValor)
+        public SqlParameter CrearParametro(string pNombre, Boolean pValor)
         {
 
             SqlParameter objParametro = new SqlParameter();
@@ -299,30 +289,4 @@ namespace DAL
 
 
     }
-
-//Ejemplo para utilizar RollBack
-//    using (SqlConnection connection = new SqlConnection(ConnectionString))
-//{
-//    using (SqlCommand cmd = new SqlCommand(queryString, connection  ))
-//    { 
-//        SqlTransaction trans;
-//        try
-//        {
-//            connection.Open();  
-//            trans = connection.BeginTransaction("Trans");
-//            cmd.Transaction = trans;
-//            cmd.ExecuteNonQuery();
-//            trans.Commit();
-//            return "sukses";
-//        }
-//        catch (Exception ex)
-//{
-//    if trans != null) trans.Rollback();
-//    return ex.Message;
-//}
-//    }
-//}
-
-
-
 }

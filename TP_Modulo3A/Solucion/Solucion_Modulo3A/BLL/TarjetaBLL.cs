@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BLL.EXCEPCIONES;
 
 namespace BLL
 {
@@ -19,11 +20,12 @@ namespace BLL
 		/// </summary>
 		/// <param name="pTarjeta"> Del tipo Entity.Tarjeta</param>
 		/// <returns>Devuelve un bool</returns>
-		public bool ValidarTarjeta(ENTITY.Tarjeta pTarjeta)
+		public static bool ValidarTarjeta(ENTITY.Tarjeta pTarjeta)
 		{
-			if ((pTarjeta.NumeroTarjeta % 2) == 0)
+			long numTarj=Convert.ToInt64(pTarjeta.NumeroTarjeta);
+			if ((numTarj % 2) == 0)
 			{
-				return false;
+				throw new Excepcion_TarjetaInvalida();
 			}
 			return true;
 		}
