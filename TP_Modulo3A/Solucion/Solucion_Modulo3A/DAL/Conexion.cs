@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace DAL_Modulo3
-{
+namespace DAL_Modulo3{
     public class Conexion
     {
         private SqlConnection objConexion;
         private string strCadenaDeConexion = "";
-        
+
 
         /* -------------------- private void Conectar() ------------ 
          * Este metodo como indica su nombre... me permite conectarme con la 
@@ -221,7 +220,7 @@ namespace DAL_Modulo3
         }
 
         #region Parametros
-        public SqlParameter CrearParametro(string pNombre, string pValor)
+        public SqlParameter crearParametro(string pNombre, string pValor)
         {
 
             SqlParameter objParametro = new SqlParameter();
@@ -235,7 +234,7 @@ namespace DAL_Modulo3
 
 
 
-        public SqlParameter CrearParametro(string pNombre, double pValor)
+        public SqlParameter crearParametro(string pNombre, double pValor)
         {
 
             SqlParameter objParametro = new SqlParameter();
@@ -248,7 +247,7 @@ namespace DAL_Modulo3
         }
 
 
-        public SqlParameter CrearParametro(string pNombre, DateTime pValor)
+        public SqlParameter crearParametro(string pNombre, DateTime pValor)
         {
 
             SqlParameter objParametro = new SqlParameter();
@@ -261,7 +260,7 @@ namespace DAL_Modulo3
         }
 
 
-        public SqlParameter CrearParametro(string pNombre, int pValor)
+        public SqlParameter crearParametro(string pNombre, int pValor)
         {
 
             SqlParameter objParametro = new SqlParameter();
@@ -274,7 +273,7 @@ namespace DAL_Modulo3
         }
 
 
-        public SqlParameter CrearParametro(string pNombre, Boolean pValor)
+        public SqlParameter crearParametro(string pNombre, Boolean pValor)
         {
 
             SqlParameter objParametro = new SqlParameter();

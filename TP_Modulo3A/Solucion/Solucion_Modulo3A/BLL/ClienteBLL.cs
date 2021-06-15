@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using BLL;
-using BLL.EXCEPCIONES;
-using ENTITY;
 using DAL_Modulo3;
+using BLL_Modulo3;
+using BLL_Modulo3.EXCEPCIONES;
+using ENTITY;
 
-namespace BLL
+namespace BLL_Modulo3
 {
     public class ClienteBLL
     {
@@ -47,21 +47,21 @@ namespace BLL
         /// <param name="objDataTable">DataTable</param>
         /// <param name="indice">indice de la fila </param>
         /// <returns>objeto Cliente(segun la fila)</returns>
-        private static Cliente ConvertirDeDataTableAObjCliente(DataRow objDataRow)
+        public static Cliente ConvertirDeDataTableAObjCliente(DataRow objDataRow)
         {
             Cliente objCliente = new Cliente();
             Direccion objDireccion = new Direccion();
-            objCliente.ID = (int)objDataRow["ID_CLIENTE"];
-            objCliente.IDPersona = (int)objDataRow["ID_PERSONA"];
-            objCliente.Nombre = (objDataRow["NOMBRE"].ToString());
-            objCliente.Apellido = objDataRow["APELLIDO"].ToString();
-            objCliente.DNI = objDataRow["DNI"].ToString();
-            objDireccion.ID = (int)objDataRow["ID_DIRECCION"];
-            objDireccion.Calle = objDataRow["CALLE"].ToString();
-            objDireccion.Altura = objDataRow["ALTURA"].ToString();
-            objDireccion.CodigoPostal = objDataRow["CODIGO_POSTAL"].ToString();
-            objDireccion.Localidad = objDataRow["LOCALIDAD"].ToString();
-            objDireccion.Provincia = objDataRow["PROVINCIA"].ToString();
+            objCliente.ID = (int)objDataRow["id_cliente"];
+            objCliente.IDPersona = (int)objDataRow["id_persona"];
+            objCliente.Nombre = (objDataRow["nombre"].ToString());
+            objCliente.Apellido = objDataRow["apellido"].ToString();
+            objCliente.DNI = objDataRow["dni"].ToString();
+            objDireccion.ID = (int)objDataRow["id_direccion"];
+            objDireccion.Calle = objDataRow["calle"].ToString();
+            objDireccion.Altura = objDataRow["altura"].ToString();
+            objDireccion.CodigoPostal = objDataRow["codigo_postal"].ToString();
+            objDireccion.Localidad = objDataRow["localidad"].ToString();
+            objDireccion.Provincia = objDataRow["provincia"].ToString();
             objCliente.Direccion = objDireccion;
             return objCliente;
 

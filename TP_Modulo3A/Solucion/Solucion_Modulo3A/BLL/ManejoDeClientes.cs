@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL;
+using DAL_Modulo3;
 using ENTITY;
 
-namespace BLL
+namespace BLL_Modulo3
 {
     class ManejoDeClientes
     {
@@ -15,7 +15,7 @@ namespace BLL
         {
             Cliente objCliente = new Cliente();
 
-            ClienteDAL.Alta(objCliente);
+            ClienteDAL.PersistirCliente(objCliente);
             return objCliente;
 
         }
