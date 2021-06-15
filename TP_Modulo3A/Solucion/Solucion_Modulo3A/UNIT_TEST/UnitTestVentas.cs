@@ -54,7 +54,7 @@ namespace UNIT_TEST
             bool datoEsperado = true;
             DetalleOrden unDetalleOrden = new DetalleOrden();
             OrdenDeVenta objOrdenDeVenta = new OrdenDeVenta();
-            List<Producto> ListaProducto = BLL.ProductoBLL.BuscarProducto("Lavandina");
+            List<Producto> ListaProducto = BLL.ProductoBLL.BuscarProducto("Vino");
             List<DetalleOrden> ListaDetalles = new List<DetalleOrden>();
             Tarjeta objTarjeta = new Tarjeta();
             Usuario unUSuario = new Usuario();

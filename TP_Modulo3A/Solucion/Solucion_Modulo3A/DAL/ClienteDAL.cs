@@ -97,7 +97,7 @@ namespace DAL
         {
 
             Conexion objConexion = new Conexion();
-            string query = string.Format("SELECT C.id_cliente, P.id, P.nombre, P.apellido, P.dni, D.id, D.calle, D.altura, D.codigo_postal, D.localidad, D.provincia FROM cliente C INNER JOIN persona P ON C.id_cliente = P.id INNER JOIN direccion D ON P.id_direccion = D.id WHERE P.dni LIKE '%{0}%'", DNI);
+            string query = string.Format("SELECT C.id_cliente, P.nombre, P.apellido, P.dni, D.id, D.calle, D.altura, D.codigo_postal, D.localidad, D.provincia FROM cliente C INNER JOIN persona P ON C.id_cliente = P.id INNER JOIN direccion D ON P.id_direccion = D.id WHERE P.dni = {0}", DNI);
             DataTable objDataTable = objConexion.LeerPorComando(query);
             if (objDataTable != null)
             {
