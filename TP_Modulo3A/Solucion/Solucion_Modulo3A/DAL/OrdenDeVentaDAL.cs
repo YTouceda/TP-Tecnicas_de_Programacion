@@ -13,7 +13,6 @@ namespace DAL_Modulo3
     public class OrdenDeVentaDAL
     {
         
-
         public static DataTable BuscarVentasPorLegajo(int legajo)
         {
             Conexion objConexion = new Conexion();

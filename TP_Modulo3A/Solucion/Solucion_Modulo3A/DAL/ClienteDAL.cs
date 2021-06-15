@@ -19,46 +19,40 @@ namespace DAL_Modulo3
         /// <returns>Retorna True si fue exitoso, False si hubo un error</returns>
         public static bool PersistirCliente(Cliente pCliente)
         {
-            //Establesco una conexion con la base de datos
             Conexion objConexion = new Conexion();
-
-            bool salida = true;
-
-            string query = string.Format("INSERT INTO direccion(altura,calle,codigo_postal,localidad,provincia)VALUES ('{0}','{1}','{2}','{3}','{4}')", pCliente.Direccion.Altura, pCliente.Direccion.Calle, pCliente.Direccion.CodigoPostal, pCliente.Direccion.Localidad, pCliente.Direccion.Provincia);
-
-            if (objConexion.EscribirPorComando(query) == -1)
+            //creo todos los parametros que necesita el procedimiento almacenado 
+            SqlParameter[] parametros =
             {
-                salida = false;
-                return salida;
-            }
+                new SqlParameter("@calle",SqlDbType.NVarChar ,50),
+                new SqlParameter("@altura",SqlDbType.NVarChar,50),
+                new SqlParameter("@localidad",SqlDbType.NVarChar,50),
+                new SqlParameter("@codigo_postal",SqlDbType.NVarChar,50),
+                new SqlParameter("@provincia",SqlDbType.NVarChar,50),
+                new SqlParameter("@apellido",SqlDbType.NVarChar,50),
+                new SqlParameter("@nombre",SqlDbType.NVarChar,50),
+                new SqlParameter("@dni", SqlDbType.Int)
+            };
 
+            //Asigno los valores
+            parametros[0].Value = pCliente.Direccion.Calle;
+            parametros[1].Value = pCliente.Direccion.Altura;
+            parametros[2].Value = pCliente.Direccion.Localidad;
+            parametros[3].Value = pCliente.Direccion.CodigoPostal;
+            parametros[4].Value = pCliente.Direccion.Provincia;
+            parametros[5].Value = pCliente.Apellido;
+            parametros[6].Value = pCliente.Nombre;
+            parametros[7].Value = pCliente.DNI;
 
-            DataTable objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT ('direccion') AS id_direccion;");
-
-            query = string.Format("INSERT INTO persona(apellido,dni,nombre,id_direccion)VALUES('{0}','{1}','{2}',{3})", pCliente.Apellido, pCliente.DNI, pCliente.Nombre, (objDataTable.Rows[0]["ID_DIRECCION"]));
-
-
-            if (objConexion.EscribirPorComando(query) == -1)
+            string query = "SELECT IDENT_CURRENT ('orden') AS id_orden";
+            DataTable objDataTable = objConexion.LeerPorComando(query);
+            int idOrden = Convert.ToInt32(objDataTable.Rows[0]["id_orden"]);
+            if (objConexion.EscribirPorStoreProcedure("sp_almacenar_cliente", parametros) != 3)
             {
-                salida = false;
-                return salida;
+                return false;
             }
-
-            objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT('persona') AS id_persona");
-
-            query = string.Format("INSERT INTO cliente(id_persona) VALUES({0})", (objDataTable.Rows[0]["id_persona"]));
-
-
-            if (objConexion.EscribirPorComando(query) == -1)
-            {
-                salida = false;
-                return salida;
-            }
-
-            return salida;
-
+            return true;
         }
-
+        
         /// <summary>
         /// Modifica un Cliente
         /// </summary>
