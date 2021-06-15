@@ -4,12 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.EXCEPCIONES
+namespace BLL_Modulo3.EXCEPCIONES
 {
     class Excepcion_ProductoNoEncontrado : ExcepcionesNegocio
     {
-        public Excepcion_ProductoNoEncontrado(){
-        this.Descripcion = "No se encontró el producto";
-         }
+        public Excepcion_ProductoNoEncontrado()
+        {
+        
+            
+            this.Descripcion = "No se encontró el producto";
+         
+        
+        }
     }
 }

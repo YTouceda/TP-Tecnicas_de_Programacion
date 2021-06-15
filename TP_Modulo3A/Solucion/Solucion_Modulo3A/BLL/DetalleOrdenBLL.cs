@@ -4,10 +4,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BLL.EXCEPCIONES;
+using BLL_Modulo3.EXCEPCIONES;
+using DAL_Modulo3;
 using ENTITY;
 
-namespace BLL
+namespace BLL_Modulo3
 {
     public class DetalleOrdenBLL
     {
@@ -18,9 +19,9 @@ namespace BLL
         {
             DetalleOrden unDetalle = new DetalleOrden();
 
-            unDetalle.Producto.PrecioVenta = (float)objDataRow["P.PRECIO_VENTA"];
-            unDetalle.Cantidad = Convert.ToInt32(objDataRow["O.USUARIO_CREADOR"]);
-            unDetalle.Producto.Nombre = objDataRow["PRODUCTO"].ToString();
+            unDetalle.Producto.PrecioVenta = (float)objDataRow["p.precio_venta"];
+            unDetalle.Cantidad = Convert.ToInt32(objDataRow["o._usuario_creador"]);
+            unDetalle.Producto.Nombre = objDataRow["producto"].ToString();
 
             return unDetalle;
         }

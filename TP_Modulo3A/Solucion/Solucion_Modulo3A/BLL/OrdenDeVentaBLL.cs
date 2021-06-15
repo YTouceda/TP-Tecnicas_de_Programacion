@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ENTITY;
-using System.Data;
-using BLL.EXCEPCIONES;
 using DAL_Modulo3;
+using System.Data;
+using BLL_Modulo3.EXCEPCIONES;
 
-namespace BLL
+namespace BLL_Modulo3
 {
     public class OrdenDeVentaBLL
     {
@@ -53,7 +53,7 @@ namespace BLL
 
             }
 
-            System.Data.DataTable objDataTable = DAL_Modulo3.OrdenDeVentaDAL.BuscarVentasPorLegajo(legajo);          //guardo el datatable que trajo de la bbdd
+            System.Data.DataTable objDataTable = OrdenDeVentaDAL.BuscarVentasPorLegajo(legajo);          //guardo el datatable que trajo de la bbdd
             foreach (DataRow row in objDataTable.Rows) //carga lo de data table a row(que es un data row)
             {
 
@@ -81,7 +81,7 @@ namespace BLL
 
             }
 
-            System.Data.DataTable objDataTable = DAL_Modulo3.OrdenDeVentaDAL.BuscarVentasPorMes(mes , año);          //guardo el datatable que trajo de la bbdd
+            System.Data.DataTable objDataTable = OrdenDeVentaDAL.BuscarVentasPorMes(mes , año);          //guardo el datatable que trajo de la bbdd
             foreach (DataRow row in objDataTable.Rows) //carga lo de data table a row(que es un data row)
             {
 
@@ -109,18 +109,18 @@ namespace BLL
             Efectivo objEfectivo = new Efectivo();
             
 
-            unaVenta.ID = (int)objDataRow["ID_ORDEN"];
-            unaVenta.Fecha = Convert.ToDateTime(objDataRow["FECHA"]);
-            unUsuario.Legajo = (int)objDataRow["LEGAJO_VENDEDOR"];
+            unaVenta.ID = (int)objDataRow["id_orden"];
+            unaVenta.Fecha = Convert.ToDateTime(objDataRow["fecha"]);
+            unUsuario.Legajo = (int)objDataRow["legajo_vendedor"];
 
-            if (objDataRow["metodo_pago"].ToString() == "EFECTIVO")
+            if (objDataRow["metodo_pago"].ToString() == "efectivo")
             {
-                objEfectivo.TipoMetodoDePago = "EFECTIVO";
+                objEfectivo.TipoMetodoDePago = "efectivo";
                 unaVenta.MetodoDePago = objEfectivo;
             }
-            else if (objDataRow["metodo_pago"].ToString() == "TARJETA")
+            else if (objDataRow["metodo_pago"].ToString() == "tarjeta")
             {
-                objTarjeta.TipoMetodoDePago = "TARJETA";
+                objTarjeta.TipoMetodoDePago = "tarjeta";
                 unaVenta.MetodoDePago = objTarjeta;
             }
             else
@@ -144,7 +144,7 @@ namespace BLL
         /// </summary>
         /// <param name="mes">Numero del mes a buscar.</param>
         /// <returns>Devuelve una lista de orden venta</returns>
-        public static List<OrdenDeVenta> GenerarReporteDeVentasPorSemana(DateTime fecha)
+        public static List<OrdenDeVenta> GenerarReporteDeVentasPorSemana(DateTime fecha )
         {
             DateTime fecha2;
             fecha2 = fecha.AddDays(7);
@@ -155,7 +155,7 @@ namespace BLL
 
             }
 
-            System.Data.DataTable objDataTable = DAL_Modulo3.OrdenDeVentaDAL.BuscarVentasPorSemana(fecha,fecha2);          //guardo el datatable que trajo de la bbdd
+            System.Data.DataTable objDataTable = OrdenDeVentaDAL.BuscarVentasPorSemana(fecha,fecha2);          //guardo el datatable que trajo de la bbdd
             foreach (DataRow row in objDataTable.Rows) //carga lo de data table a row(que es un data row)
             {
 
