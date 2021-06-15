@@ -20,7 +20,6 @@ namespace ENTITY
 		private Direccion _direccion;
 		private int _dni;
 		private string _nombre;
-        private int _id_persona;
 
 
         public Persona(int _id_persona ,string apellido, Direccion direccion, int dni, string nombre){
@@ -28,7 +27,6 @@ namespace ENTITY
 			this.Direccion = direccion;
 			this.DNI = dni;
 			this.Nombre = nombre;
-			this.IDPersona = _id_persona;
 		}
 
 		public Persona()
@@ -36,11 +34,6 @@ namespace ENTITY
 
 		}
 
-        public int IDPersona
-        {
-            get { return _id_persona; }
-            set { _id_persona = value; }
-        }
 
 		public string Apellido{
 			get;

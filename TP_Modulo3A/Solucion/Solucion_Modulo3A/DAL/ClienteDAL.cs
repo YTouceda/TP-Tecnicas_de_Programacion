@@ -70,7 +70,7 @@ namespace DAL_Modulo3
                 return salida;
             }
 
-            query = string.Format("UPDATE persona SET apellido = '{0}', dni= '{1}', nombre = '{2}' WHERE id_persona = ", mCliente.Apellido, mCliente.DNI, mCliente.Nombre) + mCliente.IDPersona;
+            query = string.Format("UPDATE persona SET apellido = '{0}', dni= '{1}', nombre = '{2}' WHERE id_persona = ", mCliente.Apellido, mCliente.DNI, mCliente.Nombre) + mCliente.ID;
 
 
             if (objconexion.EscribirPorComando(query) == -1)
