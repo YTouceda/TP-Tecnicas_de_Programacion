@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BLL.EXCEPCIONES;
+using BLL_Modulo3.EXCEPCIONES;
 using DAL;
 using ENTITY;
 
-namespace BLL
+namespace BLL_Modulo3
 {
     public class ProductoBLL
     {
@@ -49,12 +49,12 @@ namespace BLL
         {
             Producto objProducto = new Producto();
 
-            objProducto.Nombre = objDatarow["NOMBRE_PRODUCTO"].ToString();
-            objProducto.ID = (int)objDatarow["ID_PRODUCTO"];
-            objProducto.Categoria = new Categoria(objDatarow["CATEGORIA"].ToString());
-            objProducto.PrecioCompra = Convert.ToSingle(objDatarow["PRECIO_COMPRA"]);
-            objProducto.PrecioVenta = Convert.ToSingle(objDatarow["PRECIO_VENTA"]);
-            objProducto.Stock = (int)objDatarow["STOCK"];
+            objProducto.Nombre = objDatarow["nombre_producto"].ToString();
+            objProducto.ID = (int)objDatarow["id_producto"];
+            objProducto.Categoria = new Categoria(objDatarow["categoria"].ToString());
+            objProducto.PrecioCompra = Convert.ToSingle(objDatarow["precio_compra"]);
+            objProducto.PrecioVenta = Convert.ToSingle(objDatarow["precio_venta"]);
+            objProducto.Stock = (int)objDatarow["stock"];
             return objProducto;
         }
     }

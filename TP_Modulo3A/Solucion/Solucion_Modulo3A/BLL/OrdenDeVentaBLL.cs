@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using ENTITY;
 using DAL;
 using System.Data;
-using BLL.EXCEPCIONES;
+using BLL_Modulo3.EXCEPCIONES;
 
-namespace BLL
+namespace BLL_Modulo3
 {
     public class OrdenDeVentaBLL
     {
@@ -109,18 +109,18 @@ namespace BLL
             Efectivo objEfectivo = new Efectivo();
             
 
-            unaVenta.ID = (int)objDataRow["ID_ORDEN"];
-            unaVenta.Fecha = Convert.ToDateTime(objDataRow["FECHA"]);
-            unUsuario.Legajo = (int)objDataRow["LEGAJO_VENDEDOR"];
+            unaVenta.ID = (int)objDataRow["id_orden"];
+            unaVenta.Fecha = Convert.ToDateTime(objDataRow["fecha"]);
+            unUsuario.Legajo = (int)objDataRow["legajo_vendedor"];
 
-            if (objDataRow["metodo_pago"].ToString() == "EFECTIVO")
+            if (objDataRow["metodo_pago"].ToString() == "efectivo")
             {
-                objEfectivo.TipoMetodoDePago = "EFECTIVO";
+                objEfectivo.TipoMetodoDePago = "efectivo";
                 unaVenta.MetodoDePago = objEfectivo;
             }
-            else if (objDataRow["metodo_pago"].ToString() == "TARJETA")
+            else if (objDataRow["metodo_pago"].ToString() == "tarjeta")
             {
-                objTarjeta.TipoMetodoDePago = "TARJETA";
+                objTarjeta.TipoMetodoDePago = "tarjeta";
                 unaVenta.MetodoDePago = objTarjeta;
             }
             else

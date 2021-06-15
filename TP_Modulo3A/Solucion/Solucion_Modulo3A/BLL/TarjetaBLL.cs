@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BLL.EXCEPCIONES;
+using BLL_Modulo3.EXCEPCIONES;
 
-namespace BLL
+namespace BLL_Modulo3
 {
 	public class TarjetaBLL
 	{

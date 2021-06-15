@@ -54,7 +54,6 @@
     <Compile Include="EXCEPCIONES\Excepcion_TarjetaInvalida.cs" />
     <Compile Include="EXCEPCIONES\Excepcion_VentaNoGuardada.cs" />
     <Compile Include="ManejoDeClientes.cs" />
-    <Compile Include="MetodoDePagoBLL.cs" />
     <Compile Include="OrdenDeVentaBLL.cs" />
     <Compile Include="ProductoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

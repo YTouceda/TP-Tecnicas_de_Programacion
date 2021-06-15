@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{BD730A47-A93F-4A4C-8CD1-9E56E42A1EEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL_Modulo3", "BLL\BLL_Modulo3.csproj", "{BD730A47-A93F-4A4C-8CD1-9E56E42A1EEA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{BE2B286C-0D3F-495A-90FC-BCED3B686B7B}"
 EndProject

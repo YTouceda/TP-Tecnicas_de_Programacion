@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.EXCEPCIONES
+namespace BLL_Modulo3.EXCEPCIONES
 {
     class Excepcion_VentaNoGuardada : ExcepcionesNegocio
     {
