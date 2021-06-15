@@ -60,9 +60,9 @@
     <Compile Include="TarjetaBLL.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj">
+    <ProjectReference Include="..\DAL\DAL_Modulo3.csproj">
       <Project>{be2b286c-0d3f-495a-90fc-bced3b686b7b}</Project>
-      <Name>DAL</Name>
+      <Name>DAL_Modulo3</Name>
     </ProjectReference>
     <ProjectReference Include="..\ENTITY\ENTITY.csproj">
       <Project>{4b9a310e-40ea-48a9-ae1f-49ef81accbbe}</Project>

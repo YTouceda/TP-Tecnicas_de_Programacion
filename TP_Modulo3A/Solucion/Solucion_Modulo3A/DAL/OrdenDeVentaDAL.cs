@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 
 
-namespace DAL
+namespace DAL_Modulo3
 {
     public class OrdenDeVentaDAL
     {
-        
+
 
         public static DataTable BuscarVentasPorLegajo(int legajo)
         {
@@ -21,26 +21,25 @@ namespace DAL
             SqlParameter[] parametros =
             {
                 new SqlParameter("@legajo",SqlDbType.Int)
-                
+
                };
 
             parametros[0].Value = legajo;
-            
-            
 
-            DataTable objDataTable = objConexion.LeerPorStoreProcedure("reporteventasporlegajo",parametros);
-            if ((int)objDataTable.Rows[0]["legajo_vendedor"] == legajo) 
+
+
+            DataTable objDataTable = objConexion.LeerPorStoreProcedure("sp_reporteventasporlegajo", parametros);
+            if ((int)objDataTable.Rows[0]["legajo_vendedor"] == legajo)
             {
                 return objDataTable;
             }
             else
             {
                 return null;
-
             }
 
-        
-        
+
+
         }
 
 
@@ -50,7 +49,7 @@ namespace DAL
         /// <param name="mes">Numero de mes</param>
         /// <param name="año">año xd</param>
         /// <returns>Devuelve un DataTable con el reporte de ventas.</returns>
-        public static DataTable BuscarVentasPorMes(int mes , int año)
+        public static DataTable BuscarVentasPorMes(int mes, int año)
         {
             Conexion objConexion = new Conexion();
 
@@ -66,8 +65,8 @@ namespace DAL
 
 
 
-            DataTable objDataTable = objConexion.LeerPorStoreProcedure("reporteventaspormes", parametros);
-            if (Convert.ToDateTime( objDataTable.Rows[0]["fecha"]).Month == mes || Convert.ToDateTime(objDataTable.Rows[0]["año"]).Year == año)
+            DataTable objDataTable = objConexion.LeerPorStoreProcedure("sp_reporteventaspormes", parametros);
+            if (Convert.ToDateTime(objDataTable.Rows[0]["fecha"]).Month == mes || Convert.ToDateTime(objDataTable.Rows[0]["año"]).Year == año)
             {
                 return objDataTable;
             }
@@ -84,7 +83,7 @@ namespace DAL
         /// </summary>
         /// <param name="semana"></param>
         /// <returns></returns>
-        public static DataTable BuscarVentasPorSemana(DateTime fecha , DateTime fecha2 )
+        public static DataTable BuscarVentasPorSemana(DateTime fecha, DateTime fecha2)
         {
 
             Conexion objConexion = new Conexion();
@@ -100,8 +99,8 @@ namespace DAL
 
 
 
-            DataTable objDataTable = objConexion.LeerPorStoreProcedure("reporteventasporsemana", parametros);
-            DateTime aux = DateTime.Now; 
+            DataTable objDataTable = objConexion.LeerPorStoreProcedure("sp_reporteventasporsemana", parametros);
+            DateTime aux = DateTime.Now;
             if (Convert.ToDateTime(objDataTable.Rows[0]["fecha"]).GetType() == aux.GetType()) //Valida que devuelva un valor valido el datatable
             {
                 return objDataTable;
@@ -114,7 +113,7 @@ namespace DAL
 
         }
 
-        SqlTransaction transaction;
+        //SqlTransaction transaction;
 
         /// <summary>
         /// Guarda una orden de venta en la base de datos.
@@ -124,49 +123,58 @@ namespace DAL
         public static bool PersistirVenta(OrdenDeVenta unaOrdenDeVenta)
         {
             Conexion objConexion = new Conexion();
-            SqlParameter[] parametros =
-            {
-                new SqlParameter("@tipoMetodoDePago" ,SqlDbType.VarChar, 50),
-                new SqlParameter("@legajo",SqlDbType.Int),
-                new SqlParameter("@fecha",SqlDbType.DateTime),
-                new SqlParameter("@cvc" ,SqlDbType.VarChar, 50),
-                new SqlParameter("@fechaVencimiento" ,SqlDbType.VarChar, 50),
-                new SqlParameter("@nombreTarjeta" ,SqlDbType.VarChar, 50),
-                new SqlParameter("@nroTarjeta",SqlDbType.VarChar,16),
-            };
-          
-            parametros[0].Value = unaOrdenDeVenta.MetodoDePago.TipoMetodoDePago;
-            parametros[1].Value = unaOrdenDeVenta.UsuarioCreador.Legajo;
-            parametros[2].Value = unaOrdenDeVenta.Fecha;
             Tarjeta unaTarjeta = new Tarjeta();
-            if (unaOrdenDeVenta.MetodoDePago.GetType() == unaTarjeta.GetType())
+            int cantFilas = 1;
+            if (unaOrdenDeVenta.MetodoDePago.GetType() == unaTarjeta.GetType()) // verifico si el metodo de pago es tarjeta, para llamar al procedimiento almacenado de venta con tarjeta
             {
-                unaTarjeta = (Tarjeta)unaOrdenDeVenta.MetodoDePago;
-                parametros[3].Value = unaTarjeta.CVC;
-                parametros[4].Value = unaTarjeta.FechaVencimiento;
-                parametros[5].Value = unaTarjeta.NombreTarjeta;
-                parametros[6].Value = unaTarjeta.NumeroTarjeta;
+                //creo todos los parametros que necesita el procedimiento almacenado 
+                SqlParameter[] parametros =
+                {
+                    new SqlParameter("@tipoMetodoDePago" ,SqlDbType.VarChar, 50),
+                    new SqlParameter("@legajo",SqlDbType.Int),
+                    new SqlParameter("@fecha",SqlDbType.DateTime),
+                    new SqlParameter("@cvc" ,SqlDbType.VarChar, 50),
+                    new SqlParameter("@fechaVencimiento" ,SqlDbType.VarChar, 50),
+                    new SqlParameter("@nombreTarjeta" ,SqlDbType.VarChar, 50),
+                    new SqlParameter("@nroTarjeta",SqlDbType.VarChar,16),
+                };
+
+                //Asigno los valores
+                parametros[0].Value = unaOrdenDeVenta.MetodoDePago.TipoMetodoDePago;
+                parametros[1].Value = unaOrdenDeVenta.UsuarioCreador.Legajo;
+                parametros[2].Value = unaOrdenDeVenta.Fecha;
+                parametros[3].Value = unaOrdenDeVenta.Cliente.ID;
+                parametros[4].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).CVC;
+                parametros[5].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).FechaVencimiento;
+                parametros[6].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).NombreTarjeta;
+                parametros[7].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).NumeroTarjeta;
+                cantFilas = objConexion.EscribirPorStoreProcedure("sp_almacenar_venta_tarjeta", parametros);
             }
-            else
+            else // si el metodo de pago es efectivo, llama al procedimiento almacenado de venta con efectivo
             {
-                parametros[3].Value = "-";
-                parametros[4].Value = "-";
-                parametros[5].Value = "-";
-                parametros[6].Value = 0;
+                //creo todos los parametros que necesita el procedimiento almacenado 
+                SqlParameter[] parametros =
+                {
+                    new SqlParameter("@tipoMetodoDePago" ,SqlDbType.VarChar, 50),
+                    new SqlParameter("@legajo",SqlDbType.Int),
+                    new SqlParameter("@fecha",SqlDbType.DateTime),
+                    new SqlParameter("@idCliente",SqlDbType.Int),
+                };
+                //Asigno los valores
+                parametros[0].Value = unaOrdenDeVenta.MetodoDePago.TipoMetodoDePago;
+                parametros[1].Value = unaOrdenDeVenta.UsuarioCreador.Legajo;
+                parametros[2].Value = unaOrdenDeVenta.Fecha;
+                parametros[3].Value = unaOrdenDeVenta.Cliente.ID;
+                cantFilas = objConexion.EscribirPorStoreProcedure("sp_almacenar_venta_efectivo", parametros);
             }
-            int cantFilas = objConexion.EscribirPorStoreProcedure("sp_ALMACENAR_VENTA", parametros);
-            string query = "SELECT IDENT_CURRENT ('ORDEN') AS ID_ORDEN";
+
+            string query = "SELECT IDENT_CURRENT ('orden') AS id_orden";
             DataTable objDataTable = objConexion.LeerPorComando(query);
-            int idOrden = Convert.ToInt32(objDataTable.Rows[0]["ID_ORDEN"]);
-            if((!DetalleOrdenDAL.GuardarDetalles(unaOrdenDeVenta.Detalles,idOrden))|| cantFilas < 3 || cantFilas > 4) 
+            int idOrden = Convert.ToInt32(objDataTable.Rows[0]["id_orden"]);
+            if ((!DetalleOrdenDAL.GuardarDetalles(unaOrdenDeVenta.Detalles, idOrden)) || cantFilas < 2 || cantFilas > 3)
             {
-
-                
                 return false;
-                
-                
             }
-
             return true;
         }
 

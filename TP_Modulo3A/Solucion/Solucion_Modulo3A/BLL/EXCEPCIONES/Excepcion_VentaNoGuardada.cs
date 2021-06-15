@@ -1,4 +1,4 @@
-﻿using BLL.EXCEPCIONES;
+﻿using BLL_Modulo3.EXCEPCIONES;
 using System;
 using System.Collections.Generic;
 using System.Linq;

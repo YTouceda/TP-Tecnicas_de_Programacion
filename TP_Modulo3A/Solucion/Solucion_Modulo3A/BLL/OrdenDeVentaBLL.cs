@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ENTITY;
-using DAL;
+using DAL_Modulo3;
 using System.Data;
 using BLL_Modulo3.EXCEPCIONES;
 
@@ -53,7 +53,7 @@ namespace BLL_Modulo3
 
             }
 
-            System.Data.DataTable objDataTable = DAL.OrdenDeVentaDAL.BuscarVentasPorLegajo(legajo);          //guardo el datatable que trajo de la bbdd
+            System.Data.DataTable objDataTable = OrdenDeVentaDAL.BuscarVentasPorLegajo(legajo);          //guardo el datatable que trajo de la bbdd
             foreach (DataRow row in objDataTable.Rows) //carga lo de data table a row(que es un data row)
             {
 
@@ -81,7 +81,7 @@ namespace BLL_Modulo3
 
             }
 
-            System.Data.DataTable objDataTable = DAL.OrdenDeVentaDAL.BuscarVentasPorMes(mes , año);          //guardo el datatable que trajo de la bbdd
+            System.Data.DataTable objDataTable = OrdenDeVentaDAL.BuscarVentasPorMes(mes , año);          //guardo el datatable que trajo de la bbdd
             foreach (DataRow row in objDataTable.Rows) //carga lo de data table a row(que es un data row)
             {
 
@@ -155,7 +155,7 @@ namespace BLL_Modulo3
 
             }
 
-            System.Data.DataTable objDataTable = DAL.OrdenDeVentaDAL.BuscarVentasPorSemana(fecha,fecha2);          //guardo el datatable que trajo de la bbdd
+            System.Data.DataTable objDataTable = OrdenDeVentaDAL.BuscarVentasPorSemana(fecha,fecha2);          //guardo el datatable que trajo de la bbdd
             foreach (DataRow row in objDataTable.Rows) //carga lo de data table a row(que es un data row)
             {
 

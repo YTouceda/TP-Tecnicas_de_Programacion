@@ -6,19 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using ENTITY;
 
-namespace DAL
+namespace DAL_Modulo3
 {
-    public class ProductoDAL 
+    public class ProductoDAL
     {
         public static DataTable BuscarProducto(string nombre)
         {
             Conexion objConexion = new Conexion();
 
-            string query = string.Format("SELECT P.ID_PRODUCTO, P.NOMBRE AS NOMBRE_PRODUCTO, P.PRECIO_COMPRA, P.PRECIO_VENTA, P.STOCK, C.NOMBRE AS CATEGORIA FROM PRODUCTO P INNER JOIN CATEGORIA C ON P.ID_CATEGORIA = C.ID_CATEGORIA WHERE P.NOMBRE LIKE '%{0}%'", nombre);
+            string query = string.Format("SELECT P.id_producto, P.nombre AS nombre_producto, P.precio_compra, P.precio_venta, P.stock, C.nombre AS categoria FROM producto P INNER JOIN categoria C ON P.id_categoria = C.ID_CATEGORIA WHERE P.NOMBRE LIKE '%{0}%'", nombre);
 
-            if (objConexion.LeerPorComando(query)!=null)
+            if (objConexion.LeerPorComando(query) != null)
             {
-            DataTable objDataTable = objConexion.LeerPorComando(query);
+                DataTable objDataTable = objConexion.LeerPorComando(query);
                 return objDataTable;
             }
             return null; //Agregar excepcion (no se encontro el producto)

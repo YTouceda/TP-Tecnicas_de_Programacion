@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using DAL;
+using DAL_Modulo3;
 using BLL_Modulo3;
 using BLL_Modulo3.EXCEPCIONES;
 using ENTITY;
@@ -100,9 +100,9 @@ namespace BLL_Modulo3
         /// </summary>
         /// <param name="objCliente">Cliente objCliente</param>
         /// <returns>devuelve true si se pudo guardar en la base de datos</returns>
-        public bool GuardarCliente(Cliente objCliente)
+        public static bool GuardarCliente(Cliente objCliente)
         {
-            return ClienteDAL.Alta(objCliente);
+            return ClienteDAL.PersistirCliente(objCliente);
         }
     }
 

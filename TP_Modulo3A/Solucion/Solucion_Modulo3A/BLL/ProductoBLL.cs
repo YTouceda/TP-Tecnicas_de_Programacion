@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BLL_Modulo3.EXCEPCIONES;
-using DAL;
+using DAL_Modulo3;
 using ENTITY;
 
 namespace BLL_Modulo3

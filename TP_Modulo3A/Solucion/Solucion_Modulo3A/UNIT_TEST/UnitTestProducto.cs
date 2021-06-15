@@ -1,10 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using BLL;
+using BLL_Modulo3;
 using System.Data;
 using ENTITY;
-using DAL;
+using DAL_Modulo3;
 using System.Collections.Generic;
+using Xunit.Sdk;
 
 namespace UNIT_TEST
 {
@@ -20,7 +21,7 @@ namespace UNIT_TEST
         public void TestConvertirDTAObjProducto()
         {
             string nombre_esperado = "Lavandina";
-            List<Producto> ListaProducto = BLL.ProductoBLL.BuscarProducto("Lavandina");//pasa por parametros el producto a buscar y devuelve una lista de productos
+            List<Producto> ListaProducto = ProductoBLL.BuscarProducto("Lavandina");//pasa por parametros el producto a buscar y devuelve una lista de productos
 
             Producto objProducto = ListaProducto[0];
 
