@@ -72,12 +72,12 @@ namespace UNIT_TEST_Modulo3
             objOrdenDeVenta.Detalles = ListaDetalles;
 
             objOrdenDeVenta.MetodoDePago = objTarjeta;
-            List<Cliente> Clientes = ClienteBLL.BuscarClientesPorDNI("38567566");
+            List<Cliente> Clientes = ClienteBLL.BuscarClientesPorDNI("23564500");
 
             Cliente ObjCliente = Clientes[0];
             objOrdenDeVenta.Cliente = ObjCliente;
 
-            unUSuario.Legajo = 1;
+            unUSuario.ID = 1;
             objOrdenDeVenta.UsuarioCreador = unUSuario;
             Assert.AreEqual(datoEsperado, OrdenDeVentaBLL.GuardaOrdenVenta(objOrdenDeVenta));
         }

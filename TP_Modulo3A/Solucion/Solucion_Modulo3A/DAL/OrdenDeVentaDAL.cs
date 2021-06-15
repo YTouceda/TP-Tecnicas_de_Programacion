@@ -130,7 +130,7 @@ namespace DAL_Modulo3
                 SqlParameter[] parametros = 
                 {
                     new SqlParameter("@tipoMetodoDePago" ,SqlDbType.VarChar, 50),
-                    new SqlParameter("@legajo",SqlDbType.Int),
+                    new SqlParameter("@idPersona",SqlDbType.Int),
                     new SqlParameter("@fecha",SqlDbType.DateTime),
                     new SqlParameter("@idCliente",SqlDbType.Int),
                     new SqlParameter("@cvc" ,SqlDbType.VarChar, 50),
@@ -141,7 +141,7 @@ namespace DAL_Modulo3
 
                 //Asigno los valores
                 parametros[0].Value = unaOrdenDeVenta.MetodoDePago.TipoMetodoDePago;
-                parametros[1].Value = unaOrdenDeVenta.UsuarioCreador.Legajo;
+                parametros[1].Value = unaOrdenDeVenta.UsuarioCreador.ID;
                 parametros[2].Value = unaOrdenDeVenta.Fecha;
                 parametros[3].Value = unaOrdenDeVenta.Cliente.ID;
                 parametros[4].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).CVC;
