@@ -17,10 +17,10 @@ namespace UNIT_TEST_Modulo3
         /// prueba crear una lista de clientes
         /// </summary>
         [TestMethod]
-        public void TestConvertirDTAObjProducto()
+        public void TestBuscarProducto()
         {
             string nombre_esperado = "Lavandina";
-            List<Producto> ListaProducto = ProductoBLL.BuscarProducto("Lavandina");//pasa por parametros el producto a buscar y devuelve una lista de productos
+            List<Producto> ListaProducto = ProductoBLL.BuscarProducto("vandi");//pasa por parametros el producto a buscar y devuelve una lista de productos
 
             Producto objProducto = ListaProducto[0];
 
