@@ -14,17 +14,15 @@ namespace UNIT_TEST_Modulo3
         [TestMethod]
         public void TestConvertirDTAOBJCliente()
         {
-            string apellido_esperado = "Fulanito";
-            string nombre_esperado = "Cosme";
-            string calle_esperada = "Calle Falsa";
+            string apellido_esperado = "Perez";
+            string nombre_esperado = "Damian";
+            string calle_esperada = "Rosales";
 
-            List<Cliente> ListaClientes = ClienteBLL.BuscarClientesPorDNI("3693");
+            List<Cliente> ListaClientes = ClienteBLL.BuscarClientesPorDNI("3856");
 
             Assert.AreEqual(apellido_esperado, ListaClientes[0].Apellido);
             Assert.AreEqual(nombre_esperado, ListaClientes[0].Nombre);
-            Assert.AreEqual(calle_esperada, ListaClientes[0].Direccion);
-
-
+            Assert.AreEqual(calle_esperada, ListaClientes[0].Direccion.Calle);
         }
 
         [TestMethod]
