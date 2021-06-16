@@ -1,12 +1,13 @@
 USE [dbTecProg]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_almacenar_detalle]    Script Date: 14/6/2021 15:54:47 ******/
+/****** Object:  StoredProcedure [dbo].[sp_almacenar_detalle]    Script Date: 15/6/2021 22:36:56 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 CREATE PROC [dbo].[sp_almacenar_detalle]
 @cantidad int,
@@ -21,7 +22,12 @@ INSERT INTO [dbo].[detalle_orden]
      VALUES
            (@cantidad
 		   ,@idOrden
-		   ,@idProducto)
+		   ,@idProducto);
+
+UPDATE stock
+   SET cantidad = cantidad - @cantidad
+ WHERE id_producto = @idProducto;
+
 RETURN @@ROWCOUNT
 END
 GO

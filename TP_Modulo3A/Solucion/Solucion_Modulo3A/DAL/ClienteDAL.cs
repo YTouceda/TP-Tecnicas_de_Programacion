@@ -57,29 +57,38 @@ namespace DAL_Modulo3
         /// <returns>Retorna True si fue exitoso, False si hubo un error</returns>
         public static bool QueryModificarCliente(Cliente mCliente)
         {
-            Conexion objconexion = new Conexion();
-            bool salida = true;
+            Conexion objConexion = new Conexion();
+            int cantFilas = 0;
 
+            SqlParameter[] parametros =
+                {
+                    new SqlParameter("@id_persona" ,SqlDbType.Int),
+                    new SqlParameter("@apellido",SqlDbType.NVarChar,50),
+                    new SqlParameter("@nombre",SqlDbType.NVarChar,50),
+                    new SqlParameter("@dni",SqlDbType.Int),
+                    new SqlParameter("@calle" ,SqlDbType.VarChar, 50),
+                    new SqlParameter("@altura" ,SqlDbType.VarChar, 50),
+                    new SqlParameter("@localidad" ,SqlDbType.VarChar, 50),
+                    new SqlParameter("@codigo_postal",SqlDbType.VarChar,50),
+                    new SqlParameter("@provincia",SqlDbType.VarChar,50),
+                };
 
-            string query = string.Format("UPDATE direccion SET altura = '{0}', calle = '{1}', codigo_postal = '{2}', localidad = '{3}', provincia = '{4}' WHERE id_dreccion = {5}", mCliente.Direccion.Altura, mCliente.Direccion.Calle, mCliente.Direccion.CodigoPostal, mCliente.Direccion.Localidad, mCliente.Direccion.Provincia, mCliente.Direccion.ID);
-
-
-            if (objconexion.EscribirPorComando(query) == -1)
+            //Asigno los valores
+            parametros[0].Value = mCliente.ID;
+            parametros[1].Value = mCliente.Apellido;
+            parametros[2].Value = mCliente.Nombre;
+            parametros[3].Value = Convert.ToInt32(mCliente.DNI);
+            parametros[4].Value = mCliente.Direccion.Calle;
+            parametros[5].Value = mCliente.Direccion.Altura;
+            parametros[6].Value = mCliente.Direccion.Localidad;
+            parametros[7].Value = mCliente.Direccion.CodigoPostal;
+            parametros[8].Value = mCliente.Direccion.Provincia;
+            cantFilas = objConexion.EscribirPorStoreProcedure("sp_editar_cliente", parametros);
+            if (cantFilas != 2)
             {
-                salida = false;
-                return salida;
+                return true;
             }
-
-            query = string.Format("UPDATE persona SET apellido = '{0}', dni= '{1}', nombre = '{2}' WHERE id_persona = ", mCliente.Apellido, mCliente.DNI, mCliente.Nombre) + mCliente.ID;
-
-
-            if (objconexion.EscribirPorComando(query) == -1)
-            {
-                salida = false;
-                return salida;
-            }
-
-            return salida;
+            return true;
         }
 
         /// <summary>
@@ -91,7 +100,7 @@ namespace DAL_Modulo3
         {
 
             Conexion objConexion = new Conexion();
-            string query = string.Format("SELECT C.id_cliente, P.nombre, P.apellido, P.dni, D.id, D.calle, D.altura, D.codigo_postal, D.localidad, D.provincia FROM cliente C INNER JOIN persona P ON C.id_cliente = P.id INNER JOIN direccion D ON P.id_direccion = D.id WHERE P.dni = {0}", DNI);
+            string query = string.Format("SELECT id_cliente ,nombre ,apellido ,dni ,calle ,altura ,localidad ,codigo_postal ,provincia FROM v_Cliente WHERE dni LIKE '{0}%'", DNI);
             DataTable objDataTable = objConexion.LeerPorComando(query);
             if (objDataTable != null)
             {

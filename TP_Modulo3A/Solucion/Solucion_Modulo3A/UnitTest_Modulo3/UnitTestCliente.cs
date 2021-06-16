@@ -18,7 +18,7 @@ namespace UNIT_TEST_Modulo3
             string nombre_esperado = "Cosme";
             string calle_esperada = "Calle Falsa";
 
-            List<Cliente> ListaClientes = ClienteBLL.BuscarClientesPorDNI("36933120");
+            List<Cliente> ListaClientes = ClienteBLL.BuscarClientesPorDNI("3693");
 
             Assert.AreEqual(apellido_esperado, ListaClientes[0].Apellido);
             Assert.AreEqual(nombre_esperado, ListaClientes[0].Nombre);
@@ -30,21 +30,23 @@ namespace UNIT_TEST_Modulo3
         [TestMethod]
         public void TestModificarCliente()
         {
-            int clientes_esperados = 3;
+
             bool bool_esperado = true;
 
-            List<Cliente> Clientes = ClienteBLL.BuscarClientesPorDNI("3");
+            List<Cliente> Clientes = ClienteBLL.BuscarClientesPorDNI("38567566");
 
-            Cliente objClientenvo = Clientes[1];
-            objClientenvo.Nombre = "Pepe";
-            objClientenvo.Apellido = "Rodriguez";
+            Cliente objClienteNvo = Clientes[0];
+            objClienteNvo.Nombre = "Damian";
 
+            Assert.AreEqual(bool_esperado, ClienteBLL.ModificarUnCliente(Clientes[0], objClienteNvo));
 
-
-
-            Assert.AreEqual(clientes_esperados, Clientes.Count);
-            Assert.AreEqual(bool_esperado, ClienteBLL.ModificarUnCliente(Clientes[1], objClientenvo));
-
+        }
+        [TestMethod]
+        public void TestBuscarCliente()
+        {
+            string nombreEsperado = "Adrian";
+            List<Cliente> Clientes = ClienteBLL.BuscarClientesPorDNI("22464657");
+            Assert.AreEqual(nombreEsperado, Clientes[0].Nombre);
         }
 
 

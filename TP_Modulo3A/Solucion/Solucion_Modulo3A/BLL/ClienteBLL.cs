@@ -54,8 +54,7 @@ namespace BLL_Modulo3
             objCliente.ID = (int)objDataRow["id_cliente"];
             objCliente.Nombre = (objDataRow["nombre"].ToString());
             objCliente.Apellido = objDataRow["apellido"].ToString();
-            objCliente.DNI = (int)objDataRow["dni"];
-            objDireccion.ID = (int)objDataRow["id"];
+            objCliente.DNI = objDataRow["dni"].ToString();
             objDireccion.Calle = objDataRow["calle"].ToString();
             objDireccion.Altura = objDataRow["altura"].ToString();
             objDireccion.CodigoPostal = objDataRow["codigo_postal"].ToString();

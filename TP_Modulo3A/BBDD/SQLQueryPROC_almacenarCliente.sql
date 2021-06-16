@@ -1,12 +1,13 @@
 USE [dbTecProg]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_almacenar_venta_tarjeta]    Script Date: 14/6/2021 22:08:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_almacenar_cliente]    Script Date: 15/6/2021 22:32:18 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 CREATE PROC [dbo].[sp_almacenar_cliente]

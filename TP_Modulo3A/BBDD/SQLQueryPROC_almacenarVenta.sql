@@ -1,12 +1,13 @@
 USE [dbTecProg]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_almacenar_venta_efectivo]    Script Date: 14/6/2021 15:56:58 ******/
+/****** Object:  StoredProcedure [dbo].[sp_almacenar_venta_efectivo]    Script Date: 15/6/2021 22:37:52 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 CREATE PROC [dbo].[sp_almacenar_venta_efectivo]
@@ -38,15 +39,27 @@ RETURN @@ROWCOUNT
 END;
 GO
 
+
+USE [dbTecProg]
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_almacenar_venta_tarjeta]    Script Date: 15/6/2021 22:38:02 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
 CREATE PROC [dbo].[sp_almacenar_venta_tarjeta]
 @tipoMetodoDePago varchar(50),
-@legajo int,
+@idPersona int,
 @fecha datetime,
 @idCliente int,
 @cvc varchar(50),
 @fechaVencimiento varchar(50),
 @nombreTarjeta varchar(50),
-@nroTarjeta int
+@nroTarjeta nvarchar(50)
 AS
 BEGIN
 
@@ -56,7 +69,7 @@ INSERT INTO [dbo].[orden]
            ,[id_persona])
      VALUES
            (@fecha
-           ,@legajo);
+           ,@idPersona );
 
 INSERT INTO [dbo].[orden_venta]
            ([id_orden]
@@ -78,8 +91,9 @@ INSERT INTO [dbo].[tarjeta]
 		   ,@fechaVencimiento
 		   ,@nombreTarjeta
 		   ,@nroTarjeta
-		   ,(SELECT IDENT_CURRENT ('orden_venta')));
+		   ,(SELECT IDENT_CURRENT ('orden')));
 
 RETURN @@ROWCOUNT
 END;
 GO
+
