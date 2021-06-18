@@ -31,7 +31,7 @@ namespace DAL_Modulo3
                 parametros[0].Value = item.Cantidad;
                 parametros[1].Value = idOrden;
                 parametros[2].Value = item.Producto.ID;
-                if (objConexion.EscribirPorStoreProcedure("sp_almacenar_detalle", parametros) != 1)
+                if (objConexion.EscribirPorStoreProcedure("sp_almacenar_detalle", parametros) != 2)
                 {
                     throw new Exception();//Agregar excepcion
                 }
