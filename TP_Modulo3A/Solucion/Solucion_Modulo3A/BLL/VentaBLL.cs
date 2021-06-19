@@ -10,7 +10,7 @@ using BLL_Modulo3.EXCEPCIONES;
 
 namespace BLL_Modulo3
 {
-    public class OrdenDeVentaBLL
+    public class VentaBLL
     {
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace BLL_Modulo3
             unaVenta.UsuarioCreador = unUsuario;
             foreach (DetalleOrden unDetalle in listaDetalles)
             {
-                listaDetalles.Add(DetalleOrdenBLL.ConvertirDeDataTableADetalleOrden(objDataRow));
+                listaDetalles.Add(ConvertirDeDataTableADetalleOrden(objDataRow));
             }
             unaVenta.Detalles = listaDetalles;
 
@@ -173,7 +173,16 @@ namespace BLL_Modulo3
             return listaVentas;
 
         }
+        private static DetalleOrden ConvertirDeDataTableADetalleOrden(DataRow objDataRow)
+        {
+            DetalleOrden unDetalle = new DetalleOrden();
 
+            unDetalle.Producto.PrecioVenta = (float)objDataRow["p.precio_venta"];
+            unDetalle.Cantidad = Convert.ToInt32(objDataRow["o._usuario_creador"]);
+            unDetalle.Producto.Nombre = objDataRow["producto"].ToString();
+
+            return unDetalle;
+        }
 
     }
 }

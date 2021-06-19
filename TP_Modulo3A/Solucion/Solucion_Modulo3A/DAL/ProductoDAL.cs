@@ -10,6 +10,11 @@ namespace DAL_Modulo3
 {
     public class ProductoDAL
     {
+        /// <summary>
+        /// Trae desde la base de datos todos los productos que empiecen con los caracteres ingresados para la busqueda
+        /// </summary>
+        /// <param name="nombre">string con el nombre o parte del comienzo del nombre del producto</param>
+        /// <returns>retorna una lista de productos que cumplan con el parametro de busqueda</returns>
         public static DataTable BuscarProducto(string nombre)
         {
             Conexion objConexion = new Conexion();

@@ -43,7 +43,7 @@ namespace DAL_Modulo3
             parametros[6].Value = pCliente.Nombre;
             parametros[7].Value = pCliente.DNI;
 
-            if (objConexion.EscribirPorStoreProcedure("sp_almacenar_cliente", parametros) != 3)
+            if (objConexion.EscribirPorStoreProcedure("sp_almacenar_cliente", parametros) != 3)//ejecuto el stored procedure para almacenar un cliente
             {
                 return false;
             }
@@ -60,6 +60,7 @@ namespace DAL_Modulo3
             Conexion objConexion = new Conexion();
             int cantFilas = 0;
 
+            //creo todos los parametros que necesita el procedimiento almacenado 
             SqlParameter[] parametros =
                 {
                     new SqlParameter("@id_persona" ,SqlDbType.Int),
@@ -83,7 +84,7 @@ namespace DAL_Modulo3
             parametros[6].Value = mCliente.Direccion.Localidad;
             parametros[7].Value = mCliente.Direccion.CodigoPostal;
             parametros[8].Value = mCliente.Direccion.Provincia;
-            cantFilas = objConexion.EscribirPorStoreProcedure("sp_editar_cliente", parametros);
+            cantFilas = objConexion.EscribirPorStoreProcedure("sp_editar_cliente", parametros);// ejecuto el stored procedure para modificar un cliente
             if (cantFilas != 2)
             {
                 return true;
@@ -98,21 +99,15 @@ namespace DAL_Modulo3
         /// <returns>Retorna un DataTable si lo encontro o un null si no existe</returns>
         public static DataTable BuscarClientesPorDNI(string DNI)
         {
-
+            //creo una conexion con la base de datos
             Conexion objConexion = new Conexion();
-            string query = string.Format("SELECT id_cliente ,nombre ,apellido ,dni ,calle ,altura ,localidad ,codigo_postal ,provincia FROM v_Cliente WHERE dni LIKE '{0}%'", DNI);
-            DataTable objDataTable = objConexion.LeerPorComando(query);
-            if (objDataTable != null)
-            {
-                return objDataTable;
-            }
-            else
+            string query = string.Format("SELECT id_cliente ,nombre ,apellido ,dni ,calle ,altura ,localidad ,codigo_postal ,provincia FROM v_Cliente WHERE dni LIKE '{0}%'", DNI);//creo la query de busqueda
+            DataTable objDataTable = objConexion.LeerPorComando(query);//ejecuto la query
+            if (objDataTable == null)
             {
                 return null;
-
             }
-
-
+            return objDataTable;//Si trae un cliente devuelvo el DataTable
         }
 
 

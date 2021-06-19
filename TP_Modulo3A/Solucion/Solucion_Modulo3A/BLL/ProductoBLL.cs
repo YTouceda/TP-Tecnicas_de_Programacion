@@ -13,9 +13,10 @@ namespace BLL_Modulo3
     public class ProductoBLL
     {
         /// <summary>
-        /// Devuelve un lista de productos desde la bbdd 
+        /// Devuelve una lista de productos desde la base de datos
         /// </summary>
-        /// <param name="nombre">Nombre del producto</param>
+        /// <param name="nombre">nombre del producto que se desee buscar</param>
+        /// <returns>lista de productos que cumplen con el parametro de busqueda</returns>
         public static List<Producto> BuscarProducto(string nombre)
         {
             List<Producto> ListaProducto = new List<Producto>();//cero una lista de tipo Producto
@@ -41,19 +42,21 @@ namespace BLL_Modulo3
         /// <summary>
         /// Convierte un datarow en un objeto producto
         /// </summary>
-        /// <param name="objDatarow">Datarow</param>
+        /// <param name="objDatarow">Datarow con los datos del producto</param>
         /// <returns>objeto producto </returns>
         private static Producto ConvertirDeDataTableAObjProducto(DataRow objDatarow) //recibe un datarow
         {
-            Producto objProducto = new Producto();
+            Producto objProducto = new Producto();//instancio un objeto producto
 
+            //Paso el datarow a objeto producto
             objProducto.Nombre = objDatarow["nombre_producto"].ToString();
             objProducto.ID = (int)objDatarow["id_producto"];
             objProducto.Categoria = new Categoria(objDatarow["categoria"].ToString());
             objProducto.PrecioCompra = Convert.ToSingle(objDatarow["precio_compra"]);
             objProducto.PrecioVenta = Convert.ToSingle(objDatarow["precio_venta"]);
             objProducto.Stock = (int)objDatarow["cantidad"];
-            return objProducto;
+
+            return objProducto;//devuelvo el objeto producto
         }
     }
 }

@@ -44,7 +44,7 @@ namespace UNIT_TEST_Modulo3
 
             unUSuario.Legajo = 1;
             objOrdenDeVenta.UsuarioCreador = unUSuario;
-            Assert.AreEqual(datoEsperado, OrdenDeVentaBLL.GuardaOrdenVenta(objOrdenDeVenta));
+            Assert.AreEqual(datoEsperado, VentaBLL.GuardaOrdenVenta(objOrdenDeVenta));
         }
 
         [TestMethod]
@@ -79,7 +79,7 @@ namespace UNIT_TEST_Modulo3
 
             unUSuario.ID = 1;
             objOrdenDeVenta.UsuarioCreador = unUSuario;
-            Assert.AreEqual(datoEsperado, OrdenDeVentaBLL.GuardaOrdenVenta(objOrdenDeVenta));
+            Assert.AreEqual(datoEsperado, VentaBLL.GuardaOrdenVenta(objOrdenDeVenta));
         }
 
 

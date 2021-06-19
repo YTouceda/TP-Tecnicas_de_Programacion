@@ -10,7 +10,7 @@ namespace BLL_Modulo3.EXCEPCIONES
     {
         public Excepcion_ClienteInexistente() 
         {
-            this.Descripcion = "No se encontro el Cliente";
+            this.Descripcion = "Error: No se encontro el Cliente";
         }
     }
 }
