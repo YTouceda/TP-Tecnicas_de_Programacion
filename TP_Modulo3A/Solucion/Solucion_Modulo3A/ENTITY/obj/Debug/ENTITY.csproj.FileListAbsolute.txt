@@ -1,0 +1,12 @@
+C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\ENTITY\bin\Debug\ENTITY.dll
+C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\ENTITY\bin\Debug\ENTITY.pdb
+C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\ENTITY\obj\Debug\ENTITY.csprojAssemblyReference.cache
+C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\ENTITY\obj\Debug\ENTITY.csproj.CoreCompileInputs.cache
+C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\ENTITY\obj\Debug\ENTITY.dll
+C:\Users\Yannick\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\ENTITY\obj\Debug\ENTITY.pdb
+C:\Users\flia_\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\ENTITY\bin\Debug\ENTITY.dll
+C:\Users\flia_\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\ENTITY\bin\Debug\ENTITY.pdb
+C:\Users\flia_\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\ENTITY\obj\Debug\ENTITY.csprojAssemblyReference.cache
+C:\Users\flia_\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\ENTITY\obj\Debug\ENTITY.csproj.CoreCompileInputs.cache
+C:\Users\flia_\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\ENTITY\obj\Debug\ENTITY.dll
+C:\Users\flia_\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\ENTITY\obj\Debug\ENTITY.pdb
