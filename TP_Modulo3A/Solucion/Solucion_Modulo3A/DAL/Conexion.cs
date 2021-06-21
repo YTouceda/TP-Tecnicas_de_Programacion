@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace DAL
-{
+namespace DAL_Modulo3{
     public class Conexion
     {
         private SqlConnection objConexion;
@@ -24,7 +23,7 @@ namespace DAL
          */
         private void Conectar()
         {
-            strCadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Modulo3_BBDD;Data Source=DESKTOP-NE9FIAR\SQLEXPRESS";
+            strCadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=dbTecProg;Data Source=DESKTOP-460UPCV\SQLEXPRESS01";
 
             //Instanció un objeto del tipo SqlConnection
             objConexion = new SqlConnection();
@@ -41,6 +40,7 @@ namespace DAL
         {
             objConexion.Close();
             objConexion.Dispose();
+            
         }
 
         public DataTable LeerPorStoreProcedure(string pNombreStoreProcedure, SqlParameter[] pParametrosSql = null)

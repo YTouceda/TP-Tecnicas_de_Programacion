@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 
-namespace DAL
+namespace DAL_Modulo3
 {
     class DetalleOrdenDAL
     {
@@ -31,7 +31,7 @@ namespace DAL
                 parametros[0].Value = item.Cantidad;
                 parametros[1].Value = idOrden;
                 parametros[2].Value = item.Producto.ID;
-                if (objConexion.EscribirPorStoreProcedure("sp_ALMACENAR_DETALLE", parametros) != 1)
+                if (objConexion.EscribirPorStoreProcedure("sp_almacenar_detalle", parametros) != 2)
                 {
                     throw new Exception();//Agregar excepcion
                 }

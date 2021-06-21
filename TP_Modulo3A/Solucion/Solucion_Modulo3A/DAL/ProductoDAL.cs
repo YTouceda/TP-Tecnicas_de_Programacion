@@ -6,22 +6,28 @@ using System.Text;
 using System.Threading.Tasks;
 using ENTITY;
 
-namespace DAL
+namespace DAL_Modulo3
 {
-    public class ProductoDAL 
+    public class ProductoDAL
     {
+        /// <summary>
+        /// Trae desde la base de datos todos los productos que empiecen con los caracteres ingresados para la busqueda
+        /// </summary>
+        /// <param name="nombre">string con el nombre o parte del comienzo del nombre del producto</param>
+        /// <returns>retorna una lista de productos que cumplan con el parametro de busqueda</returns>
         public static DataTable BuscarProducto(string nombre)
         {
             Conexion objConexion = new Conexion();
 
-            string query = string.Format("SELECT P.ID_PRODUCTO, P.NOMBRE AS NOMBRE_PRODUCTO, P.PRECIO_COMPRA, P.PRECIO_VENTA, P.STOCK, C.NOMBRE AS CATEGORIA FROM PRODUCTO P INNER JOIN CATEGORIA C ON P.ID_CATEGORIA = C.ID_CATEGORIA WHERE P.NOMBRE LIKE '%{0}%'", nombre);
+            string query = string.Format("SELECT P.id_producto, P.nombre AS nombre_producto, P.precio_compra, P.precio_venta,s.cantidad, c.descripcion AS categoria FROM producto p INNER JOIN categoria c ON p.id_categoria = c.id_categoria INNER JOIN stock s ON p.id_producto = s.id_producto WHERE p.nombre LIKE '{0}%'", nombre);
 
-            if (objConexion.LeerPorComando(query)!=null)
-            {
             DataTable objDataTable = objConexion.LeerPorComando(query);
+
+            if (objDataTable != null)
+            {
                 return objDataTable;
             }
-            return null; //Agregar excepcion (no se encontro el producto)
+            return null;
         }
     }
 }

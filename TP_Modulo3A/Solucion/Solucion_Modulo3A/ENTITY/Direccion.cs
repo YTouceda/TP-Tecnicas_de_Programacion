@@ -15,7 +15,7 @@ using System.IO;
 
 namespace ENTITY
 {
-	public class Direccion : EntidadPersistible
+	public class Direccion
 	{
 
 		private string _altura;

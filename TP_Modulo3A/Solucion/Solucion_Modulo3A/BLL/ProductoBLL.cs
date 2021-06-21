@@ -4,32 +4,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BLL.EXCEPCIONES;
-using DAL;
+using BLL_Modulo3.EXCEPCIONES;
+using DAL_Modulo3;
 using ENTITY;
 
-namespace BLL
+namespace BLL_Modulo3
 {
     public class ProductoBLL
     {
         /// <summary>
-        /// Devuelve un lista de productos desde la bbdd 
+        /// Devuelve una lista de productos desde la base de datos
         /// </summary>
-        /// <param name="nombre">Nombre del producto</param>
+        /// <param name="nombre">nombre del producto que se desee buscar</param>
+        /// <returns>lista de productos que cumplen con el parametro de busqueda</returns>
         public static List<Producto> BuscarProducto(string nombre)
         {
             List<Producto> ListaProducto = new List<Producto>();//cero una lista de tipo Producto
-            if (ProductoDAL.BuscarProducto(nombre) == null)
+            DataTable objDataTable = ProductoDAL.BuscarProducto(nombre);
+            if ( objDataTable == null)
             {
                 throw new Excepcion_ProductoNoEncontrado();
 
             }
-            System.Data.DataTable objDataTable = ProductoDAL.BuscarProducto(nombre);//guardo el datatable que trajo de la bbdd
             foreach (DataRow row in objDataTable.Rows)//carga lo de data table a row(que es un data row)
             {
-
                 ListaProducto.Add(ConvertirDeDataTableAObjProducto(row));//se agrega a ListaProducto un producto
-
             }
 
 
@@ -38,27 +37,26 @@ namespace BLL
 
         }
 
-        private static void BuscarProducto(DataRow row)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         /// <summary>
         /// Convierte un datarow en un objeto producto
         /// </summary>
-        /// <param name="objDatarow">Datarow</param>
+        /// <param name="objDatarow">Datarow con los datos del producto</param>
         /// <returns>objeto producto </returns>
-        public static Producto ConvertirDeDataTableAObjProducto(DataRow objDatarow) //recibe un datarow
+        private static Producto ConvertirDeDataTableAObjProducto(DataRow objDatarow) //recibe un datarow
         {
-            Producto objProducto = new Producto();
+            Producto objProducto = new Producto();//instancio un objeto producto
 
-            objProducto.Nombre = objDatarow["NOMBRE_PRODUCTO"].ToString();
-            objProducto.ID = (int)objDatarow["ID_PRODUCTO"];
-            objProducto.Categoria = new Categoria(objDatarow["CATEGORIA"].ToString());
-            objProducto.PrecioCompra = Convert.ToSingle(objDatarow["PRECIO_COMPRA"]);
-            objProducto.PrecioVenta = Convert.ToSingle(objDatarow["PRECIO_VENTA"]);
-            objProducto.Stock = (int)objDatarow["STOCK"];
-            return objProducto;
+            //Paso el datarow a objeto producto
+            objProducto.Nombre = objDatarow["nombre_producto"].ToString();
+            objProducto.ID = (int)objDatarow["id_producto"];
+            objProducto.Categoria = new Categoria(objDatarow["categoria"].ToString());
+            objProducto.PrecioCompra = Convert.ToSingle(objDatarow["precio_compra"]);
+            objProducto.PrecioVenta = Convert.ToSingle(objDatarow["precio_venta"]);
+            objProducto.Stock = (int)objDatarow["cantidad"];
+
+            return objProducto;//devuelvo el objeto producto
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ENTITY;
+﻿using DAL_Modulo3;
+using ENTITY;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace DAL
+namespace DAL_Modulo3
 {
     public class ClienteDAL
     {
@@ -16,100 +17,79 @@ namespace DAL
         /// </summary>
         /// <param name="pCliente">Objeto cliente</param>
         /// <returns>Retorna True si fue exitoso, False si hubo un error</returns>
-        public static bool Alta(Cliente pCliente)
+        public static bool PersistirCliente(Cliente pCliente)
         {
-            //ToDo:las funciones deben retornar true o false
             Conexion objConexion = new Conexion();
-            bool salida = true;
-
-            string query = string.Format("INSERT INTO DIRECCION(ALTURA,CALLE,CODIGO_POSTAL,LOCALIDAD,PROVINCIA)VALUES ('{0}','{1}','{2}','{3}','{4}')", pCliente.Direccion.Altura, pCliente.Direccion.Calle, pCliente.Direccion.CodigoPostal, pCliente.Direccion.Localidad, pCliente.Direccion.Provincia);
-
-            if (objConexion.EscribirPorComando(query) == -1)
+            //creo todos los parametros que necesita el procedimiento almacenado 
+            SqlParameter[] parametros =
             {
-                salida = false;
-                return salida;
-            }
+                new SqlParameter("@calle",SqlDbType.NVarChar ,50),
+                new SqlParameter("@altura",SqlDbType.NVarChar,50),
+                new SqlParameter("@localidad",SqlDbType.NVarChar,50),
+                new SqlParameter("@codigo_postal",SqlDbType.NVarChar,50),
+                new SqlParameter("@provincia",SqlDbType.NVarChar,50),
+                new SqlParameter("@apellido",SqlDbType.NVarChar,50),
+                new SqlParameter("@nombre",SqlDbType.NVarChar,50),
+                new SqlParameter("@dni", SqlDbType.Int)
+            };
 
+            //Se le asignan valores a los parametros
+            parametros[0].Value = pCliente.Direccion.Calle;
+            parametros[1].Value = pCliente.Direccion.Altura;
+            parametros[2].Value = pCliente.Direccion.Localidad;
+            parametros[3].Value = pCliente.Direccion.CodigoPostal;
+            parametros[4].Value = pCliente.Direccion.Provincia;
+            parametros[5].Value = pCliente.Apellido;
+            parametros[6].Value = pCliente.Nombre;
+            parametros[7].Value = pCliente.DNI;
 
-            DataTable objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT ('DIRECCION') AS ID_DIRECCION;");
-
-            query = string.Format("INSERT INTO PERSONA(APELLIDO,DNI,NOMBRE,ID_DIRECCION)VALUES('{0}','{1}','{2}',{3})", pCliente.Apellido, pCliente.DNI, pCliente.Nombre, (objDataTable.Rows[0]["ID_DIRECCION"]));
-
-
-            if (objConexion.EscribirPorComando(query) == -1)
+            if (objConexion.EscribirPorStoreProcedure("sp_almacenar_cliente", parametros) != 3)//ejecuto el stored procedure para almacenar un cliente
             {
-                salida = false;
-                return salida;
+                return false;
             }
-
-            objDataTable = objConexion.LeerPorComando("SELECT IDENT_CURRENT('PERSONA') AS ID_PERSONA");
-
-            query = string.Format("INSERT INTO CLIENTE(ID_PERSONA) VALUES({0})", (objDataTable.Rows[0]["ID_PERSONA"]));
-
-
-            if (objConexion.EscribirPorComando(query) == -1)
-            {
-                salida = false;
-                return salida;
-            }
-
-            return salida;
-
+            return true;
         }
 
         /// <summary>
-        /// Modifica un Cliente
+        /// Recibe un objeto cliente con los datos modificados que se desean actualizar en la base de datos
         /// </summary>
         /// <param name="mCliente"></param>
         /// <returns>Retorna True si fue exitoso, False si hubo un error</returns>
         public static bool QueryModificarCliente(Cliente mCliente)
         {
-            Conexion objconexion = new Conexion();
-            bool salida = true;
-
-
-            string query = string.Format("UPDATE DIRECCION SET ALTURA = '{0}', CALLE = '{1}', CODIGO_POSTAL = '{2}', LOCALIDAD = '{3}', PROVINCIA = '{4}' WHERE ID_DIRECCION = {0}", mCliente.Direccion.Altura, mCliente.Direccion.Calle, mCliente.Direccion.CodigoPostal, mCliente.Direccion.Localidad, mCliente.Direccion.Provincia) + mCliente.Direccion.ID;
-
-
-            if (objconexion.EscribirPorComando(query) == -1)
-            {
-                salida = false;
-                return salida;
-            }
-
-            query = string.Format("UPDATE PERSONA SET APELLIDO = '{0}', DNI= '{1}', NOMBRE = '{2}' WHERE ID_PERSONA = ", mCliente.Apellido, mCliente.DNI, mCliente.Nombre) + mCliente.IDPersona;
-
-
-            if (objconexion.EscribirPorComando(query) == -1)
-            {
-                salida = false;
-                return salida;
-            }
-
-            return salida;
-        }
-        /// <summary>
-        /// Comprueba si un cliente ya se encuentra en la base de datos.
-        /// </summary>
-        /// <param name="pCliente">objeto cliente</param>
-        /// <returns></returns>
-        public DataTable BuscarClientesPorID(int Id_Cliente) //ESTO SOLO DEBERIA COMPROBAR QUE EL CLIENTE NO ESTÉ EN LA BD , (PODRIA BUSCAR POR DNI).
-        {
-
             Conexion objConexion = new Conexion();
-            string query = string.Format("SELECT C.ID_CLIENTE, P.ID_PERSONA, P.NOMBRE, P.APELLIDO, P.DNI, D.ID_DIRECCION, D.CALLE, D.ALTURA, D.CODIGO_POSTAL, D.LOCALIDAD, D.PROVINCIA FROM CLIENTE C INNER JOIN PERSONA P ON C.ID_PERSONA = P.ID_PERSONA INNER JOIN DIRECCION D ON P.ID_DIRECCION = D.ID_DIRECCION WHERE C.ID_CLIENTE = {0}", Id_Cliente);
-            DataTable objDataTable = objConexion.LeerPorComando(query);
-            if (Convert.ToInt32(objDataTable.Rows[0]["ID_CLIENTE"]) == Id_Cliente)
+            int cantFilas = 0;
+
+            //creo todos los parametros que necesita el procedimiento almacenado 
+            SqlParameter[] parametros =
+                {
+                    new SqlParameter("@id_persona" ,SqlDbType.Int),
+                    new SqlParameter("@apellido",SqlDbType.NVarChar,50),
+                    new SqlParameter("@nombre",SqlDbType.NVarChar,50),
+                    new SqlParameter("@dni",SqlDbType.Int),
+                    new SqlParameter("@calle" ,SqlDbType.VarChar, 50),
+                    new SqlParameter("@altura" ,SqlDbType.VarChar, 50),
+                    new SqlParameter("@localidad" ,SqlDbType.VarChar, 50),
+                    new SqlParameter("@codigo_postal",SqlDbType.VarChar,50),
+                    new SqlParameter("@provincia",SqlDbType.VarChar,50),
+                };
+
+            //Asigno los valores
+            parametros[0].Value = mCliente.ID;
+            parametros[1].Value = mCliente.Apellido;
+            parametros[2].Value = mCliente.Nombre;
+            parametros[3].Value = Convert.ToInt32(mCliente.DNI);
+            parametros[4].Value = mCliente.Direccion.Calle;
+            parametros[5].Value = mCliente.Direccion.Altura;
+            parametros[6].Value = mCliente.Direccion.Localidad;
+            parametros[7].Value = mCliente.Direccion.CodigoPostal;
+            parametros[8].Value = mCliente.Direccion.Provincia;
+            cantFilas = objConexion.EscribirPorStoreProcedure("sp_editar_cliente", parametros);// ejecuto el stored procedure para modificar un cliente
+            if (cantFilas != 2)
             {
-                return objDataTable;
+                return true;
             }
-            else
-            {
-                return null;
-
-            }
-
-
+            return true;
         }
 
         /// <summary>
@@ -117,23 +97,17 @@ namespace DAL
         /// </summary>
         /// <param name="DNI"></param>
         /// <returns>Retorna un DataTable si lo encontro o un null si no existe</returns>
-        public static DataTable BuscarClientesPorDNI(string DNI) //ESTO SOLO DEBERIA COMPROBAR QUE EL CLIENTE NO ESTÉ EN LA BD , (PODRIA BUSCAR POR DNI).
+        public static DataTable BuscarClientesPorDNI(string DNI)
         {
-
+            //creo una conexion con la base de datos
             Conexion objConexion = new Conexion();
-            string query = string.Format("SELECT C.ID_CLIENTE, P.ID_PERSONA, P.NOMBRE, P.APELLIDO, P.DNI, D.ID_DIRECCION, D.CALLE, D.ALTURA, D.CODIGO_POSTAL, D.LOCALIDAD, D.PROVINCIA FROM CLIENTE C INNER JOIN PERSONA P ON C.ID_PERSONA = P.ID_PERSONA INNER JOIN DIRECCION D ON P.ID_DIRECCION = D.ID_DIRECCION WHERE P.DNI LIKE '%{0}%'", DNI);
-            DataTable objDataTable = objConexion.LeerPorComando(query);
-            if (objDataTable != null)
-            {
-                return objDataTable;
-            }
-            else
+            string query = string.Format("SELECT id_cliente ,nombre ,apellido ,dni ,calle ,altura ,localidad ,codigo_postal ,provincia FROM v_Cliente WHERE dni LIKE '{0}%'", DNI);//creo la query de busqueda
+            DataTable objDataTable = objConexion.LeerPorComando(query);//ejecuto la query
+            if (objDataTable == null)
             {
                 return null;
-
             }
-
-
+            return objDataTable;//Si trae un cliente devuelvo el DataTable
         }
 
 

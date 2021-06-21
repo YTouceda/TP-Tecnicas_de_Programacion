@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.EXCEPCIONES
+namespace BLL_Modulo3.EXCEPCIONES
 {
     class Excepcion_ClienteInexistente: ExcepcionesNegocio
     {
         public Excepcion_ClienteInexistente() 
         {
-            this.Descripcion = "No se encontro el Cliente";
+            this.Descripcion = "Error: No se encontro el Cliente";
         }
     }
 }

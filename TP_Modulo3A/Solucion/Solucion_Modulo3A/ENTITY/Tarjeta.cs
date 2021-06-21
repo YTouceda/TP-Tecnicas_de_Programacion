@@ -21,7 +21,7 @@ namespace ENTITY
 		private string _CVC;
 		private string _fechaVencimiento;
 		private string _nombreTarjeta;
-		private string _numeroTarjeta;
+		private int _numeroTarjeta;
 
 		public Tarjeta()
 		{
