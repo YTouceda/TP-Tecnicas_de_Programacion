@@ -219,6 +219,38 @@ namespace DAL_Modulo3{
             return filasAfectadas;
         }
 
+        public bool EjecutarTransaccion(ref List<SqlCommand> ListaParametros)
+        {
+            SqlTransaction transaccion;
+            this.Conectar();
+            transaccion = objConexion.BeginTransaction();
+            try
+            {
+                foreach (SqlCommand cmd in ListaParametros)
+                {
+                    cmd.Transaction = transaccion;
+                    cmd.Connection = objConexion;
+                    cmd.ExecuteNonQuery();
+
+                }
+                transaccion.Commit();
+                return true;
+
+            }
+
+            catch (Exception e)
+            {
+                transaccion.Rollback();
+                return false;
+                throw e;
+            }
+            finally
+            {
+                this.Desconectar();
+            }
+            
+        }
+
         #region Parametros
         public SqlParameter crearParametro(string pNombre, string pValor)
         {
