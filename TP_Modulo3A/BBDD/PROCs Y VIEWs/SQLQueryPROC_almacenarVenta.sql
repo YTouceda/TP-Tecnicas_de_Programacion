@@ -1,7 +1,7 @@
 USE [dbTecProg]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_almacenar_venta_efectivo]    Script Date: 15/6/2021 22:37:52 ******/
+/****** Object:  StoredProcedure [dbo].[sp_almacenar_venta_efectivo]    Script Date: 20/6/2021 23:27:11 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,9 +10,11 @@ GO
 
 
 
+
+
 CREATE PROC [dbo].[sp_almacenar_venta_efectivo]
 @tipoMetodoDePago varchar(50),
-@legajo int,
+@idPersona int,
 @fecha datetime,
 @idCliente int
 AS
@@ -24,7 +26,7 @@ INSERT INTO [dbo].[orden]
            ,[id_persona])
      VALUES
            (@fecha
-           ,@legajo);
+           ,@idPersona);
 
 INSERT INTO [dbo].[orden_venta]
            ([id_orden]
@@ -43,12 +45,13 @@ GO
 USE [dbTecProg]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_almacenar_venta_tarjeta]    Script Date: 15/6/2021 22:38:02 ******/
+/****** Object:  StoredProcedure [dbo].[sp_almacenar_venta_tarjeta]    Script Date: 20/6/2021 23:27:37 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 CREATE PROC [dbo].[sp_almacenar_venta_tarjeta]

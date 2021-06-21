@@ -1,12 +1,13 @@
 USE [dbTecProg]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_almacenar_cliente]    Script Date: 15/6/2021 22:32:18 ******/
+/****** Object:  StoredProcedure [dbo].[sp_almacenar_cliente]    Script Date: 20/6/2021 23:26:20 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -55,4 +56,5 @@ INSERT INTO [dbo].[cliente]
 RETURN @@ROWCOUNT
 END;
 GO
+
 

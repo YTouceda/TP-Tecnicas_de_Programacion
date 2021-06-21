@@ -42,7 +42,7 @@ namespace UNIT_TEST_Modulo3
             Cliente ObjCliente = Clientes[0];
             objOrdenDeVenta.Cliente = ObjCliente;
 
-            unUSuario.Legajo = 1;
+            unUSuario.ID = 1;
             objOrdenDeVenta.UsuarioCreador = unUSuario;
             Assert.AreEqual(datoEsperado, VentaBLL.GuardaOrdenVenta(objOrdenDeVenta));
         }

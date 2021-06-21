@@ -20,7 +20,7 @@ namespace UNIT_TEST_Modulo3
         public void TestBuscarProducto()
         {
             string nombre_esperado = "Lavandina";
-            List<Producto> ListaProducto = ProductoBLL.BuscarProducto("vandi");//pasa por parametros el producto a buscar y devuelve una lista de productos
+            List<Producto> ListaProducto = ProductoBLL.BuscarProducto("Lavan");//pasa por parametros el producto a buscar y devuelve una lista de productos
 
             Producto objProducto = ListaProducto[0];
 

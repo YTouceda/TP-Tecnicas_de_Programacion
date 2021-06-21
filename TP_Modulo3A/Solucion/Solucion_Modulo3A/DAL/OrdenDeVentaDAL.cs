@@ -27,7 +27,7 @@ namespace DAL_Modulo3
             
             
 
-            DataTable objDataTable = objConexion.LeerPorStoreProcedure("sp_reporteventasporlegajo",parametros);
+            DataTable objDataTable = objConexion.LeerPorStoreProcedure("sp_reporte_ventas_legajo",parametros);
             if ((int)objDataTable.Rows[0]["legajo_vendedor"] == legajo) 
             {
                 return objDataTable;
@@ -64,7 +64,7 @@ namespace DAL_Modulo3
 
 
 
-            DataTable objDataTable = objConexion.LeerPorStoreProcedure("sp_reporteventaspormes", parametros);
+            DataTable objDataTable = objConexion.LeerPorStoreProcedure("sp_reporte_ventas_mes", parametros);
             if (Convert.ToDateTime( objDataTable.Rows[0]["fecha"]).Month == mes || Convert.ToDateTime(objDataTable.Rows[0]["año"]).Year == año)
             {
                 return objDataTable;
@@ -98,7 +98,7 @@ namespace DAL_Modulo3
 
 
 
-            DataTable objDataTable = objConexion.LeerPorStoreProcedure("sp_reporteventasporsemana", parametros);
+            DataTable objDataTable = objConexion.LeerPorStoreProcedure("sp_reporte_ventas_semana", parametros);
             DateTime aux = DateTime.Now; 
             if (Convert.ToDateTime(objDataTable.Rows[0]["fecha"]).GetType() == aux.GetType()) //Valida que devuelva un valor valido el datatable
             {
@@ -124,6 +124,7 @@ namespace DAL_Modulo3
             Conexion objConexion = new Conexion();
             Tarjeta unaTarjeta = new Tarjeta();
             int cantFilas = 1;
+            List<SqlCommand> listaComandos = new List<SqlCommand>();
             if (unaOrdenDeVenta.MetodoDePago.GetType() == unaTarjeta.GetType()) // verifico si el metodo de pago es tarjeta, para llamar al procedimiento almacenado de venta con tarjeta
             {
                 //creo todos los parametros que necesita el procedimiento almacenado 
@@ -148,7 +149,11 @@ namespace DAL_Modulo3
                 parametros[5].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).FechaVencimiento;
                 parametros[6].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).NombreTarjeta;
                 parametros[7].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).NumeroTarjeta;
-                cantFilas = objConexion.EscribirPorStoreProcedure("sp_almacenar_venta_tarjeta", parametros);
+                SqlCommand sqlCommand = new SqlCommand();
+                sqlCommand.CommandText = "EXEC sp_almacenar_venta_tarjeta    @tipoMetodoDePago  ,@idPersona  ,@fecha  ,@idCliente  ,@cvc  ,@fechaVencimiento  ,@nombreTarjeta  ,@nroTarjeta";
+                sqlCommand.Parameters.AddRange(parametros);
+                listaComandos.Add(sqlCommand);
+                //cantFilas = objConexion.EscribirPorStoreProcedure("sp_almacenar_venta_tarjeta", parametros);
             }
             else // si el metodo de pago es efectivo, llama al procedimiento almacenado de venta con efectivo
             {
@@ -156,22 +161,28 @@ namespace DAL_Modulo3
                 SqlParameter[] parametros =
                 {
                     new SqlParameter("@tipoMetodoDePago" ,SqlDbType.VarChar, 50),
-                    new SqlParameter("@legajo",SqlDbType.Int),
+                    new SqlParameter("@idPersona",SqlDbType.Int),
                     new SqlParameter("@fecha",SqlDbType.DateTime),
                     new SqlParameter("@idCliente",SqlDbType.Int),
                 };
                 //Asigno los valores
                 parametros[0].Value = unaOrdenDeVenta.MetodoDePago.TipoMetodoDePago;
-                parametros[1].Value = unaOrdenDeVenta.UsuarioCreador.Legajo;
+                parametros[1].Value = unaOrdenDeVenta.UsuarioCreador.ID;
                 parametros[2].Value = unaOrdenDeVenta.Fecha;
                 parametros[3].Value = unaOrdenDeVenta.Cliente.ID;
-                cantFilas = objConexion.EscribirPorStoreProcedure("sp_almacenar_venta_efectivo", parametros);
+                //cantFilas = objConexion.EscribirPorStoreProcedure("sp_almacenar_venta_efectivo", parametros);
+                SqlCommand sqlCommand = new SqlCommand();
+                sqlCommand.CommandText = "EXEC sp_almacenar_venta_efectivo   @tipoMetodoDePago  ,@idPersona  ,@fecha  ,@idCliente";
+                sqlCommand.Parameters.AddRange(parametros);
+                listaComandos.Add(sqlCommand);
             }
-
-            string query = "SELECT IDENT_CURRENT ('orden') AS id_orden";
-            DataTable objDataTable = objConexion.LeerPorComando(query);
-            int idOrden = Convert.ToInt32(objDataTable.Rows[0]["id_orden"]);
-            if((!DetalleOrdenDAL.GuardarDetalles(unaOrdenDeVenta.Detalles,idOrden))|| cantFilas < 2 || cantFilas > 3) 
+            //if((!DetalleOrdenDAL.GuardarDetalles(unaOrdenDeVenta.Detalles,idOrden))|| cantFilas < 2 || cantFilas > 3) 
+            //{
+            //    return false;
+            //}
+            //return true;
+            listaComandos.AddRange(DetalleOrdenDAL.GuardarDetalles(unaOrdenDeVenta.Detalles));
+            if (!(objConexion.EjecutarTransaccion(listaComandos)))
             {
                 return false;
             }

@@ -116,18 +116,18 @@ namespace BLL_Modulo3
             Efectivo objEfectivo = new Efectivo();
             
 
-            unaVenta.ID = (int)objDataRow["id_orden"];
+            unaVenta.ID = (int)objDataRow["id"];
             unaVenta.Fecha = Convert.ToDateTime(objDataRow["fecha"]);
             unUsuario.Legajo = (int)objDataRow["legajo_vendedor"];
 
-            if (objDataRow["metodo_pago"].ToString() == "efectivo")
+            if (objDataRow["metodo_pago"].ToString() == "Efectivo")
             {
-                objEfectivo.TipoMetodoDePago = "efectivo";
+                objEfectivo.TipoMetodoDePago = "Efectivo";
                 unaVenta.MetodoDePago = objEfectivo;
             }
-            else if (objDataRow["metodo_pago"].ToString() == "tarjeta")
+            else if (objDataRow["metodo_pago"].ToString() == "Tarjeta")
             {
-                objTarjeta.TipoMetodoDePago = "tarjeta";
+                objTarjeta.TipoMetodoDePago = "Tarjeta";
                 unaVenta.MetodoDePago = objTarjeta;
             }
             else

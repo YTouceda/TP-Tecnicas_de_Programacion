@@ -1,12 +1,13 @@
 USE [dbTecProg]
 GO
 
-/****** Object:  StoredProcedure [dbo].[sp_editar_cliente]    Script Date: 15/6/2021 22:38:31 ******/
+/****** Object:  StoredProcedure [dbo].[sp_editar_cliente]    Script Date: 20/6/2021 23:28:03 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
