@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BLL.EXCEPCIONES;
+using BLL_Modulo3.EXCEPCIONES;
+using Entidades;
 
-namespace BLL
+namespace BLL_Modulo3
 {
 	public class TarjetaBLL
 	{
@@ -20,9 +21,9 @@ namespace BLL
 		/// </summary>
 		/// <param name="pTarjeta"> Del tipo Entity.Tarjeta</param>
 		/// <returns>Devuelve un bool</returns>
-		public static bool ValidarTarjeta(ENTITY.Tarjeta pTarjeta)
+		public static bool ValidarTarjeta(Tarjeta pTarjeta)
 		{
-			long numTarj=Convert.ToInt64(pTarjeta.NumeroTarjeta);
+			long numTarj=long.Parse(pTarjeta.NumeroTarjeta);
 			if ((numTarj % 2) == 0)
 			{
 				throw new Excepcion_TarjetaInvalida();

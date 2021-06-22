@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace DAL
-{
+namespace DAL_Modulo3{
     public class Conexion
     {
         private SqlConnection objConexion;
@@ -24,7 +23,7 @@ namespace DAL
          */
         private void Conectar()
         {
-            strCadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Modulo3_BBDD;Data Source=DESKTOP-NE9FIAR\SQLEXPRESS";
+            strCadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=dbTecProg;Data Source=DESKTOP-ODBR4C0\SQLEXPRESS";
 
             //Instanció un objeto del tipo SqlConnection
             objConexion = new SqlConnection();
@@ -218,6 +217,38 @@ namespace DAL
 
 
             return filasAfectadas;
+        }
+
+        public bool EjecutarTransaccion(List<SqlCommand> ListaComandos)
+        {
+            SqlTransaction transaccion;
+            this.Conectar();
+            transaccion = objConexion.BeginTransaction();
+            try
+            {
+                foreach (SqlCommand cmd in ListaComandos)
+                {
+                    cmd.Transaction = transaccion;
+                    cmd.Connection = objConexion;
+                    cmd.ExecuteNonQuery();
+
+                }
+                transaccion.Commit();
+                return true;
+
+            }
+
+            catch (Exception e)
+            {
+                transaccion.Rollback();
+                return false;
+                throw e;
+            }
+            finally
+            {
+                this.Desconectar();
+            }
+
         }
 
         #region Parametros
