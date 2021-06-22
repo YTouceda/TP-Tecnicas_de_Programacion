@@ -1,0 +1,6 @@
+C:\Users\DANIEL\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\Entidades\Entidades\bin\Debug\Entidades.dll
+C:\Users\DANIEL\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\Entidades\Entidades\bin\Debug\Entidades.pdb
+C:\Users\DANIEL\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\Entidades\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\Users\DANIEL\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\Entidades\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\DANIEL\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\Entidades\Entidades\obj\Debug\Entidades.dll
+C:\Users\DANIEL\Documents\GitHub\TP-Tecnicas_de_Programacion\TP_Modulo3A\Solucion\Solucion_Modulo3A\Entidades\Entidades\obj\Debug\Entidades.pdb

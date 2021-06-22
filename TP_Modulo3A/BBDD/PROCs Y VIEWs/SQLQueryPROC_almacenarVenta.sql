@@ -15,7 +15,6 @@ GO
 CREATE PROC [dbo].[sp_almacenar_venta_efectivo]
 @tipoMetodoDePago varchar(50),
 @idPersona int,
-@fecha datetime,
 @idCliente int
 AS
 BEGIN
@@ -25,7 +24,7 @@ INSERT INTO [dbo].[orden]
            ([fecha]
            ,[id_persona])
      VALUES
-           (@fecha
+           ((Select getdate())
            ,@idPersona);
 
 INSERT INTO [dbo].[orden_venta]
@@ -57,7 +56,6 @@ GO
 CREATE PROC [dbo].[sp_almacenar_venta_tarjeta]
 @tipoMetodoDePago varchar(50),
 @idPersona int,
-@fecha datetime,
 @idCliente int,
 @cvc varchar(50),
 @fechaVencimiento varchar(50),
@@ -71,7 +69,7 @@ INSERT INTO [dbo].[orden]
            ([fecha]
            ,[id_persona])
      VALUES
-           (@fecha
+           ((Select getdate())
            ,@idPersona );
 
 INSERT INTO [dbo].[orden_venta]

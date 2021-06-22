@@ -1,5 +1,5 @@
 ﻿using DAL_Modulo3;
-using ENTITY;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -78,7 +78,7 @@ namespace DAL_Modulo3
             parametros[0].Value = mCliente.ID;
             parametros[1].Value = mCliente.Apellido;
             parametros[2].Value = mCliente.Nombre;
-            parametros[3].Value = Convert.ToInt32(mCliente.DNI);
+            parametros[3].Value = mCliente.DNI;
             parametros[4].Value = mCliente.Direccion.Calle;
             parametros[5].Value = mCliente.Direccion.Altura;
             parametros[6].Value = mCliente.Direccion.Localidad;

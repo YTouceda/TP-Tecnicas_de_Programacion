@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ENTITY;
 using DAL_Modulo3;
 using System.Data;
 using BLL_Modulo3.EXCEPCIONES;
+using Entidades;
 
 namespace BLL_Modulo3
 {
@@ -122,12 +122,10 @@ namespace BLL_Modulo3
 
             if (objDataRow["metodo_pago"].ToString() == "Efectivo")
             {
-                objEfectivo.TipoMetodoDePago = "Efectivo";
                 unaVenta.MetodoDePago = objEfectivo;
             }
             else if (objDataRow["metodo_pago"].ToString() == "Tarjeta")
             {
-                objTarjeta.TipoMetodoDePago = "Tarjeta";
                 unaVenta.MetodoDePago = objTarjeta;
             }
             else
@@ -176,7 +174,6 @@ namespace BLL_Modulo3
         private static DetalleOrden ConvertirDeDataTableADetalleOrden(DataRow objDataRow)
         {
             DetalleOrden unDetalle = new DetalleOrden();
-
             unDetalle.Producto.PrecioVenta = (float)objDataRow["p.precio_venta"];
             unDetalle.Cantidad = Convert.ToInt32(objDataRow["o._usuario_creador"]);
             unDetalle.Producto.Nombre = objDataRow["producto"].ToString();

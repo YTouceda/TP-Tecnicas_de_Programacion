@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BLL_Modulo3.EXCEPCIONES;
 using DAL_Modulo3;
-using ENTITY;
+using Entidades;
 
 namespace BLL_Modulo3
 {
@@ -51,10 +51,10 @@ namespace BLL_Modulo3
             //Paso el datarow a objeto producto
             objProducto.Nombre = objDatarow["nombre_producto"].ToString();
             objProducto.ID = (int)objDatarow["id_producto"];
-            objProducto.Categoria = new Categoria(objDatarow["categoria"].ToString());
+            objProducto.Categoria = new Categoria();
+            objProducto.Categoria.Nombre = (objDatarow["categoria"].ToString());
             objProducto.PrecioCompra = Convert.ToSingle(objDatarow["precio_compra"]);
             objProducto.PrecioVenta = Convert.ToSingle(objDatarow["precio_venta"]);
-            objProducto.Stock = (int)objDatarow["cantidad"];
 
             return objProducto;//devuelvo el objeto producto
         }

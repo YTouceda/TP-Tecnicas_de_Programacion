@@ -1,12 +1,11 @@
-﻿using ENTITY;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-
+using Entidades;
 
 namespace DAL_Modulo3
 {
@@ -123,7 +122,6 @@ namespace DAL_Modulo3
         {
             Conexion objConexion = new Conexion();
             Tarjeta unaTarjeta = new Tarjeta();
-            int cantFilas = 1;
             List<SqlCommand> listaComandos = new List<SqlCommand>();
             if (unaOrdenDeVenta.MetodoDePago.GetType() == unaTarjeta.GetType()) // verifico si el metodo de pago es tarjeta, para llamar al procedimiento almacenado de venta con tarjeta
             {
@@ -132,7 +130,6 @@ namespace DAL_Modulo3
                 {
                     new SqlParameter("@tipoMetodoDePago" ,SqlDbType.VarChar, 50),
                     new SqlParameter("@idPersona",SqlDbType.Int),
-                    new SqlParameter("@fecha",SqlDbType.DateTime),
                     new SqlParameter("@idCliente",SqlDbType.Int),
                     new SqlParameter("@cvc" ,SqlDbType.VarChar, 50),
                     new SqlParameter("@fechaVencimiento" ,SqlDbType.VarChar, 50),
@@ -141,19 +138,17 @@ namespace DAL_Modulo3
                 };
 
                 //Asigno los valores
-                parametros[0].Value = unaOrdenDeVenta.MetodoDePago.TipoMetodoDePago;
+                parametros[0].Value = "Tarjeta";
                 parametros[1].Value = unaOrdenDeVenta.UsuarioCreador.ID;
-                parametros[2].Value = unaOrdenDeVenta.Fecha;
-                parametros[3].Value = unaOrdenDeVenta.Cliente.ID;
-                parametros[4].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).CVC;
-                parametros[5].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).FechaVencimiento;
-                parametros[6].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).NombreTarjeta;
-                parametros[7].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).NumeroTarjeta;
+                parametros[2].Value = unaOrdenDeVenta.Cliente.ID;
+                parametros[3].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).CVC;
+                parametros[4].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).FechaVencimiento;
+                parametros[5].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).NombreTarjeta;
+                parametros[6].Value = ((Tarjeta)unaOrdenDeVenta.MetodoDePago).NumeroTarjeta;
                 SqlCommand sqlCommand = new SqlCommand();
-                sqlCommand.CommandText = "EXEC sp_almacenar_venta_tarjeta    @tipoMetodoDePago  ,@idPersona  ,@fecha  ,@idCliente  ,@cvc  ,@fechaVencimiento  ,@nombreTarjeta  ,@nroTarjeta";
+                sqlCommand.CommandText = "EXEC sp_almacenar_venta_tarjeta    @tipoMetodoDePago  ,@idPersona  ,@idCliente  ,@cvc  ,@fechaVencimiento  ,@nombreTarjeta  ,@nroTarjeta";
                 sqlCommand.Parameters.AddRange(parametros);
                 listaComandos.Add(sqlCommand);
-                //cantFilas = objConexion.EscribirPorStoreProcedure("sp_almacenar_venta_tarjeta", parametros);
             }
             else // si el metodo de pago es efectivo, llama al procedimiento almacenado de venta con efectivo
             {
@@ -162,25 +157,18 @@ namespace DAL_Modulo3
                 {
                     new SqlParameter("@tipoMetodoDePago" ,SqlDbType.VarChar, 50),
                     new SqlParameter("@idPersona",SqlDbType.Int),
-                    new SqlParameter("@fecha",SqlDbType.DateTime),
                     new SqlParameter("@idCliente",SqlDbType.Int),
                 };
                 //Asigno los valores
-                parametros[0].Value = unaOrdenDeVenta.MetodoDePago.TipoMetodoDePago;
+                parametros[0].Value = "Efectivo";
                 parametros[1].Value = unaOrdenDeVenta.UsuarioCreador.ID;
-                parametros[2].Value = unaOrdenDeVenta.Fecha;
-                parametros[3].Value = unaOrdenDeVenta.Cliente.ID;
-                //cantFilas = objConexion.EscribirPorStoreProcedure("sp_almacenar_venta_efectivo", parametros);
+                parametros[2].Value = unaOrdenDeVenta.Cliente.ID;
                 SqlCommand sqlCommand = new SqlCommand();
-                sqlCommand.CommandText = "EXEC sp_almacenar_venta_efectivo   @tipoMetodoDePago  ,@idPersona  ,@fecha  ,@idCliente";
+                sqlCommand.CommandText = "EXEC sp_almacenar_venta_efectivo   @tipoMetodoDePago  ,@idPersona  ,@idCliente";
                 sqlCommand.Parameters.AddRange(parametros);
                 listaComandos.Add(sqlCommand);
             }
-            //if((!DetalleOrdenDAL.GuardarDetalles(unaOrdenDeVenta.Detalles,idOrden))|| cantFilas < 2 || cantFilas > 3) 
-            //{
-            //    return false;
-            //}
-            //return true;
+
             listaComandos.AddRange(DetalleOrdenDAL.GuardarDetalles(unaOrdenDeVenta.Detalles));
             if (!(objConexion.EjecutarTransaccion(listaComandos)))
             {

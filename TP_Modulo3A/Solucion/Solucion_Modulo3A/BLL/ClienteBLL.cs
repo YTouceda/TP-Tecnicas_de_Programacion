@@ -7,8 +7,8 @@ using System.Data;
 using DAL_Modulo3;
 using BLL_Modulo3;
 using BLL_Modulo3.EXCEPCIONES;
-using ENTITY;
 using BLL.EXCEPCIONES;
+using Entidades;
 
 namespace BLL_Modulo3
 {
@@ -52,7 +52,7 @@ namespace BLL_Modulo3
             objCliente.ID = (int)objDataRow["id_cliente"];
             objCliente.Nombre = (objDataRow["nombre"].ToString());
             objCliente.Apellido = objDataRow["apellido"].ToString();
-            objCliente.DNI = objDataRow["dni"].ToString();
+            objCliente.DNI = Convert.ToInt32(objDataRow["dni"]);
             objCliente.Direccion.Calle = objDataRow["calle"].ToString();
             objCliente.Direccion.Altura = objDataRow["altura"].ToString();
             objCliente.Direccion.CodigoPostal = objDataRow["codigo_postal"].ToString();
